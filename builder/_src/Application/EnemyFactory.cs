@@ -34,6 +34,19 @@ namespace DesignPatterns.Builder.Application
             return goomba;
         }
 
+        public Enemy CreateMack()
+        {
+            var builder = new BossBuilder();
+            var mack = builder
+                .WithAttack(22)
+                .WithHitPoints(480)
+                .WithImmunities(StatusEffects.None)
+                .WithName("Mack")
+                .Build();
+
+            return mack;
+        }
+
         #endregion
     }
 }

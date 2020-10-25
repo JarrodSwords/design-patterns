@@ -42,6 +42,17 @@ namespace DesignPatterns.Builder
             goomba.Name.Should().Be("Goomba");
         }
 
+        [Fact]
+        public void WhenCreatingMack_ReturnEnemyMack()
+        {
+            var mack = _service.CreateMack();
+
+            mack.Attack.Should().Be(22);
+            mack.HitPoints.Should().Be(480);
+            mack.Immunities.Should().Be(StatusEffects.All);
+            mack.Name.Should().Be("Mack");
+        }
+
         #endregion
     }
 }
