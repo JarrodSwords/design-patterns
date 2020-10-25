@@ -5,14 +5,14 @@ using Xunit;
 
 namespace DesignPatterns.Builder
 {
-    public class EnemyServiceTest
+    public class EnemyFactoryTest
     {
         #region Test Methods
 
         [Fact]
         public void WhenCreatingGoomba_ReturnEnemyGoomba()
         {
-            var service = new EnemyService();
+            var service = new EnemyFactory();
             var goomba = service.CreateGoomba();
 
             goomba.Attack.Should().Be(3);

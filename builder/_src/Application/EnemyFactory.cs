@@ -5,7 +5,7 @@ namespace DesignPatterns.Builder.Application
     /// <summary>
     ///     Director
     /// </summary>
-    public class EnemyService
+    public class EnemyFactory
     {
         #region Public Interface
 
