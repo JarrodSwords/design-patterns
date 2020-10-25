@@ -5,6 +5,7 @@ namespace DesignPatterns.AbstractFactory.Domain
     /// </summary>
     public interface IRepositoryFactory
     {
+        IContractRepository CreateContractRepository();
         ICustomerRepository CreateCustomerRepository();
     }
 }

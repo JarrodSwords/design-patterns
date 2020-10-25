@@ -12,6 +12,7 @@ namespace DesignPatterns.AbstractFactory.Application
     {
         #region Core
 
+        private readonly IContractRepository _contractRepository;
         private readonly ICustomerRepository _customerRepository;
 
         public CustomerService(Source source)
@@ -23,12 +24,18 @@ namespace DesignPatterns.AbstractFactory.Application
                 _ => throw new ArgumentOutOfRangeException(nameof(source), source, null)
             };
 
+            _contractRepository = factory.CreateContractRepository();
             _customerRepository = factory.CreateCustomerRepository();
         }
 
         #endregion
 
         #region Public Interface
+
+        public ICollection<Contract> FetchContracts()
+        {
+            return _contractRepository.Fetch();
+        }
 
         public ICollection<Customer> FetchCustomers()
         {

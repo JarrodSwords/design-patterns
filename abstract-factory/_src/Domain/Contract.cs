@@ -1,10 +1,10 @@
 namespace DesignPatterns.AbstractFactory.Domain
 {
-    public class Customer
+    public class Contract
     {
         #region Core
 
-        public Customer(Source source)
+        public Contract(Source source)
         {
             Source = source;
         }

@@ -1,4 +1,4 @@
-namespace DesignPatterns.AbstractFactory.Application
+namespace DesignPatterns.AbstractFactory.Domain
 {
     public enum Source
     {

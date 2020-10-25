@@ -6,13 +6,13 @@ namespace DesignPatterns.AbstractFactory.Persistence.Cache
     /// <summary>
     ///     Concrete Product
     /// </summary>
-    public class CustomerRepository : ICustomerRepository
+    public class ContractRepository : IContractRepository
     {
-        #region ICustomerRepository
+        #region IContractRepository
 
-        public ICollection<Customer> Fetch()
+        public ICollection<Contract> Fetch()
         {
-            return new List<Customer> {new Customer(Source.Cache)};
+            return new List<Contract> {new Contract(Source.Cache)};
         }
 
         #endregion

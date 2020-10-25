@@ -9,6 +9,11 @@ namespace DesignPatterns.AbstractFactory.Persistence.Cache
     {
         #region IRepositoryFactory
 
+        public IContractRepository CreateContractRepository()
+        {
+            return new ContractRepository();
+        }
+
         public ICustomerRepository CreateCustomerRepository()
         {
             return new CustomerRepository();
