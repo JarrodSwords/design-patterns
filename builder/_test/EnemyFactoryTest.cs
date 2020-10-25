@@ -7,13 +7,34 @@ namespace DesignPatterns.Builder
 {
     public class EnemyFactoryTest
     {
+        #region Core
+
+        private readonly EnemyFactory _service;
+
+        public EnemyFactoryTest()
+        {
+            _service = new EnemyFactory();
+        }
+
+        #endregion
+
         #region Test Methods
+
+        [Fact]
+        public void WhenCreatingCroco_ReturnEnemyCroco()
+        {
+            var croco = _service.CreateCroco();
+
+            croco.Attack.Should().Be(25);
+            croco.HitPoints.Should().Be(320);
+            croco.Immunities.Should().Be(StatusEffects.Minor);
+            croco.Name.Should().Be("Croco");
+        }
 
         [Fact]
         public void WhenCreatingGoomba_ReturnEnemyGoomba()
         {
-            var service = new EnemyFactory();
-            var goomba = service.CreateGoomba();
+            var goomba = _service.CreateGoomba();
 
             goomba.Attack.Should().Be(3);
             goomba.HitPoints.Should().Be(16);

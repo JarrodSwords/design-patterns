@@ -9,6 +9,19 @@ namespace DesignPatterns.Builder.Application
     {
         #region Public Interface
 
+        public Enemy CreateCroco()
+        {
+            var builder = new ToughEnemyBuilder();
+            var croco = builder
+                .WithAttack(25)
+                .WithHitPoints(320)
+                .WithImmunities(StatusEffects.None)
+                .WithName("Croco")
+                .Build();
+
+            return croco;
+        }
+
         public Enemy CreateGoomba()
         {
             var builder = new EnemyBuilder();
