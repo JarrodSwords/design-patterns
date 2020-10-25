@@ -8,7 +8,7 @@ namespace DesignPatterns.AbstractFactory.Application
     /// <summary>
     ///     Client
     /// </summary>
-    public class CustomerService
+    public class CustomerService : ICustomerService
     {
         #region Core
 
@@ -30,7 +30,7 @@ namespace DesignPatterns.AbstractFactory.Application
 
         #endregion
 
-        #region Public Interface
+        #region ICustomerService
 
         public ICollection<Contract> FetchContracts()
         {
