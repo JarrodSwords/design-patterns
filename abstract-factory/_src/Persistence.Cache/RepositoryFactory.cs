@@ -1,11 +1,11 @@
 using DesignPatterns.AbstractFactory.Domain;
 
-namespace DesignPatterns.AbstractFactory.Persistence
+namespace DesignPatterns.AbstractFactory.Persistence.Cache
 {
     /// <summary>
     ///     Concrete Factory
     /// </summary>
-    public class DatabaseRepositoryFactory : IRepositoryFactory
+    public class RepositoryFactory : IRepositoryFactory
     {
         #region IRepositoryFactory
 

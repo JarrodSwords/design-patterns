@@ -7,7 +7,7 @@ namespace DesignPatterns.AbstractFactory.Persistence.Cache
     /// <summary>
     ///     Concrete Product
     /// </summary>
-    public class CachedCustomerRepository : ICustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         #region ICustomerRepository
 

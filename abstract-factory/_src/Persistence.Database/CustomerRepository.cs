@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using DesignPatterns.AbstractFactory.Application;
 using DesignPatterns.AbstractFactory.Domain;
 
-namespace DesignPatterns.AbstractFactory.Persistence
+namespace DesignPatterns.AbstractFactory.Persistence.Database
 {
     /// <summary>
     ///     Concrete Product

@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DesignPatterns.AbstractFactory.Domain;
-using DesignPatterns.AbstractFactory.Persistence;
-using DesignPatterns.AbstractFactory.Persistence.Cache;
+using DesignPatterns.AbstractFactory.Persistence.Database;
 
 namespace DesignPatterns.AbstractFactory.Application
 {
@@ -19,8 +18,8 @@ namespace DesignPatterns.AbstractFactory.Application
         {
             var factory = source switch
             {
-                Source.Database => (IRepositoryFactory) new DatabaseRepositoryFactory(),
-                Source.Cache => new CacheRepositoryFactory(),
+                Source.Database => (IRepositoryFactory) new RepositoryFactory(),
+                Source.Cache => new Persistence.Cache.RepositoryFactory(),
                 _ => throw new ArgumentOutOfRangeException(nameof(source), source, null)
             };
 

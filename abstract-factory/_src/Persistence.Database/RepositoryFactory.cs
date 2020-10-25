@@ -1,17 +1,17 @@
 using DesignPatterns.AbstractFactory.Domain;
 
-namespace DesignPatterns.AbstractFactory.Persistence.Cache
+namespace DesignPatterns.AbstractFactory.Persistence.Database
 {
     /// <summary>
     ///     Concrete Factory
     /// </summary>
-    public class CacheRepositoryFactory : IRepositoryFactory
+    public class RepositoryFactory : IRepositoryFactory
     {
         #region IRepositoryFactory
 
         public ICustomerRepository CreateCustomerRepository()
         {
-            return new CachedCustomerRepository();
+            return new CustomerRepository();
         }
 
         #endregion
