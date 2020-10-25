@@ -1,5 +1,8 @@
 namespace DesignPatterns.Builder.Domain
 {
+    /// <summary>
+    ///     Builder
+    /// </summary>
     public interface IEnemyBuilder : IBuilder<Enemy>
     {
         int Attack { get; }

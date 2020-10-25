@@ -1,5 +1,8 @@
 namespace DesignPatterns.Builder.Domain
 {
+    /// <summary>
+    ///     Concrete Builder
+    /// </summary>
     public class EnemyBuilder : IEnemyBuilder
     {
         #region IEnemyBuilder

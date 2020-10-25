@@ -2,6 +2,9 @@ using DesignPatterns.Builder.Domain;
 
 namespace DesignPatterns.Builder.Application
 {
+    /// <summary>
+    ///     Director
+    /// </summary>
     public class EnemyService
     {
         #region Public Interface

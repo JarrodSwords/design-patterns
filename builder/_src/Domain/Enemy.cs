@@ -1,5 +1,8 @@
 namespace DesignPatterns.Builder.Domain
 {
+    /// <summary>
+    ///     Product
+    /// </summary>
     public class Enemy
     {
         #region Core
