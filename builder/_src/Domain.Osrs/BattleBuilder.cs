@@ -2,6 +2,9 @@
 
 namespace DesignPatterns.Builder.Domain.Osrs
 {
+    /// <summary>
+    ///     Concrete Builder
+    /// </summary>
     public class BattleBuilder : IBattleBuilder
     {
         #region Public Interface

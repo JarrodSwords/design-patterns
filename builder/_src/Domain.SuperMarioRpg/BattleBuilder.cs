@@ -1,5 +1,8 @@
 ﻿namespace DesignPatterns.Builder.Domain.SuperMarioRpg
 {
+    /// <summary>
+    ///     Concrete Builder
+    /// </summary>
     public class BattleBuilder : IBattleBuilder
     {
         #region Public Interface

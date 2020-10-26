@@ -1,5 +1,8 @@
 ﻿namespace DesignPatterns.Builder.Domain.FinalFantasyX
 {
+    /// <summary>
+    ///     Product
+    /// </summary>
     public class Battle : Domain.Battle
     {
         #region Core

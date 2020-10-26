@@ -2,6 +2,9 @@
 
 namespace DesignPatterns.Builder.Domain.Osrs
 {
+    /// <summary>
+    ///     Product
+    /// </summary>
     public class Battle : Domain.Battle
     {
         #region Core

@@ -1,5 +1,8 @@
 ﻿namespace DesignPatterns.Builder.Domain.FinalFantasyX
 {
+    /// <summary>
+    ///     Concrete Builder
+    /// </summary>
     public class BattleBuilder : IBattleBuilder
     {
         #region Public Interface

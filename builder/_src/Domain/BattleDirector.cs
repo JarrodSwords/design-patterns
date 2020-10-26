@@ -1,5 +1,8 @@
 ﻿namespace DesignPatterns.Builder.Domain
 {
+    /// <summary>
+    ///     Director
+    /// </summary>
     public class BattleDirector
     {
         #region Public Interface

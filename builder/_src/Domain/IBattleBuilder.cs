@@ -1,5 +1,8 @@
 ﻿namespace DesignPatterns.Builder.Domain
 {
+    /// <summary>
+    ///     Builder
+    /// </summary>
     public interface IBattleBuilder
     {
         IBattleSystem BattleSystem { get; }
