@@ -48,7 +48,7 @@ I'm not going to say I completely understand this pattern right now, but I certa
 
 Something that still doesn't sit right about this pattern is that the existence of a sequence of creation steps seems to be integral to the primary use case of the pattern, yet the Director - the component that houses said sequence - is the most expendable part of the pattern. I think if my reading materials hadn't made a big deal about the order or inclusion of all the steps, I'd have said that the Director is useless. But if you can create one it will prevent you from duplicating all of the specific Builder calls, so maybe that's all it really needs to do to justify its existence.
 
-This [refactorying guru](https://refactoring.guru/design-patterns/builder) page was more helpful than the usual [dofactory](https://www.dofactory.com/net/builder-design-pattern) and [sourcemaking](https://sourcemaking.com/design_patterns/builder) pages.
+This [refactoring guru](https://refactoring.guru/design-patterns/builder) page was more helpful than the usual [dofactory](https://www.dofactory.com/net/builder-design-pattern) and [sourcemaking](https://sourcemaking.com/design_patterns/builder) pages.
 
 ## Review (pattern)
 
