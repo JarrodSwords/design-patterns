@@ -8,7 +8,7 @@ namespace DesignPatterns.Builder.Test.Osrs
 {
     public class BattleBuilderTest
     {
-        #region Public Interface
+        #region Test Methods
 
         [Fact]
         public void WhenBuildingBattle_ReturnValidBattle()
