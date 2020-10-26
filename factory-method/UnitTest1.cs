@@ -8,11 +8,34 @@ namespace DesignPatterns.FactoryMethod
         #region Test Methods
 
         [Fact]
-        public void WhenQueueingNextAttack_WhenHealthy_NextAttackIsHammerTime()
+        public void WhenQueueingNextAttack_WhenHealthy_NextSpecialAttackIsHammerTime()
         {
             var hammerBro = new HammerBro();
 
             hammerBro.NextAttack.Should().BeOfType<HammerTime>();
+        }
+
+        [Fact]
+        public void WhenQueueingNextAttack_WhenHurt_NextSpecialAttackIsValorUp()
+        {
+            var hammerBro = new HammerBro();
+            var mario = new Mario();
+
+            mario.Attack(hammerBro);
+
+            hammerBro.NextAttack.Should().BeOfType<ValorUp>();
+        }
+
+        #endregion
+    }
+
+    public class Mario
+    {
+        #region Public Interface
+
+        public void Attack(Enemy enemy)
+        {
+            enemy.ReceiveAttack();
         }
 
         #endregion
@@ -33,6 +56,11 @@ namespace DesignPatterns.FactoryMethod
 
         public bool IsHurt { get; private set; }
         public SpecialAttack NextAttack => _nextAttack ??= CreateSpecialAttack();
+
+        public void ReceiveAttack()
+        {
+            IsHurt = true;
+        }
 
         #endregion
 
