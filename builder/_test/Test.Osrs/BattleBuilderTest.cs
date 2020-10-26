@@ -2,7 +2,6 @@
 using DesignPatterns.Builder.Domain.Osrs;
 using FluentAssertions;
 using Xunit;
-using Battle = DesignPatterns.Builder.Domain.Osrs.Battle;
 
 namespace DesignPatterns.Builder.Test.Osrs
 {

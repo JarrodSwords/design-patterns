@@ -2,7 +2,6 @@
 using DesignPatterns.Builder.Domain.SuperMarioRpg;
 using FluentAssertions;
 using Xunit;
-using Battle = DesignPatterns.Builder.Domain.SuperMarioRpg.Battle;
 
 namespace DesignPatterns.Builder.Test.SuperMarioRpg
 {

@@ -2,7 +2,6 @@
 using DesignPatterns.Builder.Domain.FinalFantasyX;
 using FluentAssertions;
 using Xunit;
-using Battle = DesignPatterns.Builder.Domain.FinalFantasyX.Battle;
 
 namespace DesignPatterns.Builder.Test.FinalFantasyX
 {
