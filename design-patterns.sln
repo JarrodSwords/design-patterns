@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.AbstractFactory", "abstract-factory\DesignPatterns.AbstractFactory.csproj", "{CD5BF034-99AA-4439-B6F0-72EB50D61166}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.AbstractFactory", "abstract-factory\DesignPatterns.AbstractFactory.csproj", "{CD5BF034-99AA-4439-B6F0-72EB50D61166}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Builder", "builder\DesignPatterns.Builder.csproj", "{5EB1CC29-8CD2-4509-87AD-7B9866B5737B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Builder", "builder\DesignPatterns.Builder.csproj", "{5EB1CC29-8CD2-4509-87AD-7B9866B5737B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.FactoryMethod", "factory-method\DesignPatterns.FactoryMethod.csproj", "{CFFD54FD-BA49-4924-836F-9A3D30630EC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.FactoryMethod", "factory-method\DesignPatterns.FactoryMethod.csproj", "{CFFD54FD-BA49-4924-836F-9A3D30630EC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Prototype", "prototype\DesignPatterns.Prototype.csproj", "{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CD5BF034-99AA-4439-B6F0-72EB50D61166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -58,5 +57,23 @@ Global
 		{CFFD54FD-BA49-4924-836F-9A3D30630EC9}.Release|x64.Build.0 = Release|Any CPU
 		{CFFD54FD-BA49-4924-836F-9A3D30630EC9}.Release|x86.ActiveCfg = Release|Any CPU
 		{CFFD54FD-BA49-4924-836F-9A3D30630EC9}.Release|x86.Build.0 = Release|Any CPU
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}.Debug|x64.Build.0 = Debug|Any CPU
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}.Debug|x86.Build.0 = Debug|Any CPU
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}.Release|x64.ActiveCfg = Release|Any CPU
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}.Release|x64.Build.0 = Release|Any CPU
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}.Release|x86.ActiveCfg = Release|Any CPU
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B0A8FBA-8862-4D93-AEAE-E32A0E2848E8}
 	EndGlobalSection
 EndGlobal
