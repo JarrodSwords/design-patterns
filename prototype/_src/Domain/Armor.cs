@@ -11,7 +11,7 @@ namespace DesignPatterns.Prototype.Domain
         {
         }
 
-        public Armor(Armor source) : this(source.Name, source.CompatibleCharacters)
+        private Armor(Armor source) : this(source.Name, source.CompatibleCharacters)
         {
         }
 

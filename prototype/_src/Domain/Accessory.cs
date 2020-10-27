@@ -11,7 +11,7 @@ namespace DesignPatterns.Prototype.Domain
         {
         }
 
-        public Accessory(Accessory source) : this(source.Name, source.CompatibleCharacters)
+        private Accessory(Accessory source) : this(source.Name, source.CompatibleCharacters)
         {
         }
 

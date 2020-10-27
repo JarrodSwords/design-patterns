@@ -34,7 +34,8 @@ namespace DesignPatterns.Prototype.Domain
 
         public void MakeSale(Player player)
         {
-            player.Inventory.Add(SelectedItem.Good.Clone());
+            var purchasedItem = SelectedItem.Good.Clone();
+            player.Inventory.Add(purchasedItem);
         }
 
         public void SelectItem(int index)

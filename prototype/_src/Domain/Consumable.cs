@@ -11,7 +11,7 @@ namespace DesignPatterns.Prototype.Domain
         {
         }
 
-        public Consumable(Consumable source) : this(source.Name)
+        private Consumable(Consumable source) : this(source.Name)
         {
         }
 
