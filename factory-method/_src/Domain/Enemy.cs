@@ -19,11 +19,17 @@ namespace DesignPatterns.FactoryMethod.Domain
         #region Public Interface
 
         public int HitPoints { get; private set; }
-        public IMove NextMove => _nextMove ??= CreateNextMove();
+
+        public IMove NextMove
+        {
+            get => _nextMove ??= CreateNextMove();
+            private set => _nextMove = value;
+        }
 
         public void ReceiveDamage(int damage)
         {
             HitPoints -= damage;
+            NextMove = CreateNextMove();
         }
 
         #endregion
