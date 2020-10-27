@@ -23,7 +23,7 @@ So the objects responsible for creating Products aren't third-party services, bu
 
 Examples that portray Creators as being composed of Products have been problematic for me, though I understand why others may not have this issue.
 I prefer building classes that have private property setters and are fully-initialized on instantiation.
-Private property setters enforces encapsulation of the creation process (e.g. no external code can initialize properties).
+Private property setters enforce encapsulation of the creation process (e.g. no external code can initialize properties).
 Fully-initializing instances simplifies external usage because it strongly implies its validity (e.g. you can't have an uninitialized public property).
 For the sake of my argument, let's ignore the fact that you could defer a property's initialization to the time of access.
 
@@ -32,7 +32,7 @@ The `Document` constructor calls the factory method which - besides placing a vi
 I can achieve the same thing by creating the `Page`s in the ConcreteCreator constructors.
 
 Keeping with this example, assuming you don't call the factory method in the constructor, you're now left without a fully-initialized Creator until a client calls the factory method.
-This makes it seem like an anti-pattern for two reasons: the partially-initialized Creator and the fact that a client would have to know too much about the initialization process of the Creator.
+This makes it seem like an anti-pattern for two reasons: the partially-initialized Creator and the fact that a client would have to know enough about the initialization process of the Creator to know it *needs* to call the factory method.
 
 ### Conclusion
 
