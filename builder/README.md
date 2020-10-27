@@ -13,7 +13,8 @@
 
 ## Review (experience)
 
-I think I just struggle with creational patterns. I've had difficulty answering all of the following questions at times:
+I think I just struggle with creational patterns.
+I've had difficulty answering all of the following questions at times:
 
 * Are ConcreteBuilders all supposed to return the same Product type?
 * If so, do the created objects differ only by their data?
@@ -24,7 +25,9 @@ I think I just struggle with creational patterns. I've had difficulty answering 
 * What does adding a ConcreteBuilder accomplish?
 * What does adding a different Director build function accomplish?
 
-You can tell by how scattered the questions are, that it is difficult for me to understand the purpose of a pattern from reading articles and looking at examples. Even if another would argue that the purpose is clearly stated, for me understanding a pattern's purpose is a process of discovery through trial and error. So here are some answers to the above in the form of tips:
+You can tell by how scattered the questions are, that it is difficult for me to understand the purpose of a pattern from reading articles and looking at examples.
+Even if another would argue that the purpose is clearly stated, for me understanding a pattern's purpose is a process of discovery through trial and error.
+So here are some answers to the above in the form of tips:
 
 * no, ConcreteBuilders aren't required to return the same Product type
     * do not define a build function in the Builder interface; this saddles the ConcreteBuilders to a Product type
@@ -39,14 +42,18 @@ You can tell by how scattered the questions are, that it is difficult for me to 
 * adding a ConcreteBuilder can help you produce a Product with a new process, or a product of a different type
 * adding a different Director build function allows for differing sequences of construction
 
-I'm not going to say I completely understand this pattern right now, but I certainly have a much better appreciation for its power after creating this example. I'd mostly used this pattern for the purpose of Product constructor simplification - largely ignoring the fact that you could implement multiple ConcreteBuilders. This example demonstrates the latter very well:
+I'm not going to say I completely understand this pattern right now, but I certainly have a much better appreciation for its power after creating this example.
+I'd mostly used this pattern for the purpose of Product constructor simplification - largely ignoring the fact that you could implement multiple ConcreteBuilders.
+This example demonstrates the latter very well:
 
 * the Products are different `Battle` objects, based on the specific game implementation
 * some common Product properties like `IBattleSystem` and `IProgressionSystem` differ only by value
 * some appear to be common Product values but are actually different types altogether
     * e.g. `FinalFantasyX.Party` is actually different than `SuperMarioRpg.Party` and Osrs doesn't even have a party because it has a `Player` instead; despite this, all of these battle participants are created during the `WithParticipants` portion of the build process
 
-Something that still doesn't sit right about this pattern is that the existence of a sequence of creation steps seems to be integral to the primary use case of the pattern, yet the Director - the component that houses said sequence - is the most expendable part of the pattern. I think if my reading materials hadn't made a big deal about the order or inclusion of all the steps, I'd have said that the Director is useless. But if you can create one it will prevent you from duplicating all of the specific Builder calls, so maybe that's all it really needs to do to justify its existence.
+Something that still doesn't sit right about this pattern is that the existence of a sequence of creation steps seems to be integral to the primary use case of the pattern, yet the Director - the component that houses said sequence - is the most expendable part of the pattern.
+I think if my reading materials hadn't made a big deal about the order or inclusion of all the steps, I'd have said that the Director is useless.
+But if you can create one it will prevent you from duplicating all of the specific Builder calls, so maybe that's all it really needs to do to justify its existence.
 
 This [refactoring guru](https://refactoring.guru/design-patterns/builder) page was more helpful than the usual [dofactory](https://www.dofactory.com/net/builder-design-pattern) and [sourcemaking](https://sourcemaking.com/design_patterns/builder) pages.
 
