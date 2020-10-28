@@ -1,10 +1,14 @@
 ﻿# Prototype
 
+1.
+1.
+1.
+
 ## Purpose
 
-Delegation the creation of a clone to the object being cloned.
+Delegate the creation of a clone to the object being cloned.
 
-## Review (experience)
+## Experience
 
 I got more out of trying the prototype pattern than I was anticipating.
 
