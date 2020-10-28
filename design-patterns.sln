@@ -9,9 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Builder", "b
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.FactoryMethod", "factory-method\DesignPatterns.FactoryMethod.csproj", "{CFFD54FD-BA49-4924-836F-9A3D30630EC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Prototype", "prototype\DesignPatterns.Prototype.csproj", "{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Prototype", "prototype\DesignPatterns.Prototype.csproj", "{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Singleton", "singleton\DesignPatterns.Singleton.csproj", "{5F4C1D63-83B1-49E0-8E2F-2F22FAFE0D6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Singleton", "singleton\DesignPatterns.Singleton.csproj", "{5F4C1D63-83B1-49E0-8E2F-2F22FAFE0D6A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "creational-patterns", "creational-patterns", "{24AC32C6-F26C-439F-A35F-85856867FA80}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "structural-patterns", "structural-patterns", "{2F776BDF-2B5D-4743-89B2-89373F0EBBD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "behavioral-patterns", "behavioral-patterns", "{3239F23F-7015-46FB-9700-AFFC07C1E864}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,6 +92,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CD5BF034-99AA-4439-B6F0-72EB50D61166} = {24AC32C6-F26C-439F-A35F-85856867FA80}
+		{5EB1CC29-8CD2-4509-87AD-7B9866B5737B} = {24AC32C6-F26C-439F-A35F-85856867FA80}
+		{CFFD54FD-BA49-4924-836F-9A3D30630EC9} = {24AC32C6-F26C-439F-A35F-85856867FA80}
+		{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4} = {24AC32C6-F26C-439F-A35F-85856867FA80}
+		{5F4C1D63-83B1-49E0-8E2F-2F22FAFE0D6A} = {24AC32C6-F26C-439F-A35F-85856867FA80}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B0A8FBA-8862-4D93-AEAE-E32A0E2848E8}
