@@ -1,102 +1,174 @@
 ﻿# Prototype
 
-1. [Experience](#-experience)
-1.
-1.
+1. [Learning Experience](#learning-experience)
+   1. [Previous Experience](#previous-experience)
+   1. [Breakthrough](#breakthrough)
+   1. [Tell Don't Ask](#tell-dont-ask)
+1. [Application](#application)
+   1. [Example](#example)
+1. [Review](#review)
+   1. [Strengths](#strengths)
+   1. [Weaknesses](#weaknesses)
+1. [References](#references)
 
-## Purpose
+## Learning Experience
 
-Delegate the creation of a clone to the object being cloned.
+I got more out of building this demo than I anticipated.
+It's a testament to the value of learning-by-doing.
 
-## Experience
+### Previous Experience
 
-I got more out of trying the prototype pattern than I was anticipating.
+The GoF and most common definition I've seen reads:
 
-My previous, incorrect impression of prototypes was that they were objects created specifically for the purpose of spawning clones.
-I'm not sure if that is a common misconception, but it was how I understood them.
-That has always seemed to be a pretty useless thing and the pattern has never interested me.
+> Specify the kind of objects to create using a prototypical instance, and create new objects by copying this prototype.
 
-When would something like that even be necessary?
-Maybe it would be useful if you had a huge, monolithic object that you only wanted to create once after pulling data from storage.
+Thanks, I hate it.
+It's technically true, but it's also worded so poorly that it doesn't actually convey the purpose of the pattern.
 
-Wouldn't this just create a bunch of wasted memory?
+Thoughts provoked by the definition:
 
-### Additional Confusion
+> Specify the kind of objects to create...
 
-Should there be a class for every item in an RPG?
-I've asked myself this question multiple times and I feel stupid every time I fail to answer it.
+* *What* specifies the kind of objects to create? This sentence doesn't appear to have a subject.
+I'm going to assume an implied "you," which in programming probably means a Client object.
+* I'm going to assume "kind" means "type"
 
-A Mushroom and a Mid Mushroom differ only by their values: name, price, and amount of hit points recovered.
-The difference is important, and needs to exist somewhere.
+> ...using a prototypical instance...
 
-Does this difference exist only in storage?
-That seems bizarre.
-Should I really have to hit a storage every time I need to create an item?
-How would I even know the set of items to choose from in the code?
+* It seems like a prototypical instance is the component that specifies the kind of object to create, which contradicts my previous assumption.
+* What is a "prototypical instance?" Is it just an instance of a Prototype? It kind of sounds like an object that exists specifically for the purpose of cloning.
 
-Does this difference exist in constructors of otherwise empty subclasses of `ConsumableItem`?
-That also seems bizarre because the `Mushroom` class wouldn't really describe the set of all mushrooms any better than the `ConsumableItem` class does.
-It just exists for initializing the `ConsumableItem` data in its constructor.
+>...and create new objects by copying this prototype
 
-To cap off the confusion, all this focus on values makes it seem like we're working with value objects - objects that differ only by their values.
-This isn't right.
-If I put Mushroom A and Mushroom B on the floor, they are clearly different references since they occupy different spaces.
-This makes them entities not value objects.
+* At least I understand the second half of the sentence...
+
+You might agree that it's a bad definition or you might blame my reading comprehension.
+Either way, I never understood this definition, which means I never understood the pattern or its use cases.
+Why would I want an object solely for the purpose of cloning itself?
+That seems useless.
+The [oodesign page](https://www.oodesign.com/prototype-pattern.html) talks about performance as a motivation, Liskov's Substitution Principle, and hash tables.
+What?
+
+All this confusion stunted my interest in the pattern.
+
+### Breakthrough
+
+By chance, I recently discovered [refactoring.guru](https://refactoring.guru/).
+It looks nearly identical to [sourcemaking.com](https://sourcemaking.com/), a blog I've known about for awhile.
+It even sells the same book, which I'll probably purchase because it's there that I found the alternate definition:
+
+> Prototype is a creational design pattern that lets you copy existing objects without making your code dependent on their classes.
+
+Oh.
 
 ### Tell Don't Ask
 
-If you look at a Prototype as just an object that *can* clone itself rather than one that *exists to* clone itself, you get a perfect embodiment of the Tell Don't Ask principle.
+Tell Don't Ask is the most important development principle I've learned when it comes to building rich domain models.
+It is a reminder that classes encapsulate *behavior* as well as data - that classes are collections of objects *and* collections of operations on those objects.
+If you look at a Prototype as just an object that *can* clone itself rather than one that *exists to* clone itself, it is the perfect embodiment of the Tell Don't Ask principle.
 
-Tell Don't Ask is the most important development principle I've learned when it comes to writing rich domains.
-It is a reminder that classes encapsulate *behavior* as well as data, that classes are collections of objects *and* collections of operations on those objects.
+A client newing up a fresh instance and copying properties is probably the most common way of cloning an object:
 
-Common ways of obtaining a clone of an object is to feed an existing object's properties into a constructor or object initializer.
-Here, you *ask* the target object what its values are and then do the cloning yourself.
-Even if you're passing the properties into the target class's constructor, you're still writing the cloning logic because you're deciding what and how to clone.
-Aside from this not always being possible (e.g. the target object has internal fields you could be unaware of), this leads to anemic domain models because you are modeling behavior in client code.
+```csharp
+public void DoSomething(Foo foo)
+{
+    var clone = new Foo { Bar = foo.Bar };
 
-Rather than ask the target object about its properties and then using them to create a clone, you can just *tell* a Prototype to clone itself.
-Hey Mr. Prototype, give me a clone - please and thank you.
-The Prototype conveniently has everything necessary to do this.
+    // do something with the clone
+}
+```
 
-Empowering a class to clone itself enriches it as a domain model.
-Its expanded capabilities are clearly communicated to all its clients through its expanded interface.
-Clients have an easier time working with them because they no longer need to figure out how to obtain a clone.
-Cloning code becomes restricted to one location.
+In this would-be Client function, in order to clone `foo`, the client *asks* `foo` for its `Bar` value.
+The client decides what and how to clone, and this code would potentially be duplicated anywhere this functionality is required.
+Worse, it might be impossible for a client to completely clone `foo` since it only has access to its public interface.
+
+The better approach to this problem is to empower `Foo` objects to clone themselves:
+
+```csharp
+public void DoSomething(Foo foo)
+{
+    var clone = foo.Clone();
+
+    // do something with the clone
+}
+```
+
+This accomplishes several things:
+* It enriches the `Foo` class because it adds a behavior that is communicated to its clients through an expanded public interface.
+* It simplifies its usage for clients that no longer need to figure out how to obtain clones.
+* It restricts cloning logic to `Foo` and its subclasses.
+
+And that's it.
+It's barely a pattern.
+It's only a creational pattern because that's arbitrarily the content of the function.
+You could do this with literally any functionality and call it a pattern by these standards.
+The Print Pattern&trade; adds a `Print()` function that delegates the printing of an object to its subclasses... I'm a genius.
+
+## Application
+
+I noticed this great idea in the [Pros and Cons](https://refactoring.guru/design-patterns/prototype#pros-cons) section of refactoring.guru:
+
+> You get an alternative to inheritance when dealing with configuration presets for complex objects.
+
+Wow.
+
+I've asked myself the following question multiple times and have never come up with a satisfying answer:
+
+> Should there be a class for every item in an RPG?
+
+In Super Mario RPG, a Mushroom and a Mid Mushroom are consumable items that differ only by their values (e.g. name, base price, amount of hit points recovered, etc.).
+
+Does this difference exist only in storage?
+Are there just different `ConsumableItem` instances that are either Mushrooms or Mid Mushrooms based on their contents?
+Does this mean have to hit storage every time I need to create a `ConsumableItem`?
+
+Do I create `Mushroom` and `MidMushroom` classes?
+Now I have stronger typing and am decoupled from any storage, but these subclasses don't really describe Mushrooms or Mid Mushrooms any better than the `ConsumableItem` class does.
+They just exist for a place to hard code the `ConsumableItem` properties.
+Creating subclasses without changing form or behavior seems like a code smell.
 
 ### Example
 
-In my example, I tackled the RPG item problem.
-I created a `MushroomKingdomShop` that contains a collection of purchasable `Item`s.
-These would viewable as a list in the UI.
-When the player makes a purchase, they aren't purchasing the exact reference listed in the UI, they're just requesting that the shop give them an instance of the `SelectedItem`.
-The shop responds by telling the `SelectedItem` to clone itself in order to fulfill the transaction.
+I created a `MushroomKingdomShop` that can list and sell its `Inventory`.
+The `Item`s in its inventory would be displayed on the UI.
+When the player makes a purchase, we don't move the referenced `Item` to his inventory because the shop still needs it.
+The shop clones the `Item` in order to provide the player with an equivalent `Item` and fulfill the transaction.
 
 I love it.
-There isn't any requirement to access storage to populate values.
-There isn't any unnecessary inheritance tree specifying what a Honey Syrup is or how its values are produced.
-The `ConcretePrototype`s also exist for more purpose than just cloning themselves.
-They are normal instances of domain models and they fulfill the primary purpose of composing the shop's inventory.
-They just also happen to be able to clone themselves when necessary.
-The Prototypes and clones are entities too, as demonstrated by the final test line.
+The `Item` instances in the shop are normal domain objects.
+They also happen to be able to clone themselves when necessary.
+There isn't an unnecessary inheritance tree specifying how each instance is populated.
 
-Two side notes:
+Note:
 
 This could be taken a step further.
-The shop could be a client of a larger list of prototypes, and populate its inventory from this master collection.
+The shop could be a client of a larger list of prototypes.
+It could populate its inventory from this master collection.
 
-From memory, the Prototype implementation is extremely similar to the Memento pattern, though they serve different purposes.
+## Review
 
-## Review (pattern)
+The Prototype design pattern is barely a pattern.
+It is an application of Tell Don't Ask for the use case of cloning.
 
 ### Strengths
 
-* perfect example of Tell Don't Ask
-* encourages rich domain models
 * simplicity of implementation
+* encourages rich domain models
 * can be used to prevent unnecessary inheritance trees
 * `Clone()` implementations can vary by subclass
 
 ### Weaknesses
 
-* currently unaware of any
+* prevalence of bad training materials
+
+### Caveats
+
+* Due to my preference for readonly public properties, I don't think I'll be using the .NET `ICloneable` interface implementation with `Object.MemberwiseClone()` anytime soon.
+* Prototype usage (especially with a dedicated constructor) is extremely similar to both the Memento and Builder patterns
+
+## References
+
+* https://dofactory.com/net/prototype-design-pattern
+* https://www.oodesign.com/prototype-pattern.html
+* https://sourcemaking.com/design_patterns/prototype
+* https://refactoring.guru/design-patterns/prototype
