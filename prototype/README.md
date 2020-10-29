@@ -9,6 +9,7 @@
 1. [Review](#review)
    1. [Strengths](#strengths)
    1. [Weaknesses](#weaknesses)
+   1. [Caveats](#caveats)
 1. [References](#references)
 
 ## Learning Experience
