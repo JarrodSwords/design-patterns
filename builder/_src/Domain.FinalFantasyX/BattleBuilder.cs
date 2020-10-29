@@ -5,6 +5,19 @@
     /// </summary>
     public class BattleBuilder : IBattleBuilder
     {
+        #region Core
+
+        private readonly ArenaFactory _arenaFactory;
+        private readonly int _nodes;
+
+        public BattleBuilder(ArenaFactory arenaFactory, int nodes)
+        {
+            _arenaFactory = arenaFactory;
+            _nodes = nodes;
+        }
+
+        #endregion
+
         #region Public Interface
 
         public Battle Build()
@@ -30,7 +43,7 @@
 
         public Domain.IBattleBuilder WithEnvironment()
         {
-            Arena = new Arena();
+            Arena = _arenaFactory.Create();
             return this;
         }
 
@@ -43,7 +56,7 @@
 
         public Domain.IBattleBuilder WithProgressionSystem()
         {
-            ProgressionSystem = new SphereGrid();
+            ProgressionSystem = new SphereGrid(_nodes);
             return this;
         }
 
