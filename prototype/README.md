@@ -121,10 +121,10 @@ In Super Mario RPG, a Mushroom and a Mid Mushroom are consumable items that diff
 
 Does this difference exist only in storage?
 Are there just different `ConsumableItem` instances that are either Mushrooms or Mid Mushrooms based on their contents?
-Does this mean have to hit storage every time I need to create a `ConsumableItem`?
+Does this mean I have to hit storage every time I need to create a `ConsumableItem`?
 
 Do I create `Mushroom` and `MidMushroom` classes?
-Now I have stronger typing and am decoupled from any storage, but these subclasses don't really describe Mushrooms or Mid Mushrooms any better than the `ConsumableItem` class does.
+Then I'd have stronger typing and be decoupled from any storage, but these subclasses wouldn't really describe Mushrooms or Mid Mushrooms any better than the `ConsumableItem` class does.
 They just exist for a place to hard code the `ConsumableItem` properties.
 Creating subclasses without changing form or behavior seems like a code smell.
 
