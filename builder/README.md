@@ -1,19 +1,28 @@
 ﻿# Builder
 
-## Purpose
+1. [Learning Experience](#learning-experience)
+   1. [Words have Meanings](#words-have-meanings)
+1. [Review](#review)
+   1. [Strengths](#strengths)
+   1. [Weaknesses](#weaknesses)
+1. [References](#references)
 
-* facilitates the construction of complex, immutable Product objects
-    * especially when forcing Product construction with a (Concrete)Builder parameter
-* simplifies Product class interfaces by eliminating numerous or complicated construtors
-* localizes initializaion code
-    * keeps Product and client classes clean of initialization code
-    * prevents duplicate initialization code in similar Product classes
-    * creates logging and error handling opportunities
-* prevent developers from forgetting initialization steps or the step order
+## Learning Experience
 
-## Review (experience)
+The Builder pattern suffers from being woefully underexplained, which is unfortunate for something as convoluted as the Builder pattern.
 
-I think I just struggle with creational patterns.
+### Words have Meanings
+
+> Separate the construction of a complex object from its representation so that the same construction process can create different representations.
+
+The above GoF summary is wordy and convoluted.
+The problem with wordy, convoluted summaries is that they are often misinterpreted.
+The problem with wordy, convoluted summaries *that are also wrong* is that they convey the wrong idea even when interpreted correctly.
+
+Suffice it to say this degrades the learning experience.
+
+### Previous Experience
+
 I've had difficulty answering all of the following questions at times:
 
 * Are ConcreteBuilders all supposed to return the same Product type?
@@ -55,9 +64,19 @@ Something that still doesn't sit right about this pattern is that the existence 
 I think if my reading materials hadn't made a big deal about the order or inclusion of all the steps, I'd have said that the Director is useless.
 But if you can create one it will prevent you from duplicating all of the specific Builder calls, so maybe that's all it really needs to do to justify its existence.
 
-This [refactoring guru](https://refactoring.guru/design-patterns/builder) page was more helpful than the usual [dofactory](https://www.dofactory.com/net/builder-design-pattern) and [sourcemaking](https://sourcemaking.com/design_patterns/builder) pages.
+## Review
 
-## Review (pattern)
+* facilitates the construction of complex, immutable Product objects
+    * especially when forcing Product construction with a (Concrete)Builder parameter
+* simplifies Product class interfaces by eliminating numerous or complicated construtors
+* localizes initializaion code
+    * keeps Product and client classes clean of initialization code
+    * prevents duplicate initialization code in similar Product classes
+    * creates logging and error handling opportunities
+* prevent developers from forgetting initialization steps or the step order
+
+What code does this prevent the duplication of?
+What code becomes isolated?
 
 ### Strengths
 
@@ -75,3 +94,10 @@ This [refactoring guru](https://refactoring.guru/design-patterns/builder) page w
 * boilerplate in ConcreteBuilders: duplicating Product properties, creating functions for setting those properties, fluent returns
 * difficult to determine use cases
 * difficult to define sequences of steps
+
+## References
+
+* https://dofactory.com/net/builder-design-pattern
+* https://www.oodesign.com/builder-pattern.html
+* https://sourcemaking.com/design_patterns/builder
+* https://refactoring.guru/design-patterns/builder
