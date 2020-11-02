@@ -25,6 +25,9 @@ namespace DesignPatterns.Builder.Test
         [Fact]
         public abstract void WhenConfiguringRandomEncounter_ReturnValidBattle();
 
+        [Fact]
+        public abstract void WhenConfiguringTutorial_ReturnValidBattle();
+
         #endregion
     }
 }

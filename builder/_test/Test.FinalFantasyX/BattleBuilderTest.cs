@@ -24,7 +24,7 @@ namespace DesignPatterns.Builder.Test.FinalFantasyX
 
         public override void WhenConfiguringRandomEncounter_ReturnValidBattle()
         {
-            Director.Build(Builder);
+            Director.ConfigureRandomEncounter(Builder);
 
             var battle = Builder.Build();
 
@@ -34,6 +34,20 @@ namespace DesignPatterns.Builder.Test.FinalFantasyX
             battle.Mob.Should().NotBeNull();
             battle.Party.Should().NotBeNull();
             battle.ProgressionSystem.Should().BeOfType<SphereGrid>();
+        }
+
+        public override void WhenConfiguringTutorial_ReturnValidBattle()
+        {
+            Director.ConfigureTutorial(Builder);
+
+            var battle = Builder.Build();
+
+            battle.Should().BeOfType<Battle>();
+            battle.Arena.Should().NotBeNull();
+            battle.BattleSystem.Should().BeOfType<ConditionalTurnBasedBattle>();
+            battle.Mob.Should().NotBeNull();
+            battle.Party.Should().NotBeNull();
+            battle.ProgressionSystem.Should().BeOfType<NullSphereGrid>();
         }
 
         #endregion

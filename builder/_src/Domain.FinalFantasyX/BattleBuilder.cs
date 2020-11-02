@@ -5,6 +5,12 @@
     /// </summary>
     public class BattleBuilder : IBattleBuilder
     {
+        #region Core
+
+        private IProgressionSystem _progressionSystem;
+
+        #endregion
+
         #region Public Interface
 
         public Battle Build()
@@ -20,7 +26,12 @@
         public IBattleSystem BattleSystem { get; private set; }
         public Mob Mob { get; private set; }
         public Party Party { get; private set; }
-        public IProgressionSystem ProgressionSystem { get; private set; }
+
+        public IProgressionSystem ProgressionSystem
+        {
+            get => _progressionSystem ??= new NullSphereGrid();
+            private set => _progressionSystem = value;
+        }
 
         public Domain.IBattleBuilder WithBattleSystem()
         {

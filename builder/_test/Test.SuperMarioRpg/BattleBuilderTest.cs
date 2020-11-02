@@ -24,7 +24,7 @@ namespace DesignPatterns.Builder.Test.SuperMarioRpg
 
         public override void WhenConfiguringRandomEncounter_ReturnValidBattle()
         {
-            Director.Build(Builder);
+            Director.ConfigureRandomEncounter(Builder);
 
             var battle = Builder.Build();
 
@@ -34,6 +34,20 @@ namespace DesignPatterns.Builder.Test.SuperMarioRpg
             battle.Mob.Should().NotBeNull();
             battle.Party.Should().NotBeNull();
             battle.ProgressionSystem.Should().BeOfType<LevelBasedProgression>();
+        }
+
+        public override void WhenConfiguringTutorial_ReturnValidBattle()
+        {
+            Director.ConfigureTutorial(Builder);
+
+            var battle = Builder.Build();
+
+            battle.Should().BeOfType<Battle>();
+            battle.Arena.Should().NotBeNull();
+            battle.BattleSystem.Should().BeOfType<TraditionalTurnBasedBattle>();
+            battle.Mob.Should().NotBeNull();
+            battle.Party.Should().NotBeNull();
+            battle.ProgressionSystem.Should().BeOfType<NullLevelBasedProgression>();
         }
 
         #endregion

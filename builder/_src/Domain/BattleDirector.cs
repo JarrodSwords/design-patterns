@@ -1,4 +1,6 @@
-﻿namespace DesignPatterns.Builder.Domain
+﻿using DesignPatterns.Builder.Domain.FinalFantasyX;
+
+namespace DesignPatterns.Builder.Domain
 {
     /// <summary>
     ///     Director
@@ -7,13 +9,21 @@
     {
         #region Public Interface
 
-        public void Build(IBattleBuilder builder)
+        public void ConfigureRandomEncounter(IBattleBuilder builder)
         {
             builder
                 .WithBattleSystem()
                 .WithEnvironment()
                 .WithParticipants()
                 .WithProgressionSystem();
+        }
+
+        public void ConfigureTutorial(IBattleBuilder builder)
+        {
+            builder
+                .WithBattleSystem()
+                .WithEnvironment()
+                .WithParticipants();
         }
 
         #endregion
