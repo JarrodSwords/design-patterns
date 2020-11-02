@@ -64,7 +64,8 @@ Consider the Builder pattern when:
 
 Nuances:
 
-* optionally reduce a Product's constructor to 
+* for additional cleanliness
+    * create public properties reduce a Product constructor's parameters to one Builder parameter
 
 
 * Builder

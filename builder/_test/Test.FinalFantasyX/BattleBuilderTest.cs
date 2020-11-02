@@ -12,8 +12,7 @@ namespace DesignPatterns.Builder.Test.FinalFantasyX
         [Fact]
         public void WhenBuildingBattle_ReturnValidBattle()
         {
-            var arenaFactory = new ArenaFactory();
-            var builder = new BattleBuilder(arenaFactory, 1000);
+            var builder = new BattleBuilder();
             var director = new BattleDirector();
             director.Build(builder);
 
