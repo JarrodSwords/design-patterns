@@ -1,22 +1,32 @@
-﻿using DesignPatterns.Builder.Domain;
-using DesignPatterns.Builder.Domain.FinalFantasyX;
+﻿using DesignPatterns.Builder.Domain.FinalFantasyX;
 using FluentAssertions;
-using Xunit;
 
 namespace DesignPatterns.Builder.Test.FinalFantasyX
 {
-    public class BattleBuilderTest
+    public class BattleBuilderTest : BattleBuilderBaseTest
     {
+        #region Core
+
+        public BattleBuilderTest()
+        {
+            Builder = new BattleBuilder();
+        }
+
+        #endregion
+
+        #region Public Interface
+
+        public BattleBuilder Builder { get; }
+
+        #endregion
+
         #region Test Methods
 
-        [Fact]
-        public void WhenBuildingBattle_ReturnValidBattle()
+        public override void WhenConfiguringRandomEncounter_ReturnValidBattle()
         {
-            var builder = new BattleBuilder();
-            var director = new BattleDirector();
-            director.Build(builder);
+            Director.Build(Builder);
 
-            var battle = builder.Build();
+            var battle = Builder.Build();
 
             battle.Should().BeOfType<Battle>();
             battle.Arena.Should().NotBeNull();
