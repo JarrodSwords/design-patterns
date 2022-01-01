@@ -49,7 +49,7 @@ Utilize the Builder pattern to:
 * encapsulate one or more configuration sequences
 * decouple a configuration sequence from its output type
     * abstract the steps of a configuration sequence
-* reduce the complextity of a constructor's body
+* reduce the complextity of a constructor body
 * simplify a complicated constructor signature
     * by reducing its parameters to a Builder
 
@@ -57,15 +57,14 @@ Consider the Builder pattern when:
 
 * a client needs to be able to specify the Product type
 * you notice configuration logic in client code
-    * e.g. it makes decisions about which optional parameters to send
+    * including making decisions about which optional parameters to send
 * you need to construct an object step-by-step at runtime:
-    * make decisions about which construction steps to run based on some input
-        * e.g. create a legal document with different sections based on database records
+    * e.g. create a legal document with different sections based on database records
 
 Nuances:
 
 * for additional cleanliness
-    * create public properties reduce a Product constructor's parameters to one Builder parameter
+    * create public properties in the ConcreteBuilders that correspond to a Product constructor's parameters and reduce a Product constructor's parameters to one Builder parameter
 
 
 * Builder
