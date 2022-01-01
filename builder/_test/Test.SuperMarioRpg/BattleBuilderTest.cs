@@ -1,22 +1,32 @@
-﻿using DesignPatterns.Builder.Domain;
-using DesignPatterns.Builder.Domain.SuperMarioRpg;
+﻿using DesignPatterns.Builder.Domain.SuperMarioRpg;
 using FluentAssertions;
-using Xunit;
 
 namespace DesignPatterns.Builder.Test.SuperMarioRpg
 {
-    public class BattleBuilderTest
+    public class BattleBuilderTest : BattleBuilderBaseTest
     {
+        #region Core
+
+        public BattleBuilderTest()
+        {
+            Builder = new BattleBuilder();
+        }
+
+        #endregion
+
+        #region Public Interface
+
+        public BattleBuilder Builder { get; }
+
+        #endregion
+
         #region Test Methods
 
-        [Fact]
-        public void WhenBuildingBattle_ReturnValidBattle()
+        public override void WhenConfiguringRandomEncounter_ReturnValidBattle()
         {
-            var builder = new BattleBuilder();
-            var director = new BattleDirector();
-            director.Build(builder);
+            Director.ConfigureRandomEncounter(Builder);
 
-            var battle = builder.Build();
+            var battle = Builder.Build();
 
             battle.Should().BeOfType<Battle>();
             battle.Arena.Should().NotBeNull();
@@ -24,6 +34,20 @@ namespace DesignPatterns.Builder.Test.SuperMarioRpg
             battle.Mob.Should().NotBeNull();
             battle.Party.Should().NotBeNull();
             battle.ProgressionSystem.Should().BeOfType<LevelBasedProgression>();
+        }
+
+        public override void WhenConfiguringTutorial_ReturnValidBattle()
+        {
+            Director.ConfigureTutorial(Builder);
+
+            var battle = Builder.Build();
+
+            battle.Should().BeOfType<Battle>();
+            battle.Arena.Should().NotBeNull();
+            battle.BattleSystem.Should().BeOfType<TraditionalTurnBasedBattle>();
+            battle.Mob.Should().NotBeNull();
+            battle.Party.Should().NotBeNull();
+            battle.ProgressionSystem.Should().BeOfType<NullLevelBasedProgression>();
         }
 
         #endregion

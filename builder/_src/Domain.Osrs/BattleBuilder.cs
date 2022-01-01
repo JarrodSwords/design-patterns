@@ -7,6 +7,12 @@ namespace DesignPatterns.Builder.Domain.Osrs
     /// </summary>
     public class BattleBuilder : IBattleBuilder
     {
+        #region Core
+
+        private IProgressionSystem _progressionSystem;
+
+        #endregion
+
         #region Public Interface
 
         public Battle Build()
@@ -22,7 +28,12 @@ namespace DesignPatterns.Builder.Domain.Osrs
         public IBattleSystem BattleSystem { get; private set; }
         public Map Map { get; private set; }
         public Player Player { get; private set; }
-        public IProgressionSystem ProgressionSystem { get; private set; }
+
+        public IProgressionSystem ProgressionSystem
+        {
+            get => _progressionSystem ??= new NullActivityBasedProgression();
+            private set => _progressionSystem = value;
+        }
 
         public Domain.IBattleBuilder WithBattleSystem()
         {

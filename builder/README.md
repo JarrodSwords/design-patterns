@@ -1,19 +1,17 @@
 ﻿# Builder
 
-## Purpose
+1. [Learning Experience](#learning-experience)
+1. [Review](#review)
+   1. [Strengths](#strengths)
+   1. [Weaknesses](#weaknesses)
+1. [References](#references)
 
-* facilitates the construction of complex, immutable Product objects
-    * especially when forcing Product construction with a (Concrete)Builder parameter
-* simplifies Product class interfaces by eliminating numerous or complicated construtors
-* localizes initializaion code
-    * keeps Product and client classes clean of initialization code
-    * prevents duplicate initialization code in similar Product classes
-    * creates logging and error handling opportunities
-* prevent developers from forgetting initialization steps or the step order
+## Learning Experience
 
-## Review (experience)
+The Builder pattern suffers from being woefully underexplained, which is unfortunate for something as convoluted as the Builder pattern.
 
-I think I just struggle with creational patterns.
+### Previous Experience
+
 I've had difficulty answering all of the following questions at times:
 
 * Are ConcreteBuilders all supposed to return the same Product type?
@@ -29,6 +27,8 @@ You can tell by how scattered the questions are, that it is difficult for me to 
 Even if another would argue that the purpose is clearly stated, for me understanding a pattern's purpose is a process of discovery through trial and error.
 So here are some answers to the above in the form of tips:
 
+
+
 * no, ConcreteBuilders aren't required to return the same Product type
     * do not define a build function in the Builder interface; this saddles the ConcreteBuilders to a Product type
 * the created objects *might* only differ by data
@@ -41,6 +41,57 @@ So here are some answers to the above in the form of tips:
     * possibly create additional sequences of execution; this might be a bad idea though
 * adding a ConcreteBuilder can help you produce a Product with a new process, or a product of a different type
 * adding a different Director build function allows for differing sequences of construction
+
+
+
+Utilize the Builder pattern to:
+
+* encapsulate one or more configuration sequences
+* decouple a configuration sequence from its output type
+    * abstract the steps of a configuration sequence
+* reduce the complextity of a constructor body
+* simplify a complicated constructor signature
+    * by reducing its parameters to a Builder
+
+Consider the Builder pattern when:
+
+* a client needs to be able to specify the Product type
+* you notice configuration logic in client code
+    * including making decisions about which optional parameters to send
+* you need to construct an object step-by-step at runtime:
+    * e.g. create a legal document with different sections based on database records
+
+Nuances:
+
+* for additional cleanliness
+    * create public properties in the ConcreteBuilders that correspond to a Product constructor's parameters and reduce a Product constructor's parameters to one Builder parameter
+
+
+* Builder
+    * declares the construction process interface
+    * does not declare the build function with return type
+        * this would restrict the possible Products
+        * a generic return type T does not make sense
+            * the construction process is not the same for all possible objects T
+            * a type constraint would restrict the possible Products to an interface or superclass
+        * you are unlikely to be working with a ConcreteBuilder of which you do not know the type
+            * e.g. you are unlikely to have a factory that produces an IBuilder as an output
+            * you will most likely be creating a specific ConcreteBuilder and using it to get a Product
+    * should probably be named for a high-level product
+        * since Builder does not correspond to a type or supertype, 
+* Product
+    * target output of a ConcreteBuilder
+    * one-to-many with ConcreteBuilder
+    * while builders are likely named for a category of object (e.g. )
+* ConcreteBuilder
+    * implements the construction process
+    * declares the build function for a Product return type
+        * not sure when you would want to return like a Product superclass
+    * can be made fluent for directorless, uncommon configurations
+* Director
+    * encapsulates one or more configuration sequences
+
+
 
 I'm not going to say I completely understand this pattern right now, but I certainly have a much better appreciation for its power after creating this example.
 I'd mostly used this pattern for the purpose of Product constructor simplification - largely ignoring the fact that you could implement multiple ConcreteBuilders.
@@ -55,9 +106,19 @@ Something that still doesn't sit right about this pattern is that the existence 
 I think if my reading materials hadn't made a big deal about the order or inclusion of all the steps, I'd have said that the Director is useless.
 But if you can create one it will prevent you from duplicating all of the specific Builder calls, so maybe that's all it really needs to do to justify its existence.
 
-This [refactoring guru](https://refactoring.guru/design-patterns/builder) page was more helpful than the usual [dofactory](https://www.dofactory.com/net/builder-design-pattern) and [sourcemaking](https://sourcemaking.com/design_patterns/builder) pages.
+## Review
 
-## Review (pattern)
+* facilitates the construction of complex, immutable Product objects
+    * especially when forcing Product construction with a (Concrete)Builder parameter
+* simplifies Product class interfaces by eliminating numerous or complicated construtors
+* localizes initializaion code
+    * keeps Product and client classes clean of initialization code
+    * prevents duplicate initialization code in similar Product classes
+    * creates logging and error handling opportunities
+* prevent developers from forgetting initialization steps or the step order
+
+What code does this prevent the duplication of?
+What code becomes isolated?
 
 ### Strengths
 
@@ -75,3 +136,10 @@ This [refactoring guru](https://refactoring.guru/design-patterns/builder) page w
 * boilerplate in ConcreteBuilders: duplicating Product properties, creating functions for setting those properties, fluent returns
 * difficult to determine use cases
 * difficult to define sequences of steps
+
+## References
+
+* https://dofactory.com/net/builder-design-pattern
+* https://www.oodesign.com/builder-pattern.html
+* https://sourcemaking.com/design_patterns/builder
+* https://refactoring.guru/design-patterns/builder
