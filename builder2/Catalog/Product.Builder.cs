@@ -4,26 +4,32 @@ namespace DesignPatterns.Builder2.Catalog
 {
     public partial class Product
     {
-        public abstract class Builder : IProductBuilder
+        public class Builder
         {
+            private string _name;
+            private string _sku;
+            private Guid _vendorId;
+
             #region Public Interface
 
-            public Product Build() => new(VendorId, Name, Sku);
+            public Product Build() => new(_vendorId, _name, _sku);
 
-            #endregion
-
-            #region Protected Interface
-
-            protected string Name { get; set; }
-            protected string Sku { get; set; }
-            protected Guid VendorId { get; set; }
-
-            #endregion
-
-            #region IProductBuilder Implementation
-
-            public virtual void GenerateSku()
+            public Builder With(Guid vendorId)
             {
+                _vendorId = vendorId;
+                return this;
+            }
+
+            public Builder WithName(string name)
+            {
+                _name = name;
+                return this;
+            }
+
+            public Builder WithSku(string sku)
+            {
+                _sku = sku;
+                return this;
             }
 
             #endregion

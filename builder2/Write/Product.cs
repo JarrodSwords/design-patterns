@@ -3,7 +3,7 @@ using DesignPatterns.Builder2.Catalog;
 
 namespace DesignPatterns.Builder2.Write
 {
-    public class Product : Entity
+    public partial class Product : Entity
     {
         public static readonly Product DietPepsi = new("Diet Pepsi", "pep-diet", Vendor.PepsiCo.Id);
         public static readonly Product Pepsi = new("Pepsi", "pep-cola", Vendor.PepsiCo.Id);
@@ -14,7 +14,7 @@ namespace DesignPatterns.Builder2.Write
         {
         }
 
-        public Product(string name, string sku, Guid vendorId)
+        private Product(string name, string sku, Guid vendorId)
         {
             Name = name;
             Sku = sku;
@@ -30,20 +30,5 @@ namespace DesignPatterns.Builder2.Write
         public Guid VendorId { get; set; }
 
         #endregion
-
-        public class Builder : Catalog.Product.Builder
-        {
-            #region Public Interface
-
-            public Builder With(Product product)
-            {
-                VendorId = product.VendorId;
-                Name = product.Name;
-                Sku = product.Sku;
-                return this;
-            }
-
-            #endregion
-        }
     }
 }

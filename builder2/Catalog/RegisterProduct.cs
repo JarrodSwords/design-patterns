@@ -10,15 +10,18 @@ namespace DesignPatterns.Builder2.Catalog
         string SkuToken
     ) : ICommand
     {
-        public class Builder : Product.Builder
+        public class Builder : IProductBuilder
         {
+            private readonly Product.Builder _builder;
             private readonly UnitOfWork _uow;
             private string _skuToken;
+            private Guid _vendorId;
 
             #region Creation
 
             public Builder(UnitOfWork uow)
             {
+                _builder = new Product.Builder();
                 _uow = uow;
             }
 
@@ -26,21 +29,31 @@ namespace DesignPatterns.Builder2.Catalog
 
             #region Public Interface
 
+            public Product Build() => _builder.Build();
+
             public Builder From(RegisterProduct command)
             {
                 var (vendorId, name, skuToken) = command;
 
-                Name = name;
-                VendorId = vendorId;
+                _builder
+                    .With(vendorId)
+                    .WithName(name);
+
                 _skuToken = skuToken;
+                _vendorId = vendorId;
 
                 return this;
             }
 
-            public override void GenerateSku()
+            #endregion
+
+            #region IProductBuilder Implementation
+
+            public void GenerateSku()
             {
-                var vendor = _uow.Vendors.Find(VendorId);
-                Sku = Product.GenerateSku(vendor.SkuToken, _skuToken);
+                var vendor = _uow.Vendors.Find(_vendorId);
+                var sku = Product.GenerateSku(vendor.SkuToken, _skuToken);
+                _builder.WithSku(sku);
             }
 
             #endregion

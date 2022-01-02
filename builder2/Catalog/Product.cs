@@ -7,11 +7,7 @@ namespace DesignPatterns.Builder2.Catalog
     {
         #region Creation
 
-        private Product(
-            Guid vendorId,
-            string name,
-            string sku
-        )
+        private Product(Guid vendorId, string name, string sku)
         {
             CompanyId = vendorId;
             Name = name;
