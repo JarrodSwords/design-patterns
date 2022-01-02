@@ -10,12 +10,10 @@ namespace DesignPatterns.Builder2
         #region Core
 
         private readonly RegisterProduct.Builder _builder;
-        private readonly Director _director;
 
         public GivenARegisterProductCommand()
         {
             _builder = new RegisterProduct.Builder(new());
-            _director = new Director().With(_builder);
         }
 
         #endregion
@@ -38,7 +36,6 @@ namespace DesignPatterns.Builder2
             var command = new RegisterProduct(Vendor.PepsiCo.Id, name, skuToken);
 
             _builder.From(command);
-            _director.CreateNewProduct();
         }
 
         #endregion
