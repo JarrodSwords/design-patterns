@@ -9,12 +9,12 @@ namespace DesignPatterns.Builder2
     {
         #region Core
 
-        private readonly ProductBuilder _builder;
+        private readonly RegisterProduct.Builder _builder;
         private readonly Director _director;
 
         public GivenARegisterProductCommand()
         {
-            _builder = new ProductBuilder(new());
+            _builder = new RegisterProduct.Builder(new());
             _director = new Director().With(_builder);
         }
 

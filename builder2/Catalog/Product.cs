@@ -5,20 +5,17 @@ namespace DesignPatterns.Builder2.Catalog
 {
     public partial class Product : Aggregate
     {
-        public static readonly Product DietPepsi = new(Vendor.PepsiCo, "Diet Pepsi", "diet");
-        public static readonly Product Pepsi = new(Vendor.PepsiCo, "Pepsi", "reg");
-
         #region Creation
 
         private Product(
-            Vendor vendor,
+            Guid vendorId,
             string name,
-            string skuToken
+            string sku
         )
         {
-            CompanyId = vendor.Id;
+            CompanyId = vendorId;
             Name = name;
-            Sku = GenerateSku(vendor.SkuToken, skuToken);
+            Sku = sku;
         }
 
         #endregion
@@ -33,7 +30,7 @@ namespace DesignPatterns.Builder2.Catalog
 
         #region Static Interface
 
-        private static string GenerateSku(string vendorSkuToken, string skuToken) => $"{vendorSkuToken}-{skuToken}";
+        public static string GenerateSku(string vendorSkuToken, string skuToken) => $"{vendorSkuToken}-{skuToken}";
 
         #endregion
     }

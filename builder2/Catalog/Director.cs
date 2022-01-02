@@ -8,7 +8,7 @@ namespace DesignPatterns.Builder2.Catalog
 
         public Director CreateNewProduct()
         {
-            _builder.GetVendor();
+            _builder.GenerateSku();
             return this;
         }
 

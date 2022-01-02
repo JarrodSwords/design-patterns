@@ -1,3 +1,4 @@
+using System;
 using DesignPatterns.Builder2.Shared;
 
 namespace DesignPatterns.Builder2.Catalog
@@ -8,21 +9,23 @@ namespace DesignPatterns.Builder2.Catalog
         {
             #region Public Interface
 
-            public Product Build() => new(Vendor, Name, SkuToken);
+            public Product Build() => new(VendorId, Name, Sku);
 
             #endregion
 
             #region Protected Interface
 
             protected string Name { get; set; }
-            protected string SkuToken { get; set; }
-            protected Vendor Vendor { get; set; }
+            protected string Sku { get; set; }
+            protected Guid VendorId { get; set; }
 
             #endregion
 
             #region IProductBuilder Implementation
 
-            public abstract IProductBuilder GetVendor();
+            public virtual void GenerateSku()
+            {
+            }
 
             #endregion
         }
