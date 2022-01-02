@@ -1,9 +1,8 @@
 using System;
-using DesignPatterns.Builder2.Shared;
 
 namespace DesignPatterns.Builder2.Catalog
 {
-    public partial class Product : Aggregate
+    public partial class Product
     {
         public abstract class Builder : IProductBuilder
         {
