@@ -21,7 +21,7 @@ public class WhenCalculatingSalePrice
 
     [Theory]
     [MemberData(nameof(GetServices))]
-    public void WithFlatReduction_ThenPriceIsListPriceMinusReduction(ISalePriceCalculator calculator)
+    public void WithFlatReduction_ThenSalePriceIsListPriceMinusReduction(ISalePriceCalculator calculator)
     {
         var salePrice = calculator.CalculateSalePrice(_product, new FlatReduction(1m));
 
@@ -30,11 +30,20 @@ public class WhenCalculatingSalePrice
 
     [Theory]
     [MemberData(nameof(GetServices))]
-    public void WithoutDiscounts_ThenPriceIsListPrice(ISalePriceCalculator calculator)
+    public void WithoutDiscounts_ThenSalePriceIsListPrice(ISalePriceCalculator calculator)
     {
         var salePrice = calculator.CalculateSalePrice(_product);
 
         salePrice.Should().Be(_product.ListPrice);
+    }
+
+    [Theory]
+    [MemberData(nameof(GetServices))]
+    public void WithPriceMatch_ThenSalePriceIsMatchPrice(ISalePriceCalculator calculator)
+    {
+        var salePrice = calculator.CalculateSalePrice(_product, new PriceMatch(2.49m));
+
+        salePrice.Should().Be(2.49m);
     }
 
     #endregion

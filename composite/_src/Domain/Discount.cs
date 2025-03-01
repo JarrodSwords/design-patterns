@@ -15,3 +15,15 @@ public class FlatReduction : Discount
     public decimal Reduction { get; }
     public override decimal Apply(Product product) => product.ListPrice - Math.Abs(Reduction);
 }
+
+public class PriceMatch : Discount
+{
+    public PriceMatch(decimal price)
+    {
+        Price = price;
+    }
+
+    public decimal Price { get; }
+
+    public override decimal Apply(Product product) => Price;
+}
