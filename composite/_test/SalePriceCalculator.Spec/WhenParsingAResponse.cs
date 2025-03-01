@@ -2,6 +2,12 @@
 
 public class WhenCalculatingSalePrice
 {
+    #region Setup
+
+    private readonly Product _product = new("bread", 2.99m);
+
+    #endregion
+
     #region Implementation
 
     public static IEnumerable<object[]> GetServices()
@@ -15,12 +21,20 @@ public class WhenCalculatingSalePrice
 
     [Theory]
     [MemberData(nameof(GetServices))]
+    public void WithFlatReduction_ThenPriceIsListPriceMinusReduction(ISalePriceCalculator calculator)
+    {
+        var salePrice = calculator.CalculateSalePrice(_product, new FlatReduction(1m));
+
+        salePrice.Should().Be(1.99m);
+    }
+
+    [Theory]
+    [MemberData(nameof(GetServices))]
     public void WithoutDiscounts_ThenPriceIsListPrice(ISalePriceCalculator calculator)
     {
-        var product = new Product("bread", 2.99m);
-        var salePrice = calculator.CalculateSalePrice(product);
+        var salePrice = calculator.CalculateSalePrice(_product);
 
-        salePrice.Should().Be(product.ListPrice);
+        salePrice.Should().Be(_product.ListPrice);
     }
 
     #endregion

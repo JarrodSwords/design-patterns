@@ -2,5 +2,5 @@
 
 public interface ISalePriceCalculator
 {
-    decimal CalculateSalePrice(Product product);
+    decimal CalculateSalePrice(Product product, Discount? discount = null);
 }
