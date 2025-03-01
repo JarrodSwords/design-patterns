@@ -27,3 +27,16 @@ public class PriceMatch : Discount
 
     public override decimal Apply(Product product) => Price;
 }
+
+public class PercentageDiscount : Discount
+{
+    public PercentageDiscount(int percentage)
+    {
+        Percentage = percentage;
+    }
+
+    public int Percentage { get; }
+
+    public override decimal Apply(Product product) =>
+        product.ListPrice - Math.Round((decimal) Percentage / 100 * product.ListPrice, 2);
+}

@@ -39,6 +39,17 @@ public class WhenCalculatingSalePrice
 
     [Theory]
     [MemberData(nameof(GetServices))]
+    public void WithPercentageDiscount_ThenSalePriceIsListPriceMinusPercentageTimesListPrice(
+        ISalePriceCalculator calculator
+    )
+    {
+        var salePrice = calculator.CalculateSalePrice(_product, new PercentageDiscount(10));
+
+        salePrice.Should().Be(2.69m);
+    }
+
+    [Theory]
+    [MemberData(nameof(GetServices))]
     public void WithPriceMatch_ThenSalePriceIsMatchPrice(ISalePriceCalculator calculator)
     {
         var salePrice = calculator.CalculateSalePrice(_product, new PriceMatch(2.49m));
