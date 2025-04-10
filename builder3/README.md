@@ -1,10 +1,25 @@
 # Builder 3
 
-I'm writing this example in an effort to capture my thoughts after struggling through a different problem set brought to me by a friend. And while it's unlikely that more than three sets of eyes ever read it, I believe the learning experience I had here is significant enough to warrant documentation. I learned a lot about this problematic design pattern (for me anyway), the shortcomings of the way software development skills are taught, and the value of cultivating expertise over time.
+Over the years, the builder design pattern has both fascinated and frustrated me. It's obvious when you consider that this is the third builder entry in this repository. It's possible and even likely that others don't have trouble understanding this pattern at all. I think it's important to acknowledge my personal difficulty here because it's nothing to be ashamed of, despite how many in the profession tend to carry themselves. There isn't anything wrong with not understanding something. And there isn't any need to pretend that it's trivial to understand once you obtain that understanding.
+
+I'm writing this example in an effort to capture my thoughts after struggling through a different problem set brought to me by a friend. And while it's unlikely that more than three sets of eyes ever read it, I believe the learning experience I had here is significant enough to warrant documentation. I learned a lot about this problematic design pattern, the shortcomings of the way software development skills are taught, and the value of cultivating expertise over time.
 
 <p align="center">
  <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmFsbHNrMXI4cmN6YWRyeGdjNm1mNXZ6YzUwN2Zkc2d3ZndnMXQzbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8YmZ14DOpivXMuckSI/giphy.gif" />
 </p>
+
+## Intent
+
+From *Design Patterns: Elements of Reusable Object-Oriented Software*
+
+> Separate the construction of a complex object from its representation so that the same construction process can create different representations.
+
+What I can say about this summary of the builder pattern's intent, is that it makes sense to me now (on 2025-04-09) but that has not always been the case.
+One might read it for the first time and initially think that they understand it. 
+It's short, succinct, and there aren't any obscure or difficult words.
+But it wouldn't surprise me if most developers are somewhat lost after reading this the first time.
+
+
 
 <!-- Notes:
 
