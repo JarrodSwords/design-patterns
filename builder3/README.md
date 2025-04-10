@@ -18,6 +18,12 @@ rich domain favors restrictions/constraints, such that it communicates intent cl
   * e.g. private constructors, and builders nested in their target product types
 
 Show examples of the different levels of implementing the builder
+  * constructor
+  * non-rich
+  * rich
+  * looping
+  * n <-> m
+  
   * include labeling the pieces at work
   * pros/cons
 
@@ -26,4 +32,12 @@ Possibly answer some of the previous questions I've had.
 I want this to be narrative, and to take the reader through the learning process, including failed attempts at the final product.
 
 Also, develop a new way of reflection, using retterer's strategy as a foundation.
+
+Questions I remember having:
+  * what's the point of a builder if the sequence of calls you make changes every time?
+    * i.e. it doesn't seem to automate anything for the one-off, in-code/memory example
+    * then show how this can be applied to record from a database
+  *
+
+* order, invoice, 
 -->
