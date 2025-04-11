@@ -41,6 +41,7 @@ I'm going to break this down as much as I can.
 
 ## The desperate need for some kind of realistically complex real world example
 
+
 - [ ] What classifies as "a complex object?"
   - I think the intended meaning here is something along the lines of "a non-trivial object to instantiate"
   - But I think it is more accurate to just say, a domain object, entity, aggregate, etc.
@@ -49,7 +50,7 @@ I'm going to break this down as much as I can.
 - [ ] What does "the same construction process" refer to?
   - The set of methods provided by the abstract builder
   - not the actual sequence of steps
-     
+
 The construction process is not the same as the actual sequence of steps.
 
 - [ ] What types of methods belong on a builder?
