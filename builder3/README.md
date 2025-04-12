@@ -142,6 +142,30 @@ If a `Director` is actually just a "thing that calls methods on the builder inte
 This would couple a `Director` to a `ConcreteProduct`.
 This would be problematic if you had say, an `OrderRepository` as your directtor, since it would then know the concrete product type under construction.
 
+If a `Director` is more or less like a domain service though, things are more problematic because it would then need to know where the 
+
+```csharp
+///<remarks>Peter Jackson</remarks>
+public class OrderRepository : IOrderRepository
+{
+    private IOrderBuilder _builder;
+
+    public IOrderRepository Find(Guid id)
+    {
+        var order = _context.Order
+                    .Include(x => x.LineItems)
+                    .SingleOrDefault(x => x.Id == id);
+
+        _builder.Add(new OrderDetails(order));
+
+        foreach (var li in order.LineItems)
+            _builder.Add(new LineItemDto(li);
+
+        return this;
+    }
+}
+```
+
 If a `Director` is more like a service, then this is not an issue.
 A director would inherently be part of the domain, and the `ConcreteProduct` type would still be encapsulated and out of view of the repository.
 
