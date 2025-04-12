@@ -124,10 +124,33 @@ What is the *construction process*?
 
 ## The desperate need for some kind of realistically complex real world example
 
+## Problems
+
+The builder is a weird pattern.
+
+### Director
+
+I think the reason why the director seems to be an accessory rather than a core component of the pattern in many examples is because the director's purpose is not clearly explained.
+When the intent statement says "the same construction process," I think it is easy to confuse the calls a director makes with the process.
+Sometimes a component of a pattern is really just a label for something largely known to be something else.
+For example, the commonly used `Client` isn't part of some class hierarchy with the "-Client" suffix - it's just meant to indicate "the thing using the rest of the components of the pattern."
+It is ambiguous whether `Director` classes are one of these, or some sort of actual standalone class.
+This ambiguity stings a lot here because so much of the rest of the pattern shares the same problem.
+
+Page 100 starting with "But sometimes..." and ending on 101 with "...parent nodes."
+If a `Director` is actually just a "thing that calls methods on the builder interface" then I think this is actually incorrect.
+This would couple a `Director` to a `ConcreteProduct`.
+This would be problematic if you had say, an `OrderRepository` as your directtor, since it would then know the concrete product type under construction.
+
+If a `Director` is more like a service, then this is not an issue.
+A director would inherently be part of the domain, and the `ConcreteProduct` type would still be encapsulated and out of view of the repository.
+
+If a `Director` is a specific
 
 - [ ] What classifies as "a complex object?"
   - I think the intended meaning here is something along the lines of "a non-trivial object to instantiate"
   - But I think it is more accurate to just say, a domain object, entity, aggregate, etc.
+  - The reality? Any object. StringBuilder.
 - [ ] What is "its representation?"
   - Its type
 - [ ] What does "the same construction process" refer to?
