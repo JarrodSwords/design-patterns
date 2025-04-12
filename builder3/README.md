@@ -77,11 +77,11 @@ public class Order
 ```
 
 One of the strengths of this style of model is that it more clearly communicates its functionality as well as its *intent*:
-* `Id` and `CustomerId` are immutable
-* the constructor indicates what must be present in order to instantiate an `Order`
+* `Id` and `CustomerId` are immutable so this class isn't about editing them
+* the constructor indicates what must be present to instantiate an `Order`
 * the `LineItems` property improves encapsulation by preventing clients from manipulating the collection
-* the `Add(LineItem)` function indicates that this class would like to control the process of adding `LineItem`s
-  * it also handles a rule that duplicates are not allowed
+* the `Add(LineItem)` function indicates that this class controls the process of adding `LineItem`s
+  * it also handles the rule that duplicates not be allowed
 
 And while you can apply design patterns to either type of domain, I believe they primarly exist to solve problems in rich domains.
 
@@ -100,13 +100,23 @@ I'm going to break this down as much as I can.
 
 > Separate the construction of a complex object from its representation...
 
+Looks like it answers *what*.
+
 > ...a complex object...
 
 > ...its representation...
 
+I was long confused about what this actually means.
+Does this mean destination `Type`?
+Does it mean from its potential source `Type`(s)?
+
 > ...so that the same construction process can create different representations.
 
+Looks like it answers *why*.
+
 > ...the same construction process...
+
+What is the *construction process*?
 
 > ...different representations.
 
