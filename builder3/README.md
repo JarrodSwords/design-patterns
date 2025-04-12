@@ -1,12 +1,89 @@
 # Builder 3
 
-Over the years, the builder design pattern has both fascinated and frustrated me. It's obvious when you consider that this is the third builder entry in this repository. It's possible and even likely that others don't have trouble understanding this pattern at all. I think it's important to acknowledge my personal difficulty here because it's nothing to be ashamed of, despite how many in the profession tend to carry themselves. There isn't anything wrong with not understanding something. And there isn't any need to pretend that it's trivial to understand once you obtain that understanding.
+Over the years, the builder design pattern has both fascinated and frustrated me.
+It's obvious when you consider that this is the third builder entry in this repository.
+It's possible and even likely that others don't have trouble understanding this pattern at all.
+I think it's important to acknowledge my personal difficulty here because it's nothing to be ashamed of, despite how many in the profession tend to carry themselves.
+There isn't anything wrong with not understanding something.
+And there isn't any need to pretend that it's trivial to understand once you obtain that understanding.
 
-I'm writing this example in an effort to capture my thoughts after struggling through a different problem set brought to me by a friend. And while it's unlikely that more than three sets of eyes ever read it, I believe the learning experience I had here is significant enough to warrant documentation. I learned a lot about this problematic design pattern, the shortcomings of the way software development skills are taught, and the value of cultivating expertise over time.
+I'm writing this example in an effort to capture my thoughts after struggling through a different problem set brought to me by a friend.
+And while it's unlikely that more than three sets of eyes ever read it, I believe the learning experience I had here is significant enough to warrant documentation.
+I learned a lot about this problematic design pattern, the shortcomings of the way software development skills are taught, and the value of cultivating expertise over time.
 
 <p align="center">
  <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmFsbHNrMXI4cmN6YWRyeGdjNm1mNXZ6YzUwN2Zkc2d3ZndnMXQzbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8YmZ14DOpivXMuckSI/giphy.gif" />
 </p>
+
+## Motivation
+
+### Domains
+
+A domain can be summarized as the problem set of an application.
+An E-commerce app's domain is geared around selling things online.
+An appointment domain deals with scheduling or managing appointments.
+The domain layer of an application is where architectures such as the Onion Architecture codify the business rules of a particular domain.
+
+### Rich Domains
+
+Rich domain models are perhaps most easily explained by contrasting them with their opposite - anemic domain models.
+
+```csharp
+// <remarks>A pale, sickly model</remarks>
+public class Order
+{
+    public Guid Id { get; set; }
+    public Guid CustomerId { get; set; }
+    public List<LineItem> LineItems { get; } = [];
+}
+```
+
+This `Order` class represents the shape of the data, but nothing else.
+We can write entire programs with classes like these.
+But it lacks one half of what makes object-oriented programming work - functionality.
+
+> A class is a collection of objects and a collection of operations on those objects.
+
+&mdash; Wayne Gretzky, probably
+
+If we take the advice of that sage hockey player, we can build a richer domain model by encapsulating its functionality as well as its shape.
+
+```csharp
+// <remarks>The model she tells you not to worry about</remarks>
+public class Order
+{
+    private List<LineItem> _lineItems = [];
+
+    public Order(Guid id, Guid customerId, params LineItem[] lineItems)
+    {
+        Id = id;
+        CustomerId = customerId;
+        foreach (var li in lineItems)
+            Add(li);
+    }
+
+    public Guid Id { get; }
+    public Guid CustomerId { get; }
+    public IReadOnlyList<LineItem> LineItems => _lineItems;
+
+    public Order Add(LineItem lineItem)
+    {
+        if (!_lineItems.Contains(lineItem))
+            _lineItems.Add(lineItem);
+
+        return this;
+    }
+}
+```
+
+One of the strengths of this style of model is that it more clearly communicates its functionality as well as its *intent*:
+* `Id` and `CustomerId` are immutable
+* the constructor indicates what must be present in order to instantiate an `Order`
+* the `LineItems` property improves encapsulation by preventing clients from manipulating the collection
+* the `Add(LineItem)` function indicates that this class would like to control the process of adding `LineItem`s
+  * it also handles a rule that duplicates are not allowed
+
+And while you can apply design patterns to either type of domain, I believe they primarly exist to solve problems in rich domains.
 
 ## Intent
 
@@ -34,10 +111,6 @@ I'm going to break this down as much as I can.
 > ...different representations.
 
 ## Step by Step
-
-## Motivation
-
-
 
 ## The desperate need for some kind of realistically complex real world example
 
