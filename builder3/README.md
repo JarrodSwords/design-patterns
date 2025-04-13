@@ -166,6 +166,22 @@ public class OrderRepository : IOrderRepository
 }
 ```
 
+```csharp
+///<remarks>Actually Peter Jackson</remarks>
+public class Director
+{
+    private IOrderBuilder _builder;
+
+    
+}
+
+///<remarks></remarks>
+public class OrderRepository : IOrderRepository
+{
+
+}
+```
+
 If a `Director` is more like a service, then this is not an issue.
 A director would inherently be part of the domain, and the `ConcreteProduct` type would still be encapsulated and out of view of the repository.
 
