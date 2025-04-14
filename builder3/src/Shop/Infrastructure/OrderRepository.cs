@@ -1,6 +1,6 @@
 ﻿using Jgs.Errors.Results;
 
-namespace DesignPatterns.Builder3.Infrastructure;
+namespace DesignPatterns.Builder3.Shop.Infrastructure;
 
 public partial class OrderRepository : IOrderRepository
 {

@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder3;
+﻿namespace DesignPatterns.Builder3.Shop;
 
 public interface ISequentialOrderBuilder
 {

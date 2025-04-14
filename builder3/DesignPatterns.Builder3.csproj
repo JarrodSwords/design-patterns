@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\Picking\" />
+    <Folder Include="src\Shop\Picking\" />
   </ItemGroup>
 
 </Project>

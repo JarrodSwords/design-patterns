@@ -1,9 +1,9 @@
-﻿using DesignPatterns.Builder3.Infrastructure;
+﻿using DesignPatterns.Builder3.Shop.Infrastructure;
 using FluentAssertions;
 using FluentAssertions.Execution;
-using Order = DesignPatterns.Builder3.Ecommerce.Order;
+using Order = DesignPatterns.Builder3.Shop.Ecommerce.Order;
 
-namespace DesignPatterns.Builder3.Spec.Ecommerce;
+namespace DesignPatterns.Builder3.Shop.Spec.Ecommerce;
 
 public class WhenBuildingAnOrder
 {

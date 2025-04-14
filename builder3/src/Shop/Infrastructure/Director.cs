@@ -1,7 +1,7 @@
 ﻿using Jgs.Errors.Results;
 using static Jgs.Errors.Results.Result;
 
-namespace DesignPatterns.Builder3.Infrastructure;
+namespace DesignPatterns.Builder3.Shop.Infrastructure;
 
 public class Director
 {

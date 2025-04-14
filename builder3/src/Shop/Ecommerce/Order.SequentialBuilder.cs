@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder3.Ecommerce;
+﻿namespace DesignPatterns.Builder3.Shop.Ecommerce;
 
 public partial class Order
 {

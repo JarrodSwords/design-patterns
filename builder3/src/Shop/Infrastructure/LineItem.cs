@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder3.Infrastructure;
+﻿namespace DesignPatterns.Builder3.Shop.Infrastructure;
 
 public class LineItem
 {
