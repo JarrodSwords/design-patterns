@@ -10,7 +10,7 @@ public class WhenBuildingAComment
 {
     #region Implementation
 
-    private IEnumerable<Infrastructure.Comment> GetSeed()
+    private static IEnumerable<Infrastructure.Comment> GetSeed()
     {
         yield return new(10, null, 2000, 10, 300, "Lorem ipsum dolor sit amet adipiscing elit.", new(2025, 01, 01));
         yield return new(11, 10, 2000, 10, 301, "Ex sapien vitae pellentesque sem placerat in id.", new(2025, 01, 01));
