@@ -7,7 +7,6 @@ namespace DesignPatterns.Builder3.Blog.Infrastructure;
 public class CommentRepository : ICommentRepository
 {
     private readonly List<Comment> _comments = [];
-    private ICommentBuilder? _builder;
 
     public ICommentRepository Seed(IEnumerable<Comment> seed)
     {
@@ -16,16 +15,10 @@ public class CommentRepository : ICommentRepository
         return this;
     }
 
-    public ICommentRepository Configure(ICommentBuilder builder)
-    {
-        _builder = builder;
-        return this;
-    }
-
-    public Result Find(CommentId id)
+    public Result Find(CommentId id, ICommentBuilder builder)
     {
         foreach (var c in _comments.Where(x => x.RootId == id))
-            _builder!.Add(c);
+            builder.Add(c);
 
         return Success();
     }

@@ -4,7 +4,6 @@ namespace DesignPatterns.Builder3.Blog.Domain;
 
 public interface ICommentRepository
 {
-    ICommentRepository Configure(ICommentBuilder builder);
-    Result Find(CommentId id);
+    Result Find(CommentId id, ICommentBuilder builder);
     Result Find(PostId id);
 }
