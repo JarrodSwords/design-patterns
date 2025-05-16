@@ -27,8 +27,8 @@ public partial class Comment
             if (record.ParentId is null)
                 return this;
 
-            //var parent = _comments[record.ParentId];
-            //parent.Add(comment);
+            var parent = _comments[record.ParentId.Value];
+            parent.Add(comment);
 
             return this;
         }
