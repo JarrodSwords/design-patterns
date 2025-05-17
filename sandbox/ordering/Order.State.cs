@@ -14,7 +14,7 @@ public partial class Order
         public abstract void AddLineItem(LineItem li);
         public abstract void Cancel();
         public abstract void Charge(PaymentDetails paymentDetails);
-        public abstract void RemoveLineItem(Guid lineItemdId);
+        public abstract void RemoveLineItem(Guid lineItemId);
 
         protected void SetState(State state) => _order._state = state;
     }

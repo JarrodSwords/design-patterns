@@ -1,14 +1,13 @@
-﻿namespace DesignPatterns.Sandbox;
+﻿namespace DesignPatterns.Sandbox.TemplateMethod;
 
-public class FieldingCountsService : IFieldingCountsService
+public abstract class FieldingCountsService
 {
+    protected readonly IFieldingCountsRepository Repo;
     private readonly IInfoTurnUnitOfWorkFactory _infoTurnUnitOfWorkFactory;
-    private readonly IFieldingCountsRepository _repo;
     private readonly SldUnitOfWorkProvider _sldProvider;
     private readonly ISldRepository _sldRepo;
-    private State _state;
 
-    public FieldingCountsService(
+    protected FieldingCountsService(
         IInfoTurnUnitOfWorkFactory infoTurnUnitOfWorkFactory,
         SldUnitOfWorkProvider sldProvider,
         IFieldingCountsRepository repo,
@@ -17,10 +16,11 @@ public class FieldingCountsService : IFieldingCountsService
     {
         _infoTurnUnitOfWorkFactory = infoTurnUnitOfWorkFactory;
         _sldProvider = sldProvider;
-        _repo = repo;
+        Repo = repo;
         _sldRepo = sldRepo;
     }
 
+    /// <remarks>This is a template method because it contains some deferred steps.</remarks>
     public AdministrationStatusFieldingCount BuildAdminStatusFieldingCount(CahpsDataRequestParameters args)
     {
         using (_infoTurnUnitOfWorkFactory.StartUnitOfWork())
@@ -34,11 +34,10 @@ public class FieldingCountsService : IFieldingCountsService
         }
     }
 
+    /// <remarks>This is a template method because it contains some deferred steps.</remarks>
     public AdministrationStatusFieldingData GetAdminStatusFieldingData(CahpsDataRequestParameters args)
     {
-        _state
-            .ChangeState(args.CahpsTypeId, _repo)
-            .ValidateArgs(args);
+        ValidateArgs(args);
 
         return new AdministrationStatusFieldingData
         {
@@ -50,8 +49,7 @@ public class FieldingCountsService : IFieldingCountsService
         };
     }
 
-    public IEnumerable<long> GetSurveyIds(CahpsDataRequestParameters args) => _state.GetSurveyIds(args);
-
-    public WaveTypeQuantity GetUndeliverableCount(CahpsDataRequestParameters args) =>
-        _state.GetUndeliverableCount(args);
+    protected abstract IEnumerable<long> GetSurveyIds(CahpsDataRequestParameters args);
+    protected abstract WaveTypeQuantity GetUndeliverableCount(CahpsDataRequestParameters args);
+    protected abstract void ValidateArgs(CahpsDataRequestParameters args);
 }

@@ -21,7 +21,7 @@ public class Shipped : Order.State
         throw new NotImplementedException();
     }
 
-    public override void RemoveLineItem(Guid lineItemdId)
+    public override void RemoveLineItem(Guid lineItemId)
     {
         throw new NotImplementedException();
     }
