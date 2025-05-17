@@ -2,10 +2,11 @@
 
 namespace DesignPatterns.Memento;
 
-public class Order : IEnumerable<LineItem>
+public partial class Order : IEnumerable<LineItem>
 {
     private readonly Dictionary<uint, LineItem> _lineItems = new();
 
+    public Guid Id { get; } = Guid.NewGuid();
     public DateTime LastUpdated { get; private set; }
 
     public Order Add(LineItem lineItem)

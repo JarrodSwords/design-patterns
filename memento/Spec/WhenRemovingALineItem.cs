@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using FluentAssertions.Execution;
 
 namespace DesignPatterns.Memento.Spec;
 
@@ -6,9 +7,9 @@ public class WhenRemovingALineItem
 {
     #region Setup
 
+    private readonly DateTime _added;
     private readonly LineItem _lineItem = new(1, "ABC123", 1);
     private readonly Order _order = new();
-    private DateTime _added;
     private readonly DateTime _removed;
 
     public WhenRemovingALineItem()
@@ -27,7 +28,10 @@ public class WhenRemovingALineItem
     [Fact]
     public void ThenLastUpdatedIsSet()
     {
+        using var scope = new AssertionScope();
+
         _order.LastUpdated.Should().Be(_removed);
+        _order.LastUpdated.Should().BeAfter(_added);
     }
 
     [Fact]
