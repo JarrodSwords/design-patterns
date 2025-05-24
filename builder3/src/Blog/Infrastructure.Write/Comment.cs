@@ -1,6 +1,6 @@
 ﻿using static DesignPatterns.Builder3.Blog.Domain.ICommentBuilder;
 
-namespace DesignPatterns.Builder3.Blog.Infrastructure;
+namespace DesignPatterns.Builder3.Blog.Infrastructure.Write;
 
 public record Comment(
     uint Id,

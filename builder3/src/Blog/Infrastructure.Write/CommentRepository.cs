@@ -2,7 +2,7 @@
 using Jgs.Errors.Results;
 using static Jgs.Errors.Results.Result;
 
-namespace DesignPatterns.Builder3.Blog.Infrastructure;
+namespace DesignPatterns.Builder3.Blog.Infrastructure.Write;
 
 public class CommentRepository : ICommentRepository
 {

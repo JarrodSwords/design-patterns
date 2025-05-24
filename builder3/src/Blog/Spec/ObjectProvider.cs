@@ -1,6 +1,6 @@
 ﻿using DesignPatterns.Builder3.Blog.Domain;
-using DesignPatterns.Builder3.Blog.Infrastructure;
-using Comment = DesignPatterns.Builder3.Blog.Infrastructure.Comment;
+using DesignPatterns.Builder3.Blog.Infrastructure.Write;
+using Comment = DesignPatterns.Builder3.Blog.Infrastructure.Write.Comment;
 
 namespace DesignPatterns.Builder3.Blog.Spec;
 
