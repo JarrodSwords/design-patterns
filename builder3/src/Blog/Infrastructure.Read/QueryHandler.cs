@@ -4,8 +4,18 @@ using Microsoft.Data.SqlClient;
 
 namespace DesignPatterns.Builder3.Blog.Infrastructure.Read;
 
-public abstract class Query<T> where T : Args
+public interface IQuery;
+
+public interface IQueryHandler<in T> where T : IQuery
 {
+    Result Execute(T args);
+}
+
+public abstract class QueryHandler<T> : IQueryHandler<T> where T : IQuery
+{
+    protected abstract Result ExecuteQuery(SqlConnection connection, T query);
+    protected virtual Error HandleException(Exception e) => new("Not found", e.Message);
+
     public Result Execute(T args)
     {
         try
@@ -20,15 +30,9 @@ public abstract class Query<T> where T : Args
             return HandleException(e);
         }
     }
-
-    public abstract Result ExecuteQuery(SqlConnection connection, T args);
-
-    public virtual Error HandleException(Exception e) => new("Not found", e.Message);
 }
 
-public abstract class Query<TArgs, TResponse> where TArgs : Args
+public abstract class QueryHandler<TArgs, TResponse> where TArgs : IQuery
 {
     public abstract Result<TResponse> Execute(TArgs args);
 }
-
-public abstract record Args;

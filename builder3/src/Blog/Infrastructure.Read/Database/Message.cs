@@ -1,6 +1,6 @@
 ﻿namespace DesignPatterns.Builder3.Blog.Infrastructure.Read.Database;
 
-public record Comment(
+public record Message(
     uint Id,
     uint? ParentId,
     uint PostId,
