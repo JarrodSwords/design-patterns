@@ -1,6 +1,4 @@
-﻿using Thread = DesignPatterns.Builder3.Infrastructure.Read._threads.Thread;
-
-namespace DesignPatterns.Builder3.Infrastructure.Read.Spec;
+﻿namespace DesignPatterns.Builder3.Infrastructure.Read.Spec;
 
 public class WhenFindingAThread
 {

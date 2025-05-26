@@ -1,6 +1,6 @@
 ﻿using Jgs.Errors.Results;
 
-namespace DesignPatterns.Builder3.Infrastructure.Read._channels;
+namespace DesignPatterns.Builder3.Infrastructure.Read;
 
 public class Message
 {

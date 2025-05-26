@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder3.Infrastructure.Read._threads;
+﻿namespace DesignPatterns.Builder3.Infrastructure.Read;
 
 public partial class Thread
 {

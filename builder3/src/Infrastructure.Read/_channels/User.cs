@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder3.Infrastructure.Read._channels;
+﻿namespace DesignPatterns.Builder3.Infrastructure.Read;
 
 public record User(uint Id, string Name)
 {

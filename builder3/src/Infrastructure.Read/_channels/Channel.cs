@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace DesignPatterns.Builder3.Infrastructure.Read._channels;
+namespace DesignPatterns.Builder3.Infrastructure.Read;
 
 public partial class Channel : IEnumerable<Message>
 {

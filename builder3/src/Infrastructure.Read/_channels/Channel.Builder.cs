@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder3.Infrastructure.Read._channels;
+﻿namespace DesignPatterns.Builder3.Infrastructure.Read;
 
 public partial class Channel
 {
@@ -6,8 +6,6 @@ public partial class Channel
     {
         private readonly Channel _channel = new();
         private readonly Dictionary<uint, Message> _messages = new();
-
-        public Channel GetChannel() => _channel;
 
         public Message Add(Database.Message m, Database.User u) =>
             Message.From(m, u)
@@ -20,5 +18,7 @@ public partial class Channel
                         return message;
                     }
                 );
+
+        public Channel GetChannel() => _channel;
     }
 }

@@ -1,5 +1,4 @@
-﻿using DesignPatterns.Builder3.Infrastructure.Read._channels;
-using FluentAssertions;
+﻿using FluentAssertions;
 
 namespace DesignPatterns.Builder3.Infrastructure.Read.Spec;
 
