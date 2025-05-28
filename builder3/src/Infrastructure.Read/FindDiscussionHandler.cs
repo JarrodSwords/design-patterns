@@ -1,6 +1,7 @@
-﻿using Dapper;
+﻿using System.Data.Common;
+using Dapper;
+using DesignPatterns.Builder3.Domain;
 using Jgs.Errors.Results;
-using Microsoft.Data.SqlClient;
 using static Jgs.Errors.Results.Result;
 
 namespace DesignPatterns.Builder3.Infrastructure.Read;
@@ -18,7 +19,11 @@ public class FindDiscussionHandler : QueryHandler<FindDiscussion>
          ORDER BY Timestamp
         """;
 
-    protected override Result ExecuteQuery(SqlConnection connection, FindDiscussion query)
+    public FindDiscussionHandler(IConnectionProvider connectionProvider) : base(connectionProvider)
+    {
+    }
+
+    protected override Result ExecuteQuery(DbConnection connection, FindDiscussion query)
     {
         var (args, builder) = query;
 

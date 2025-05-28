@@ -1,6 +1,8 @@
-﻿using Jgs.Errors;
+﻿using System.Data;
+using System.Data.Common;
+using DesignPatterns.Builder3.Domain;
+using Jgs.Errors;
 using Jgs.Errors.Results;
-using Microsoft.Data.SqlClient;
 
 namespace DesignPatterns.Builder3.Infrastructure.Read;
 
@@ -13,26 +15,40 @@ public interface IQueryHandler<in T> where T : IQuery
 
 public abstract class QueryHandler<T> : IQueryHandler<T> where T : IQuery
 {
-    protected abstract Result ExecuteQuery(SqlConnection connection, T query);
+    private readonly IConnectionProvider _connectionProvider;
+
+    protected QueryHandler(IConnectionProvider connectionProvider)
+    {
+        _connectionProvider = connectionProvider;
+    }
+
+    protected abstract Result ExecuteQuery(DbConnection connection, T query);
     protected virtual Error HandleException(Exception e) => new("Not found", e.Message);
 
     public Result Execute(T args)
     {
+        var shouldClose = false;
+
         try
         {
-            using var connection = new SqlConnection();
-            connection.Open();
+            var connection = _connectionProvider.GetConnection();
 
-            return ExecuteQuery(connection, args);
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+                shouldClose = true;
+            }
+
+            var result = ExecuteQuery(connection, args);
+
+            if (shouldClose)
+                connection.Close();
+
+            return result;
         }
         catch (Exception e)
         {
             return HandleException(e);
         }
     }
-}
-
-public abstract class QueryHandler<TArgs, TResponse> where TArgs : IQuery
-{
-    public abstract Result<TResponse> Execute(TArgs args);
 }

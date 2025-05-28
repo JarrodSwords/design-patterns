@@ -1,6 +1,6 @@
 ﻿using DesignPatterns.Builder3.Domain;
 using DesignPatterns.Builder3.Infrastructure.Write;
-using Comment = DesignPatterns.Builder3.Infrastructure.Write.Comment;
+using Message = DesignPatterns.Builder3.Infrastructure.Write.Message;
 
 namespace DesignPatterns.Builder3.Spec;
 
@@ -11,7 +11,7 @@ public class ObjectProvider
             ? new CommentRepository().Seed(GetSampleComments())
             : new CommentRepository();
 
-    public static IEnumerable<Comment> GetSampleComments()
+    public static IEnumerable<Message> GetSampleComments()
     {
         yield return new(10, null, 2000, 10, 300, "Lorem ipsum dolor sit amet elit.", new(2025, 01, 01, 0, 1, 0));
         yield return new(11, 10, 2000, 10, 301, "Ex sapien vitae pellentesque sem in id.", new(2025, 01, 01, 0, 5, 0));

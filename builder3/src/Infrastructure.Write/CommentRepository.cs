@@ -6,9 +6,9 @@ namespace DesignPatterns.Builder3.Infrastructure.Write;
 
 public class CommentRepository : ICommentRepository
 {
-    private readonly List<Comment> _comments = [];
+    private readonly List<Message> _comments = [];
 
-    public ICommentRepository Seed(IEnumerable<Comment> seed)
+    public ICommentRepository Seed(IEnumerable<Message> seed)
     {
         _comments.Clear();
         _comments.AddRange(seed);
