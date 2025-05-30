@@ -19,8 +19,13 @@ public class FindDiscussionHandler : QueryHandler<FindDiscussion>
          ORDER BY Timestamp
         """;
 
-    public FindDiscussionHandler(IConnectionProvider connectionProvider) : base(connectionProvider)
+    private readonly IMessageRepository _messageRepository;
+
+    public FindDiscussionHandler(IConnectionProvider connectionProvider, IMessageRepository messageRepository) : base(
+        connectionProvider
+    )
     {
+        _messageRepository = messageRepository;
     }
 
     protected override Result ExecuteQuery(DbConnection connection, FindDiscussion query)

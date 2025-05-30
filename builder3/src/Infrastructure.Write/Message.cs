@@ -1,6 +1,4 @@
-﻿using static DesignPatterns.Builder3.Domain.ICommentBuilder;
-
-namespace DesignPatterns.Builder3.Infrastructure.Write;
+﻿namespace DesignPatterns.Builder3.Infrastructure.Write;
 
 public class Message
 {
@@ -12,7 +10,6 @@ public class Message
         uint id,
         uint? parentId,
         uint postId,
-        uint rootId,
         uint userId,
         string text,
         DateTime timestamp
@@ -21,7 +18,6 @@ public class Message
         Id = id;
         ParentId = parentId;
         PostId = postId;
-        RootId = rootId;
         UserId = userId;
         Text = text;
         Timestamp = timestamp;
@@ -30,15 +26,24 @@ public class Message
     public uint Id { get; set; }
     public uint? ParentId { get; set; }
     public uint PostId { get; set; }
-    public uint RootId { get; set; }
     public uint UserId { get; set; }
     public string Text { get; set; }
     public DateTime Timestamp { get; set; }
 
-    public static implicit operator CommentArgs(Message source) =>
+    public static implicit operator Domain.Message(Message source) =>
         new(
             source.Id,
-            source.ParentId,
+            source.PostId,
+            source.UserId,
+            source.Text,
+            source.Timestamp,
+            source.ParentId
+        );
+
+    public static implicit operator Message(Domain.Message source) =>
+        new(
+            source.Id,
+            null,
             source.PostId,
             source.UserId,
             source.Text,

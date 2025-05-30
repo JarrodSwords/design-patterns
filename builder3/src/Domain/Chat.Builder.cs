@@ -18,8 +18,8 @@ public partial class Chat
             _chat ??= new(postId);
 
             var message = parentId is null
-                ? new Message(id, userId, text, timestamp)
-                : new Message(id, userId, text, timestamp, _messages[parentId]);
+                ? new Message(id, postId, userId, text, timestamp)
+                : new Message(id, postId, userId, text, timestamp, parentId);
 
             _messages.TryAdd(message.Id, message);
 
