@@ -1,10 +1,9 @@
 ﻿using DesignPatterns.Builder3.Infrastructure.Read;
-using DesignPatterns.Builder3.Infrastructure.Write;
 using FluentAssertions;
 
 namespace DesignPatterns.Builder3.Spec;
 
-[Collection("database")]
+[Collection("sqlite")]
 public class WhenFindingAChannel
 {
     #region Setup
@@ -17,13 +16,10 @@ public class WhenFindingAChannel
     {
         _sqliteContext = sqliteContext;
 
-        _handler = new FindDiscussionHandler(
-            _sqliteContext,
-            new MessageRepository(_sqliteContext.GetContext())
-        );
+        _handler = new FindDiscussionHandler(_sqliteContext);
 
         var builder = new Channel.Builder();
-        var findDiscussion = new FindDiscussion(10, builder);
+        var findDiscussion = new FindDiscussion(2000, builder);
 
         _handler.Execute(findDiscussion);
 

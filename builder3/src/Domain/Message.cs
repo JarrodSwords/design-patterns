@@ -2,7 +2,7 @@
 
 public class Message(
     MessageId id,
-    PostId postId,
+    ContextId contextId,
     UserId userId,
     string text,
     DateTime timestamp,
@@ -10,8 +10,8 @@ public class Message(
 )
 {
     public MessageId Id { get; } = id;
+    public ContextId ContextId { get; } = contextId;
     public MessageId? ParentId { get; } = parentId;
-    public PostId PostId { get; } = postId;
     public UserId UserId { get; } = userId;
     public string Text { get; } = text;
     public DateTime Timestamp { get; } = timestamp;

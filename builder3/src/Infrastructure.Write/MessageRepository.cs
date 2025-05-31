@@ -17,12 +17,12 @@ public class MessageRepository(Context context) : IMessageRepository
         return Success();
     }
 
-    public Result<Domain.Message> Find(MessageId messageId)
+    public Result<Domain.Message> Find(MessageId id)
     {
-        var message = context.Message.SingleOrDefault(x => x.Id == messageId);
+        var message = context.Message.SingleOrDefault(x => x.Id == id);
 
         return message is null
-            ? NotFound(messageId)
+            ? NotFound(id)
             : (Domain.Message) message;
     }
 

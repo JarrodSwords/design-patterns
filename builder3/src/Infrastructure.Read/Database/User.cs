@@ -1,6 +1,7 @@
 ﻿namespace DesignPatterns.Builder3.Infrastructure.Read.Database;
 
-public record User(
-    uint Id,
-    string Name
-);
+public class User
+{
+    public uint Id { get; set; }
+    public string Name { get; set; }
+}

@@ -2,7 +2,7 @@
 
 namespace DesignPatterns.Builder3.Infrastructure.Read;
 
-public class Message
+public class Message : IComparable<Message>
 {
     private Message(
         uint id,
@@ -37,4 +37,6 @@ public class Message
     public string Text { get; }
     public DateTime Timestamp { get; }
     public User User { get; }
+
+    public int CompareTo(Message? other) => Timestamp.CompareTo(other.Timestamp);
 }

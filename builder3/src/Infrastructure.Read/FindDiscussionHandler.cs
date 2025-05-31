@@ -11,21 +11,16 @@ public class FindDiscussionHandler : QueryHandler<FindDiscussion>
     private const string Query =
         """
         SELECT M.*
-             , D.*
+             , U.*
           FROM Message M
           JOIN User U
             ON U.Id = M.UserId
-         WHERE RootId = @rootId
+         WHERE ContextId = @ContextId
          ORDER BY Timestamp
         """;
 
-    private readonly IMessageRepository _messageRepository;
-
-    public FindDiscussionHandler(IConnectionProvider connectionProvider, IMessageRepository messageRepository) : base(
-        connectionProvider
-    )
+    public FindDiscussionHandler(IConnectionProvider connectionProvider) : base(connectionProvider)
     {
-        _messageRepository = messageRepository;
     }
 
     protected override Result ExecuteQuery(DbConnection connection, FindDiscussion query)
@@ -43,14 +38,14 @@ public class FindDiscussionHandler : QueryHandler<FindDiscussion>
     }
 }
 
-public class FindDiscussion(uint rootId, IDiscussionBuilder builder) : IQuery
+public class FindDiscussion(uint contextId, IDiscussionBuilder builder) : IQuery
 {
     public void Deconstruct(out object args, out IDiscussionBuilder builder)
     {
-        args = new { RootId };
+        args = new { ContextId };
         builder = Builder;
     }
 
-    public uint RootId { get; } = rootId;
+    public uint ContextId { get; } = contextId;
     public IDiscussionBuilder Builder { get; } = builder;
 }

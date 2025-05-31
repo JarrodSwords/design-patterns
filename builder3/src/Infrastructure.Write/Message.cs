@@ -8,24 +8,24 @@ public class Message
 
     public Message(
         uint id,
-        uint? parentId,
-        uint postId,
+        uint contextId,
         uint userId,
         string text,
-        DateTime timestamp
+        DateTime timestamp,
+        uint? parentId = null
     )
     {
         Id = id;
+        ContextId = contextId;
         ParentId = parentId;
-        PostId = postId;
         UserId = userId;
         Text = text;
         Timestamp = timestamp;
     }
 
     public uint Id { get; set; }
+    public uint ContextId { get; set; }
     public uint? ParentId { get; set; }
-    public uint PostId { get; set; }
     public uint UserId { get; set; }
     public string Text { get; set; }
     public DateTime Timestamp { get; set; }
@@ -33,7 +33,7 @@ public class Message
     public static implicit operator Domain.Message(Message source) =>
         new(
             source.Id,
-            source.PostId,
+            source.ContextId,
             source.UserId,
             source.Text,
             source.Timestamp,
@@ -43,10 +43,10 @@ public class Message
     public static implicit operator Message(Domain.Message source) =>
         new(
             source.Id,
-            null,
-            source.PostId,
+            source.ContextId,
             source.UserId,
             source.Text,
-            source.Timestamp
+            source.Timestamp,
+            source.ParentId?.Value
         );
 }
