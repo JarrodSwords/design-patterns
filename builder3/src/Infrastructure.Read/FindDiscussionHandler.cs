@@ -1,12 +1,14 @@
 ﻿using System.Data.Common;
 using Dapper;
 using DesignPatterns.Builder3.Domain;
+using DesignPatterns.Builder3.Infrastructure.Read.Database;
 using Jgs.Errors.Results;
 using static Jgs.Errors.Results.Result;
 
 namespace DesignPatterns.Builder3.Infrastructure.Read;
 
-public class FindDiscussionHandler : QueryHandler<FindDiscussion>
+public class FindDiscussionHandler(IConnectionProvider connectionProvider)
+    : QueryHandler<FindDiscussion>(connectionProvider)
 {
     private const string Query =
         """
@@ -19,15 +21,11 @@ public class FindDiscussionHandler : QueryHandler<FindDiscussion>
          ORDER BY Timestamp
         """;
 
-    public FindDiscussionHandler(IConnectionProvider connectionProvider) : base(connectionProvider)
-    {
-    }
-
     protected override Result ExecuteQuery(DbConnection connection, FindDiscussion query)
     {
         var (args, builder) = query;
 
-        connection.Query<Database.Message, Database.User, Message>(
+        connection.Query<Database.Message, User, Message>(
             Query,
             builder.Add,
             args,

@@ -9,19 +9,15 @@ public class WhenFindingAChannel
     #region Setup
 
     private readonly Channel _channel;
-    private readonly IQueryHandler<FindDiscussion> _handler;
-    private readonly SqliteContext _sqliteContext;
 
     public WhenFindingAChannel(SqliteContext sqliteContext)
     {
-        _sqliteContext = sqliteContext;
-
-        _handler = new FindDiscussionHandler(_sqliteContext);
+        IQueryHandler<FindDiscussion> handler = new FindDiscussionHandler(sqliteContext);
 
         var builder = new Channel.Builder();
         var findDiscussion = new FindDiscussion(2000, builder);
 
-        _handler.Execute(findDiscussion);
+        handler.Execute(findDiscussion);
 
         _channel = builder.GetChannel();
     }

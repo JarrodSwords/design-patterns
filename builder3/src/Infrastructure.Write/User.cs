@@ -14,6 +14,4 @@ public class User
 
     public uint Id { get; set; }
     public string Name { get; set; }
-
-    public static implicit operator User(Domain.User source) => new(source.Id, source.Name);
 }
