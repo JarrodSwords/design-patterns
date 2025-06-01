@@ -8,23 +8,22 @@ public class WhenFindingAChannel
 {
     #region Setup
 
-    private readonly Channel _channel;
+    private readonly Channel _channel = new();
 
     public WhenFindingAChannel(SqliteContext sqliteContext)
     {
-        IQueryHandler<FindDiscussion> handler = new FindDiscussionHandler(sqliteContext);
-
-        var builder = new Channel.Builder();
-        var findDiscussion = new FindDiscussion(2000, builder);
+        var findDiscussion = new FindDiscussion(2000, _channel);
+        var handler = new FindDiscussionHandler(sqliteContext);
 
         handler.Execute(findDiscussion);
-
-        _channel = builder.GetChannel();
     }
 
     #endregion
 
     #region Requirements
+
+    [Fact]
+    public void ThenChannelIsPopulated() => _channel.Should().NotBeEmpty();
 
     [Fact]
     public void ThenMessagesAreInAscendingOrder() => _channel.Should().BeInAscendingOrder();

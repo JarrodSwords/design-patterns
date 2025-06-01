@@ -4,12 +4,7 @@ namespace DesignPatterns.Builder3.Infrastructure.Read;
 
 public partial class Channel : IEnumerable<Message>
 {
-    private readonly SortedDictionary<DateTime, Message> _messages = new();
-
-    private void Add(Message message)
-    {
-        _messages.Add(message.Timestamp, message);
-    }
+    private readonly SortedList<DateTime, Message> _messages = new();
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 

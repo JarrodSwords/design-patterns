@@ -36,14 +36,14 @@ public class FindDiscussionHandler(IConnectionProvider connectionProvider)
     }
 }
 
-public class FindDiscussion(uint contextId, IDiscussionBuilder builder) : IQuery
+public class FindDiscussion(uint contextId, IMessageBuilder builder) : IQuery
 {
-    public void Deconstruct(out object args, out IDiscussionBuilder builder)
+    public void Deconstruct(out object args, out IMessageBuilder builder)
     {
         args = new { ContextId };
         builder = Builder;
     }
 
     public uint ContextId { get; } = contextId;
-    public IDiscussionBuilder Builder { get; } = builder;
+    public IMessageBuilder Builder { get; } = builder;
 }
