@@ -47,6 +47,8 @@ public class SqliteContext : IConnectionProvider, IDisposable
     public void Dispose()
     {
         _connection.Dispose();
+
+        _context.Database.EnsureDeleted();
         _context.Dispose();
     }
 }
