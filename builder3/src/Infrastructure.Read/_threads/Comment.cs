@@ -1,18 +1,12 @@
 ﻿namespace DesignPatterns.Builder3.Infrastructure.Read;
 
-public class Comment
+public partial class Comment : IComparable<Comment>
 {
-    private readonly List<Comment> _children = [];
-
     public uint Id { get; }
-    public uint UserId { get; }
     public IReadOnlyList<Comment> Children => _children;
     public string Text { get; }
     public DateTime Timestamp { get; }
+    public User User { get; }
 
-    private Comment Add(Comment child)
-    {
-        _children.Add(child);
-        return child;
-    }
+    public int CompareTo(Comment? other) => Timestamp.CompareTo(other.Timestamp);
 }

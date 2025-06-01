@@ -1,5 +1,4 @@
-﻿using DesignPatterns.Builder3.Infrastructure.Read.Database;
-using Jgs.Errors.Results;
+﻿using Jgs.Errors.Results;
 
 namespace DesignPatterns.Builder3.Infrastructure.Read;
 
@@ -22,7 +21,7 @@ public class Message : IComparable<Message>
         User = user;
     }
 
-    public static Result<Message> From(Database.Message message, User user) =>
+    public static Result<Message> From(Database.Message message, Database.User user) =>
         new Message(
             message.Id,
             message.PostId,

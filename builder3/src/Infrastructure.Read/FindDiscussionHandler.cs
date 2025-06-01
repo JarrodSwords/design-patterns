@@ -1,7 +1,6 @@
 ﻿using System.Data.Common;
 using Dapper;
 using DesignPatterns.Builder3.Domain;
-using DesignPatterns.Builder3.Infrastructure.Read.Database;
 using Jgs.Errors.Results;
 using static Jgs.Errors.Results.Result;
 
@@ -25,7 +24,7 @@ public class FindDiscussionHandler(IConnectionProvider connectionProvider)
     {
         var (args, builder) = query;
 
-        connection.Query<Database.Message, User, Message>(
+        connection.Query<Database.Message, Database.User, object>(
             Query,
             builder.Add,
             args,

@@ -1,10 +1,8 @@
-﻿using DesignPatterns.Builder3.Infrastructure.Read.Database;
-
-namespace DesignPatterns.Builder3.Infrastructure.Read;
+﻿namespace DesignPatterns.Builder3.Infrastructure.Read;
 
 public partial class Channel : IMessageBuilder
 {
-    public Message Add(Database.Message message, User user) =>
+    public object Add(Database.Message message, Database.User user) =>
         Message.From(message, user)
             .Then(
                 m =>
