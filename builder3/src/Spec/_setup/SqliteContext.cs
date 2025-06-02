@@ -24,8 +24,6 @@ public class SqliteContext : IConnectionProvider, IDisposable
         Seed(ObjectProvider.GetMessages());
     }
 
-    public Context GetContext() => _context;
-
     public void Seed(IEnumerable<Message> messages)
     {
         var repository = new MessageRepository(_context);
