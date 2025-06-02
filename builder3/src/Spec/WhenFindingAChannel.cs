@@ -1,5 +1,6 @@
 ﻿using DesignPatterns.Builder3.Infrastructure.Read;
 using FluentAssertions;
+using FluentAssertions.Execution;
 
 namespace DesignPatterns.Builder3.Spec;
 
@@ -23,7 +24,13 @@ public class WhenFindingAChannel
     #region Requirements
 
     [Fact]
-    public void ThenChannelIsPopulated() => _channel.Should().NotBeEmpty();
+    public void ThenChannelIsPopulated()
+    {
+        using var scope = new AssertionScope();
+
+        _channel.Should().NotBeEmpty();
+        _channel.Should().HaveCount(58);
+    }
 
     [Fact]
     public void ThenMessagesAreInAscendingOrder() => _channel.Should().BeInAscendingOrder();

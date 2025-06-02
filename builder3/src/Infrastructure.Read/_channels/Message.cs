@@ -1,7 +1,9 @@
-﻿using Jgs.Errors.Results;
+﻿using System.Diagnostics;
+using Jgs.Errors.Results;
 
 namespace DesignPatterns.Builder3.Infrastructure.Read;
 
+[DebuggerDisplay("{GetDebugString()}")]
 public class Message : IComparable<Message>
 {
     private Message(
@@ -37,6 +39,7 @@ public class Message : IComparable<Message>
     public string Text { get; }
     public DateTime Timestamp { get; }
     public User User { get; }
+    public string GetDebugString() => @$"{User.Name}: ""{Text}""";
 
     public int CompareTo(Message? other) => Timestamp.CompareTo(other.Timestamp);
 }

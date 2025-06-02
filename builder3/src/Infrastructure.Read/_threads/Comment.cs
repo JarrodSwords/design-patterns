@@ -1,5 +1,8 @@
-﻿namespace DesignPatterns.Builder3.Infrastructure.Read;
+﻿using System.Diagnostics;
 
+namespace DesignPatterns.Builder3.Infrastructure.Read;
+
+[DebuggerDisplay("{GetDebugString()}")]
 public partial class Comment : IComparable<Comment>
 {
     public uint Id { get; }
@@ -7,6 +10,8 @@ public partial class Comment : IComparable<Comment>
     public string Text { get; }
     public DateTime Timestamp { get; }
     public User User { get; }
+
+    public string GetDebugString() => @$"""{Text}"" ~{User.Name}";
 
     public int CompareTo(Comment? other) => Timestamp.CompareTo(other.Timestamp);
 }

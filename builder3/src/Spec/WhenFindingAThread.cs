@@ -28,6 +28,9 @@ public class WhenFindingAThread
     public void ThenCommentsAreInAscendingOrder() => _thread.Should().BeInAscendingOrder();
 
     [Fact]
+    public void ThenThreadHasExpectedTopLevelComments() => _thread.Should().HaveCount(13);
+
+    [Fact]
     public void ThenThreadIsPopulated() => _thread.Should().NotBeEmpty();
 
     #endregion
