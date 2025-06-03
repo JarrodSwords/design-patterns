@@ -1,20 +1,12 @@
 using System.Collections.Generic;
 
-namespace DesignPatterns.Singleton.Domain
+namespace CreationalPatterns.Singleton.Domain
 {
     /// <summary>
     ///     Singleton
     /// </summary>
     public class ItemRepository
     {
-        #region Singleton
-
-        public static ItemRepository Instance { get; } = new ItemRepository();
-
-        #endregion
-
-        #region Core
-
         private static List<Item> _items;
 
         private ItemRepository()
@@ -37,15 +29,11 @@ namespace DesignPatterns.Singleton.Domain
             };
         }
 
-        #endregion
-
-        #region Public Interface
+        public static ItemRepository Instance { get; } = new ItemRepository();
 
         public Item Find(string name)
         {
             return _items.Find(x => x.Name == name).Clone();
         }
-
-        #endregion
     }
 }

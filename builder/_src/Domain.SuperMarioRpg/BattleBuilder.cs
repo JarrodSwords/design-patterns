@@ -1,26 +1,13 @@
-﻿namespace DesignPatterns.Builder.Domain.SuperMarioRpg
+﻿namespace CreationalPatterns.Builder.Domain.SuperMarioRpg
 {
     /// <summary>
     ///     Concrete Builder
     /// </summary>
     public class BattleBuilder : IBattleBuilder
     {
-        #region Core
-
         private IProgressionSystem _progressionSystem;
 
-        #endregion
-
-        #region Public Interface
-
-        public Battle Build()
-        {
-            return new Battle(this);
-        }
-
-        #endregion
-
-        #region IBattleBuilder
+        public Battle Build() => new Battle(this);
 
         public Arena Arena { get; private set; }
         public IBattleSystem BattleSystem { get; private set; }
@@ -58,7 +45,5 @@
             ProgressionSystem = new LevelBasedProgression();
             return this;
         }
-
-        #endregion
     }
 }

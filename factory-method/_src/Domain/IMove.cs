@@ -1,4 +1,4 @@
-namespace DesignPatterns.FactoryMethod.Domain
+namespace CreationalPatterns.FactoryMethod.Domain
 {
     /// <summary>
     ///     Product

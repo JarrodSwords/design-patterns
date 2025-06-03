@@ -1,17 +1,15 @@
 using System;
 using System.Collections.Generic;
-using DesignPatterns.AbstractFactory.Domain;
-using DesignPatterns.AbstractFactory.Persistence.Database;
+using CreationalPatterns.AbstractFactory.Domain;
+using CreationalPatterns.AbstractFactory.Persistence.Database;
 
-namespace DesignPatterns.AbstractFactory.Application
+namespace CreationalPatterns.AbstractFactory.Application
 {
     /// <summary>
     ///     Client
     /// </summary>
     public class CustomerService : ICustomerService
     {
-        #region Core
-
         private readonly IContractRepository _contractRepository;
         private readonly ICustomerRepository _customerRepository;
 
@@ -28,20 +26,8 @@ namespace DesignPatterns.AbstractFactory.Application
             _customerRepository = factory.CreateCustomerRepository();
         }
 
-        #endregion
+        public ICollection<Contract> FetchContracts() => _contractRepository.Fetch();
 
-        #region ICustomerService
-
-        public ICollection<Contract> FetchContracts()
-        {
-            return _contractRepository.Fetch();
-        }
-
-        public ICollection<Customer> FetchCustomers()
-        {
-            return _customerRepository.Fetch();
-        }
-
-        #endregion
+        public ICollection<Customer> FetchCustomers() => _customerRepository.Fetch();
     }
 }

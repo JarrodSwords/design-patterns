@@ -1,14 +1,12 @@
 using System;
-using DesignPatterns.Builder2.Catalog;
+using CreationalPatterns.Builder2.Catalog;
 
-namespace DesignPatterns.Builder2.Write
+namespace CreationalPatterns.Builder2.Write
 {
     public partial class Product : Entity
     {
         public static readonly Product DietPepsi = new("Diet Pepsi", "pep-diet", Vendor.PepsiCo.Id);
         public static readonly Product Pepsi = new("Pepsi", "pep-cola", Vendor.PepsiCo.Id);
-
-        #region Creation
 
         public Product()
         {
@@ -21,14 +19,9 @@ namespace DesignPatterns.Builder2.Write
             VendorId = vendorId;
         }
 
-        #endregion
-
-        #region Public Interface
+        public Guid VendorId { get; set; }
 
         public string Name { get; set; }
         public string Sku { get; set; }
-        public Guid VendorId { get; set; }
-
-        #endregion
     }
 }

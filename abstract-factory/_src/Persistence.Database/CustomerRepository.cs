@@ -1,20 +1,13 @@
 using System.Collections.Generic;
-using DesignPatterns.AbstractFactory.Domain;
+using CreationalPatterns.AbstractFactory.Domain;
 
-namespace DesignPatterns.AbstractFactory.Persistence.Database
+namespace CreationalPatterns.AbstractFactory.Persistence.Database
 {
     /// <summary>
     ///     Concrete Product
     /// </summary>
     public class CustomerRepository : ICustomerRepository
     {
-        #region ICustomerRepository
-
-        public ICollection<Customer> Fetch()
-        {
-            return new List<Customer> {new Customer(Source.Database)};
-        }
-
-        #endregion
+        public ICollection<Customer> Fetch() => new List<Customer> { new Customer(Source.Database) };
     }
 }

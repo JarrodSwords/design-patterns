@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 
-namespace DesignPatterns.Memento.Spec;
+namespace BehavioralPatterns.Memento.Spec;
 
 public class WhenAddingALineItem
 {

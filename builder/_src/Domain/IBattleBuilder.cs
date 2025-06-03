@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder.Domain
+﻿namespace CreationalPatterns.Builder.Domain
 {
     /// <summary>
     ///     Builder

@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder.Domain.FinalFantasyX
+﻿namespace CreationalPatterns.Builder.Domain.FinalFantasyX
 {
     public class Combatant
     {

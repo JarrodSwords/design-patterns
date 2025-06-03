@@ -1,14 +1,12 @@
 using System.Collections.Generic;
 
-namespace DesignPatterns.Prototype.Domain
+namespace CreationalPatterns.Prototype.Domain
 {
     /// <summary>
     ///     Client
     /// </summary>
     public class MushroomKingdomShop
     {
-        #region Core
-
         private readonly List<Purchasable<Item>> _inventory;
 
         public MushroomKingdomShop()
@@ -25,12 +23,9 @@ namespace DesignPatterns.Prototype.Domain
             };
         }
 
-        #endregion
-
-        #region Public Interface
+        public IReadOnlyCollection<Purchasable<Item>> Inventory => _inventory;
 
         public Purchasable<Item> SelectedItem { get; private set; }
-        public IReadOnlyCollection<Purchasable<Item>> Inventory => _inventory;
 
         public void MakeSale(Player player)
         {
@@ -42,7 +37,5 @@ namespace DesignPatterns.Prototype.Domain
         {
             SelectedItem = _inventory[index];
         }
-
-        #endregion
     }
 }

@@ -1,12 +1,12 @@
-using DesignPatterns.Builder2.Catalog;
+using CreationalPatterns.Builder2.Catalog;
 using FluentAssertions;
 using Xunit;
 
-namespace DesignPatterns.Builder2
+namespace CreationalPatterns.Builder2
 {
     public class GivenAnExistingProduct
     {
-        #region Core
+        #region Setup
 
         private readonly Product _product;
 
@@ -19,7 +19,7 @@ namespace DesignPatterns.Builder2
 
         #endregion
 
-        #region Test Methods
+        #region Requirements
 
         [Fact]
         public void WhenCreatingAProduct_ThenCompanyIdIsSet()

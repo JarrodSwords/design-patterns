@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using FluentAssertions.Execution;
 
-namespace DesignPatterns.Memento.Spec;
+namespace BehavioralPatterns.Memento.Spec;
 
 public class WhenRemovingALineItem
 {

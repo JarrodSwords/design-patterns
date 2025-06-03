@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Composite.Domain.Primitive;
+﻿namespace StructuralPatterns.Composite.Domain.Primitive;
 
 public class SalePriceCalculator : ISalePriceCalculator
 {

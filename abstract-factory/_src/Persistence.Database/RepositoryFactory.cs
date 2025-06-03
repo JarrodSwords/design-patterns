@@ -1,24 +1,14 @@
-using DesignPatterns.AbstractFactory.Domain;
+using CreationalPatterns.AbstractFactory.Domain;
 
-namespace DesignPatterns.AbstractFactory.Persistence.Database
+namespace CreationalPatterns.AbstractFactory.Persistence.Database
 {
     /// <summary>
     ///     Concrete Factory
     /// </summary>
     public class RepositoryFactory : IRepositoryFactory
     {
-        #region IRepositoryFactory
+        public IContractRepository CreateContractRepository() => new ContractRepository();
 
-        public IContractRepository CreateContractRepository()
-        {
-            return new ContractRepository();
-        }
-
-        public ICustomerRepository CreateCustomerRepository()
-        {
-            return new CustomerRepository();
-        }
-
-        #endregion
+        public ICustomerRepository CreateCustomerRepository() => new CustomerRepository();
     }
 }

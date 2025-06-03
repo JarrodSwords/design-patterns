@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using DesignPatterns.Builder2.Catalog;
+using CreationalPatterns.Builder2.Catalog;
 using FluentAssertions;
 using Xunit;
 
-namespace DesignPatterns.Builder2
+namespace CreationalPatterns.Builder2
 {
     public class GivenARegisterProductCommand
     {
-        #region Core
+        #region Setup
 
         private readonly RegisterProduct.Builder _builder;
 
@@ -18,7 +18,7 @@ namespace DesignPatterns.Builder2
 
         #endregion
 
-        #region Public Interface
+        #region Implementation
 
         public static IEnumerable<object[]> CandidateProducts =>
             new List<object[]>
@@ -26,10 +26,6 @@ namespace DesignPatterns.Builder2
                 new object[] { "Crystal Pepsi", "cry" },
                 new object[] { "Wild Cherry Pepsi", "cherry" }
             };
-
-        #endregion
-
-        #region Private Interface
 
         private void ConfigureBuilder(string name, string skuToken)
         {
@@ -40,7 +36,7 @@ namespace DesignPatterns.Builder2
 
         #endregion
 
-        #region Test Methods
+        #region Requirements
 
         [Theory]
         [MemberData(nameof(CandidateProducts))]

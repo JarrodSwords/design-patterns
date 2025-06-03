@@ -1,4 +1,6 @@
-﻿namespace DesignPatterns.Composite.SalePriceCalculator.Spec;
+﻿using StructuralPatterns.Composite.Domain;
+
+namespace StructuralPatterns.Composite.SalePriceCalculator.Spec;
 
 public class WhenCalculatingSalePrice
 {

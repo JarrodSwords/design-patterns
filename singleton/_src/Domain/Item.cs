@@ -1,9 +1,7 @@
-namespace DesignPatterns.Singleton.Domain
+namespace CreationalPatterns.Singleton.Domain
 {
     public class Item
     {
-        #region Core
-
         public Item(string name)
         {
             Name = name;
@@ -14,17 +12,8 @@ namespace DesignPatterns.Singleton.Domain
             Name = source.Name;
         }
 
-        #endregion
-
-        #region Public Interface
-
         public string Name { get; }
 
-        public Item Clone()
-        {
-            return new Item(this);
-        }
-
-        #endregion
+        public Item Clone() => new Item(this);
     }
 }

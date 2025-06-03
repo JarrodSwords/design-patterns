@@ -1,26 +1,16 @@
-﻿using DesignPatterns.Builder.Domain.SuperMarioRpg;
+﻿using CreationalPatterns.Builder.Domain.SuperMarioRpg;
 using FluentAssertions;
 
-namespace DesignPatterns.Builder.Test.SuperMarioRpg
+namespace CreationalPatterns.Builder.Test.SuperMarioRpg
 {
     public class BattleBuilderTest : BattleBuilderBaseTest
     {
-        #region Core
-
         public BattleBuilderTest()
         {
             Builder = new BattleBuilder();
         }
 
-        #endregion
-
-        #region Public Interface
-
         public BattleBuilder Builder { get; }
-
-        #endregion
-
-        #region Test Methods
 
         public override void WhenConfiguringRandomEncounter_ReturnValidBattle()
         {
@@ -49,7 +39,5 @@ namespace DesignPatterns.Builder.Test.SuperMarioRpg
             battle.Party.Should().NotBeNull();
             battle.ProgressionSystem.Should().BeOfType<NullLevelBasedProgression>();
         }
-
-        #endregion
     }
 }
