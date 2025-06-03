@@ -1,12 +1,10 @@
-namespace DesignPatterns.Builder2.Write
+namespace CreationalPatterns.Builder2.Write
 {
     public partial class Product
     {
         public class Builder
         {
             private readonly Catalog.Product.Builder _builder = new();
-
-            #region Public Interface
 
             public Catalog.Product Build() => _builder.Build();
 
@@ -19,8 +17,6 @@ namespace DesignPatterns.Builder2.Write
 
                 return this;
             }
-
-            #endregion
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Composite.Domain;
+﻿namespace StructuralPatterns.Composite.Domain;
 
 public abstract class Discount
 {

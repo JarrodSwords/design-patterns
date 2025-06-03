@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder.Domain.Osrs
+﻿namespace CreationalPatterns.Builder.Domain.Osrs
 {
     public class RealTimeBattle : IBattleSystem
     {

@@ -3,29 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.AbstractFactory", "abstract-factory\DesignPatterns.AbstractFactory.csproj", "{CD5BF034-99AA-4439-B6F0-72EB50D61166}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractFactory", "abstract-factory\AbstractFactory.csproj", "{CD5BF034-99AA-4439-B6F0-72EB50D61166}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Builder", "builder\DesignPatterns.Builder.csproj", "{5EB1CC29-8CD2-4509-87AD-7B9866B5737B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Builder", "builder\Builder.csproj", "{5EB1CC29-8CD2-4509-87AD-7B9866B5737B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.FactoryMethod", "factory-method\DesignPatterns.FactoryMethod.csproj", "{CFFD54FD-BA49-4924-836F-9A3D30630EC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactoryMethod", "factory-method\FactoryMethod.csproj", "{CFFD54FD-BA49-4924-836F-9A3D30630EC9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Prototype", "prototype\DesignPatterns.Prototype.csproj", "{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prototype", "prototype\Prototype.csproj", "{EEC6BD07-C140-4AA9-A163-D5E55B7F0DF4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Singleton", "singleton\DesignPatterns.Singleton.csproj", "{5F4C1D63-83B1-49E0-8E2F-2F22FAFE0D6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Singleton", "singleton\Singleton.csproj", "{5F4C1D63-83B1-49E0-8E2F-2F22FAFE0D6A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "creational-patterns", "creational-patterns", "{24AC32C6-F26C-439F-A35F-85856867FA80}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-creational-patterns", "2-creational-patterns", "{24AC32C6-F26C-439F-A35F-85856867FA80}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "structural-patterns", "structural-patterns", "{2F776BDF-2B5D-4743-89B2-89373F0EBBD3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-structural-patterns", "3-structural-patterns", "{2F776BDF-2B5D-4743-89B2-89373F0EBBD3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "behavioral-patterns", "behavioral-patterns", "{3239F23F-7015-46FB-9700-AFFC07C1E864}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-behavioral-patterns", "1-behavioral-patterns", "{3239F23F-7015-46FB-9700-AFFC07C1E864}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Builder2", "builder2\DesignPatterns.Builder2.csproj", "{56EA0EB7-C212-44D2-9F95-9C872DEEB902}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Builder2", "builder2\Builder2.csproj", "{56EA0EB7-C212-44D2-9F95-9C872DEEB902}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns.Composite", "composite\DesignPatterns.Composite.csproj", "{2CAB458B-5E07-41AE-9990-C7B1A545A5A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Composite", "composite\Composite.csproj", "{2CAB458B-5E07-41AE-9990-C7B1A545A5A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Builder3", "builder3\DesignPatterns.Builder3.csproj", "{76F1A589-9378-4D48-BC5C-3798379A9FD2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMedia", "builder3\SocialMedia.csproj", "{76F1A589-9378-4D48-BC5C-3798379A9FD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPatterns.Memento", "memento\DesignPatterns.Memento.csproj", "{E950408F-9E08-4ED7-A452-FA669291B61F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memento", "memento\Memento.csproj", "{E950408F-9E08-4ED7-A452-FA669291B61F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-examples", "4-examples", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,7 +159,7 @@ Global
 		{5F4C1D63-83B1-49E0-8E2F-2F22FAFE0D6A} = {24AC32C6-F26C-439F-A35F-85856867FA80}
 		{56EA0EB7-C212-44D2-9F95-9C872DEEB902} = {24AC32C6-F26C-439F-A35F-85856867FA80}
 		{2CAB458B-5E07-41AE-9990-C7B1A545A5A7} = {2F776BDF-2B5D-4743-89B2-89373F0EBBD3}
-		{76F1A589-9378-4D48-BC5C-3798379A9FD2} = {24AC32C6-F26C-439F-A35F-85856867FA80}
+		{76F1A589-9378-4D48-BC5C-3798379A9FD2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{E950408F-9E08-4ED7-A452-FA669291B61F} = {3239F23F-7015-46FB-9700-AFFC07C1E864}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

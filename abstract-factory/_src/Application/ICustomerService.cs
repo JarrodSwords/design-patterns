@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using DesignPatterns.AbstractFactory.Domain;
+using CreationalPatterns.AbstractFactory.Domain;
 
-namespace DesignPatterns.AbstractFactory.Application
+namespace CreationalPatterns.AbstractFactory.Application
 {
     public interface ICustomerService
     {

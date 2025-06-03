@@ -1,28 +1,15 @@
 ﻿using System.Collections.Generic;
 
-namespace DesignPatterns.Builder.Domain.Osrs
+namespace CreationalPatterns.Builder.Domain.Osrs
 {
     /// <summary>
     ///     Concrete Builder
     /// </summary>
     public class BattleBuilder : IBattleBuilder
     {
-        #region Core
-
         private IProgressionSystem _progressionSystem;
 
-        #endregion
-
-        #region Public Interface
-
-        public Battle Build()
-        {
-            return new Battle(this);
-        }
-
-        #endregion
-
-        #region IBattleBuilder
+        public Battle Build() => new Battle(this);
 
         public ICollection<Enemy> AggroedEnemies { get; private set; }
         public IBattleSystem BattleSystem { get; private set; }
@@ -59,7 +46,5 @@ namespace DesignPatterns.Builder.Domain.Osrs
             ProgressionSystem = new ActivityBasedProgression();
             return this;
         }
-
-        #endregion
     }
 }

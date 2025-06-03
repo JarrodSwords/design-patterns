@@ -1,4 +1,4 @@
-namespace DesignPatterns.Builder2.Shared
+namespace CreationalPatterns.Builder2.Shared
 {
     public interface ICommand
     {

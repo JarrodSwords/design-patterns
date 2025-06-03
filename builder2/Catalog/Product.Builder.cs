@@ -1,6 +1,6 @@
 using System;
 
-namespace DesignPatterns.Builder2.Catalog
+namespace CreationalPatterns.Builder2.Catalog
 {
     public partial class Product
     {
@@ -9,8 +9,6 @@ namespace DesignPatterns.Builder2.Catalog
             private string _name;
             private string _sku;
             private Guid _vendorId;
-
-            #region Public Interface
 
             public Product Build() => new(_vendorId, _name, _sku);
 
@@ -31,8 +29,6 @@ namespace DesignPatterns.Builder2.Catalog
                 _sku = sku;
                 return this;
             }
-
-            #endregion
         }
     }
 }

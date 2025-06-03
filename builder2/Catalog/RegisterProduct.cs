@@ -1,8 +1,8 @@
 using System;
-using DesignPatterns.Builder2.Shared;
-using DesignPatterns.Builder2.Write;
+using CreationalPatterns.Builder2.Shared;
+using CreationalPatterns.Builder2.Write;
 
-namespace DesignPatterns.Builder2.Catalog
+namespace CreationalPatterns.Builder2.Catalog
 {
     public record RegisterProduct(
         Guid VendorId,
@@ -16,17 +16,11 @@ namespace DesignPatterns.Builder2.Catalog
             private readonly UnitOfWork _uow;
             private RegisterProduct _command;
 
-            #region Creation
-
             public Builder(UnitOfWork uow)
             {
                 _builder = new Product.Builder();
                 _uow = uow;
             }
-
-            #endregion
-
-            #region Public Interface
 
             public Product Build() =>
                 _builder
@@ -46,8 +40,6 @@ namespace DesignPatterns.Builder2.Catalog
                 var vendor = _uow.Vendors.Find(_command.VendorId);
                 return Product.GenerateSku(vendor.SkuToken, _command.SkuToken);
             }
-
-            #endregion
         }
     }
 }

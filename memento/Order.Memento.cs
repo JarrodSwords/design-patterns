@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Memento;
+﻿namespace BehavioralPatterns.Memento;
 
 public partial class Order
 {

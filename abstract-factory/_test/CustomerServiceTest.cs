@@ -1,13 +1,13 @@
-using DesignPatterns.AbstractFactory.Application;
-using DesignPatterns.AbstractFactory.Domain;
+using CreationalPatterns.AbstractFactory.Application;
+using CreationalPatterns.AbstractFactory.Domain;
 using FluentAssertions;
 using Xunit;
 
-namespace DesignPatterns.AbstractFactory
+namespace CreationalPatterns.AbstractFactory
 {
     public class CustomerServiceTest
     {
-        #region Test Methods
+        #region Requirements
 
         [Theory]
         [InlineData(Source.Database)]

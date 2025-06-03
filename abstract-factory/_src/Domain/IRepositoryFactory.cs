@@ -1,4 +1,4 @@
-namespace DesignPatterns.AbstractFactory.Domain
+namespace CreationalPatterns.AbstractFactory.Domain
 {
     /// <summary>
     ///     Abstract Factory

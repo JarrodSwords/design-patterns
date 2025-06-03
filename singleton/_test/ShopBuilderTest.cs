@@ -1,13 +1,13 @@
 using System.Linq;
-using DesignPatterns.Singleton.Domain;
+using CreationalPatterns.Singleton.Domain;
 using FluentAssertions;
 using Xunit;
 
-namespace DesignPatterns.Singleton
+namespace CreationalPatterns.Singleton
 {
     public class ShopBuilderTest
     {
-        #region Test Methods
+        #region Requirements
 
         [Theory]
         [InlineData(

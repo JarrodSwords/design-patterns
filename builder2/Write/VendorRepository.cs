@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using DesignPatterns.Builder2.Catalog;
+using CreationalPatterns.Builder2.Catalog;
 
-namespace DesignPatterns.Builder2.Write
+namespace CreationalPatterns.Builder2.Write
 {
     public class VendorRepository
     {
@@ -11,10 +11,6 @@ namespace DesignPatterns.Builder2.Write
             { Vendor.PepsiCo.Id, Vendor.PepsiCo }
         };
 
-        #region Public Interface
-
         public Vendor Find(Guid id) => _vendors[id];
-
-        #endregion
     }
 }

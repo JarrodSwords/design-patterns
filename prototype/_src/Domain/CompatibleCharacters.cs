@@ -1,6 +1,6 @@
 using System;
 
-namespace DesignPatterns.Prototype.Domain
+namespace CreationalPatterns.Prototype.Domain
 {
     [Flags]
     public enum CompatibleCharacters

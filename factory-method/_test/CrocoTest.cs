@@ -1,12 +1,12 @@
-using DesignPatterns.FactoryMethod.Domain;
+using CreationalPatterns.FactoryMethod.Domain;
 using FluentAssertions;
 using Xunit;
 
-namespace DesignPatterns.FactoryMethod
+namespace CreationalPatterns.FactoryMethod
 {
     public class CrocoTest
     {
-        #region Core
+        #region Setup
 
         private readonly Croco _croco;
 
@@ -17,7 +17,7 @@ namespace DesignPatterns.FactoryMethod
 
         #endregion
 
-        #region Test Methods
+        #region Requirements
 
         [Fact]
         public void WhenQueueingNextMove_WhenHealthy_NextMoveIsAttack()
