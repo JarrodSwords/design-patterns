@@ -1,22 +1,16 @@
-namespace DesignPatterns.FactoryMethod.Domain
+namespace CreationalPatterns.FactoryMethod.Domain
 {
     /// <summary>
     ///     Creator
     /// </summary>
     public abstract class Enemy
     {
-        #region Core
-
         private IMove _nextMove;
 
         protected Enemy(int hitPoints)
         {
             HitPoints = hitPoints;
         }
-
-        #endregion
-
-        #region Public Interface
 
         public int HitPoints { get; private set; }
 
@@ -32,16 +26,10 @@ namespace DesignPatterns.FactoryMethod.Domain
             NextMove = CreateNextMove();
         }
 
-        #endregion
-
-        #region Protected Interface
-
         /// <summary>
         ///     Factory Method
         /// </summary>
         /// <returns>Product</returns>
         protected abstract IMove CreateNextMove();
-
-        #endregion
     }
 }

@@ -1,14 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace DesignPatterns.Builder.Domain.Osrs
+namespace CreationalPatterns.Builder.Domain.Osrs
 {
     /// <summary>
     ///     Product
     /// </summary>
     public class Battle
     {
-        #region Core
-
         public Battle(IBattleBuilder builder)
         {
             AggroedEnemies = builder.AggroedEnemies;
@@ -18,16 +16,10 @@ namespace DesignPatterns.Builder.Domain.Osrs
             ProgressionSystem = builder.ProgressionSystem;
         }
 
-        #endregion
-
-        #region Public Interface
-
         public ICollection<Enemy> AggroedEnemies { get; }
         public IBattleSystem BattleSystem { get; }
         public Map Map { get; }
         public Player Player { get; }
         public IProgressionSystem ProgressionSystem { get; }
-
-        #endregion
     }
 }

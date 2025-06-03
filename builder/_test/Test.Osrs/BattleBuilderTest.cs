@@ -1,26 +1,16 @@
-﻿using DesignPatterns.Builder.Domain.Osrs;
+﻿using CreationalPatterns.Builder.Domain.Osrs;
 using FluentAssertions;
 
-namespace DesignPatterns.Builder.Test.Osrs
+namespace CreationalPatterns.Builder.Test.Osrs
 {
     public class BattleBuilderTest : BattleBuilderBaseTest
     {
-        #region Core
-
         public BattleBuilderTest()
         {
             Builder = new BattleBuilder();
         }
 
-        #endregion
-
-        #region Public Interface
-
         public BattleBuilder Builder { get; }
-
-        #endregion
-
-        #region Test Methods
 
         public override void WhenConfiguringRandomEncounter_ReturnValidBattle()
         {
@@ -49,7 +39,5 @@ namespace DesignPatterns.Builder.Test.Osrs
             battle.Player.Should().NotBeNull();
             battle.ProgressionSystem.Should().BeOfType<NullActivityBasedProgression>();
         }
-
-        #endregion
     }
 }

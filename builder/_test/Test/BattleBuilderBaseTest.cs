@@ -1,11 +1,11 @@
-﻿using DesignPatterns.Builder.Domain;
+﻿using CreationalPatterns.Builder.Domain;
 using Xunit;
 
-namespace DesignPatterns.Builder.Test
+namespace CreationalPatterns.Builder.Test
 {
     public abstract class BattleBuilderBaseTest
     {
-        #region Core
+        #region Setup
 
         protected BattleBuilderBaseTest()
         {
@@ -14,13 +14,13 @@ namespace DesignPatterns.Builder.Test
 
         #endregion
 
-        #region Public Interface
+        #region Implementation
 
         public BattleDirector Director { get; }
 
         #endregion
 
-        #region Test Methods
+        #region Requirements
 
         [Fact]
         public abstract void WhenConfiguringRandomEncounter_ReturnValidBattle();

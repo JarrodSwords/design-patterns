@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DesignPatterns.Builder.Domain.Osrs
+namespace CreationalPatterns.Builder.Domain.Osrs
 {
     public interface IBattleBuilder : Domain.IBattleBuilder
     {

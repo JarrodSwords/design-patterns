@@ -1,13 +1,13 @@
 using System.Linq;
-using DesignPatterns.Prototype.Domain;
+using CreationalPatterns.Prototype.Domain;
 using FluentAssertions;
 using Xunit;
 
-namespace DesignPatterns.Prototype
+namespace CreationalPatterns.Prototype
 {
     public class ShopTest
     {
-        #region Test Methods
+        #region Requirements
 
         [Theory]
         [InlineData(0, "Honey Syrup")]

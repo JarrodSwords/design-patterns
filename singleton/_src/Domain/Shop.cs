@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DesignPatterns.Singleton.Domain
+namespace CreationalPatterns.Singleton.Domain
 {
     public class Shop
     {
-        #region Core
-
         private readonly List<Item> _inventory;
         private readonly string _location;
         private string _name;
@@ -17,13 +15,8 @@ namespace DesignPatterns.Singleton.Domain
             _inventory = builder.Items.ToList();
         }
 
-        #endregion
-
-        #region Public Interface
-
-        public string Name => _name ??= $"{_location} Item Shop";
         public IReadOnlyCollection<Item> Inventory => _inventory;
 
-        #endregion
+        public string Name => _name ??= $"{_location} Item Shop";
     }
 }

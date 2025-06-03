@@ -1,25 +1,15 @@
-namespace DesignPatterns.FactoryMethod.Domain
+namespace CreationalPatterns.FactoryMethod.Domain
 {
     /// <summary>
     ///     Concrete Creator
     /// </summary>
     public class Croco : Enemy
     {
-        #region Core
-
         public Croco() : base(320)
         {
         }
 
-        #endregion
-
-        #region Public Interface
-
         public int WeirdMushrooms { get; } = 2;
-
-        #endregion
-
-        #region Protected Interface
 
         protected override IMove CreateNextMove()
         {
@@ -31,7 +21,5 @@ namespace DesignPatterns.FactoryMethod.Domain
 
             return new BombToss();
         }
-
-        #endregion
     }
 }

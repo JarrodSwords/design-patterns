@@ -1,14 +1,10 @@
-namespace DesignPatterns.FactoryMethod.Domain
+namespace CreationalPatterns.FactoryMethod.Domain
 {
     public class Mario
     {
-        #region Public Interface
-
         public void Attack(Enemy enemy, int damage)
         {
             enemy.ReceiveDamage(damage);
         }
-
-        #endregion
     }
 }

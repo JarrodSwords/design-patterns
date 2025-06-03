@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DesignPatterns.AbstractFactory.Domain
+namespace CreationalPatterns.AbstractFactory.Domain
 {
     public interface IRepository<T>
     {

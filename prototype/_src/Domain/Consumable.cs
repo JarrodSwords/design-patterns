@@ -1,12 +1,10 @@
-namespace DesignPatterns.Prototype.Domain
+namespace CreationalPatterns.Prototype.Domain
 {
     /// <summary>
     ///     Concrete Prototype
     /// </summary>
     public class Consumable : Item
     {
-        #region Core
-
         public Consumable(string name) : base(name)
         {
         }
@@ -15,15 +13,6 @@ namespace DesignPatterns.Prototype.Domain
         {
         }
 
-        #endregion
-
-        #region Public Interface
-
-        public override Item Clone()
-        {
-            return new Consumable(this);
-        }
-
-        #endregion
+        public override Item Clone() => new Consumable(this);
     }
 }

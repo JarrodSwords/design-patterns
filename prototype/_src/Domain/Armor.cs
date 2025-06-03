@@ -1,12 +1,10 @@
-namespace DesignPatterns.Prototype.Domain
+namespace CreationalPatterns.Prototype.Domain
 {
     /// <summary>
     ///     Concrete Prototype
     /// </summary>
     public class Armor : Equipment
     {
-        #region Core
-
         public Armor(string name, CompatibleCharacters compatibleCharacters) : base(name, compatibleCharacters)
         {
         }
@@ -15,15 +13,6 @@ namespace DesignPatterns.Prototype.Domain
         {
         }
 
-        #endregion
-
-        #region Public Interface
-
-        public override Item Clone()
-        {
-            return new Armor(this);
-        }
-
-        #endregion
+        public override Item Clone() => new Armor(this);
     }
 }

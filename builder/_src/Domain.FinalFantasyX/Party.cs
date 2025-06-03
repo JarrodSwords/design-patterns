@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DesignPatterns.Builder.Domain.FinalFantasyX
+namespace CreationalPatterns.Builder.Domain.FinalFantasyX
 {
     public class Party
     {
-        #region Public Interface
-
         public ICollection<Combatant> Active { get; }
         public ICollection<Combatant> Inactive { get; }
 
@@ -14,7 +12,5 @@ namespace DesignPatterns.Builder.Domain.FinalFantasyX
         {
             throw new NotImplementedException();
         }
-
-        #endregion
     }
 }

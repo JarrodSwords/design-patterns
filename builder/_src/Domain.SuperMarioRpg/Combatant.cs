@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder.Domain.SuperMarioRpg
+﻿namespace CreationalPatterns.Builder.Domain.SuperMarioRpg
 {
     public class Combatant
     {
