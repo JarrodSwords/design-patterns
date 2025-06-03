@@ -26,7 +26,7 @@ public class Message : IComparable<Message>
     public static Result<Message> From(Database.Message message, Database.User user) =>
         new Message(
             message.Id,
-            message.PostId,
+            message.ContextId,
             message.ParentId,
             message.Text,
             message.Timestamp,

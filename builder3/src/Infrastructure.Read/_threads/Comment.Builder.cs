@@ -32,9 +32,8 @@ public partial class Comment
     {
         private readonly Dictionary<uint, Comment> _comments = new();
 
-        public object Add(Database.Message message, Database.User user)
-        {
-            return From(message, user)
+        public object Add(Database.Message message, Database.User user) =>
+            From(message, user)
                 .Then(
                     x =>
                     {
@@ -49,6 +48,5 @@ public partial class Comment
                         return x;
                     }
                 );
-        }
     }
 }
