@@ -1,12 +1,12 @@
 ﻿using System.Data.Common;
 using Dapper;
-using DesignPatterns.Builder3.Domain;
-using DesignPatterns.Builder3.Infrastructure.Write;
+using Examples.SocialMedia.Domain;
+using Examples.SocialMedia.Infrastructure.Write;
 using Microsoft.Data.Sqlite;
-using Message = DesignPatterns.Builder3.Domain.Message;
-using User = DesignPatterns.Builder3.Infrastructure.Write.User;
+using Message = Examples.SocialMedia.Domain.Message;
+using User = Examples.SocialMedia.Infrastructure.Write.User;
 
-namespace DesignPatterns.Builder3.Spec;
+namespace Examples.SocialMedia.Spec;
 
 public class SqliteContext : IConnectionProvider, IDisposable
 {

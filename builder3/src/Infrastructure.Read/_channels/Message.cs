@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using Jgs.Errors.Results;
 
-namespace DesignPatterns.Builder3.Infrastructure.Read;
+namespace Examples.SocialMedia.Infrastructure.Read;
 
 [DebuggerDisplay("{GetDebugString()}")]
 public class Message : IComparable<Message>

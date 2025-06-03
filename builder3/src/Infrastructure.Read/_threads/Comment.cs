@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace DesignPatterns.Builder3.Infrastructure.Read;
+namespace Examples.SocialMedia.Infrastructure.Read;
 
 [DebuggerDisplay("{GetDebugString()}")]
 public partial class Comment : IComparable<Comment>

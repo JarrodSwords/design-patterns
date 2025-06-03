@@ -1,10 +1,10 @@
 ﻿using System.Data;
 using System.Data.Common;
-using DesignPatterns.Builder3.Domain;
+using Examples.SocialMedia.Domain;
 using Jgs.Errors;
 using Jgs.Errors.Results;
 
-namespace DesignPatterns.Builder3.Infrastructure.Read;
+namespace Examples.SocialMedia.Infrastructure.Read;
 
 public interface IQuery;
 

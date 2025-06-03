@@ -1,6 +1,6 @@
 ﻿using Jgs.ValueObjects;
 
-namespace DesignPatterns.Builder3.Domain;
+namespace Examples.SocialMedia.Domain;
 
 public class Id(uint value) : TinyType<uint>(value);
 

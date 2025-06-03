@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace DesignPatterns.Builder3.Infrastructure.Write;
+namespace Examples.SocialMedia.Infrastructure.Write;
 
 public class Context(DbContextOptions<Context> options) : DbContext(options)
 {

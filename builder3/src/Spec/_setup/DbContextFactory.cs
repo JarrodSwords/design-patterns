@@ -1,8 +1,8 @@
 ﻿using System.Data.Common;
-using DesignPatterns.Builder3.Infrastructure.Write;
+using Examples.SocialMedia.Infrastructure.Write;
 using Microsoft.EntityFrameworkCore;
 
-namespace DesignPatterns.Builder3.Spec;
+namespace Examples.SocialMedia.Spec;
 
 public class DbContextFactory
 {

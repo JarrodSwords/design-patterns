@@ -1,9 +1,9 @@
-﻿using DesignPatterns.Builder3.Domain;
+﻿using Examples.SocialMedia.Domain;
 using Jgs.Errors;
 using Jgs.Errors.Results;
 using static Jgs.Errors.Results.Result;
 
-namespace DesignPatterns.Builder3.Infrastructure.Write;
+namespace Examples.SocialMedia.Infrastructure.Write;
 
 public class MessageRepository(Context context) : IMessageRepository
 {

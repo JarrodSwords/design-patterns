@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder3.Infrastructure.Read.Database;
+﻿namespace Examples.SocialMedia.Infrastructure.Read.Database;
 
 public class Message
 {

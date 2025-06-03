@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder3.Infrastructure.Read;
+﻿namespace Examples.SocialMedia.Infrastructure.Read;
 
 public interface IMessageBuilder
 {

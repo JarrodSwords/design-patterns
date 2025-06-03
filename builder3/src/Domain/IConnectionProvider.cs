@@ -1,6 +1,6 @@
 ﻿using System.Data.Common;
 
-namespace DesignPatterns.Builder3.Domain;
+namespace Examples.SocialMedia.Domain;
 
 public interface IConnectionProvider
 {

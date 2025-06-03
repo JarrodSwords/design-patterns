@@ -1,6 +1,6 @@
 ﻿using Jgs.Errors.Results;
 
-namespace DesignPatterns.Builder3.Domain;
+namespace Examples.SocialMedia.Domain;
 
 public interface IMessageRepository
 {

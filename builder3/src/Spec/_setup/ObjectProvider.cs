@@ -1,7 +1,7 @@
-﻿using DesignPatterns.Builder3.Domain;
-using User = DesignPatterns.Builder3.Infrastructure.Write.User;
+﻿using Examples.SocialMedia.Domain;
+using User = Examples.SocialMedia.Infrastructure.Write.User;
 
-namespace DesignPatterns.Builder3.Spec;
+namespace Examples.SocialMedia.Spec;
 
 public class ObjectProvider
 {

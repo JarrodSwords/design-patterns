@@ -1,8 +1,8 @@
-﻿using DesignPatterns.Builder3.Infrastructure.Read;
+﻿using Examples.SocialMedia.Infrastructure.Read;
 using FluentAssertions;
-using Thread = DesignPatterns.Builder3.Infrastructure.Read.Thread;
+using Thread = Examples.SocialMedia.Infrastructure.Read.Thread;
 
-namespace DesignPatterns.Builder3.Spec;
+namespace Examples.SocialMedia.Spec;
 
 [Collection("sqlite")]
 public class WhenFindingAThread

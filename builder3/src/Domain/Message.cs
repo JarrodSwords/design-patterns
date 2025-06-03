@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Builder3.Domain;
+﻿namespace Examples.SocialMedia.Domain;
 
 public class Message(
     MessageId id,

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace DesignPatterns.Builder3.Infrastructure.Read;
+namespace Examples.SocialMedia.Infrastructure.Read;
 
 public class Thread : IEnumerable<Comment>
 {

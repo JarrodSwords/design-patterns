@@ -1,10 +1,10 @@
 ﻿using System.Data.Common;
 using Dapper;
-using DesignPatterns.Builder3.Domain;
+using Examples.SocialMedia.Domain;
 using Jgs.Errors.Results;
 using static Jgs.Errors.Results.Result;
 
-namespace DesignPatterns.Builder3.Infrastructure.Read;
+namespace Examples.SocialMedia.Infrastructure.Read;
 
 public class FindDiscussionHandler(IConnectionProvider connectionProvider)
     : QueryHandler<FindDiscussion>(connectionProvider)
