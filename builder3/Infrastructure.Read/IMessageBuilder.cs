@@ -1,6 +1,8 @@
-﻿namespace Examples.SocialMedia.Infrastructure.Read;
+﻿using Jgs.Errors.Results;
+
+namespace Examples.SocialMedia.Infrastructure.Read;
 
 public interface IMessageBuilder
 {
-    object Add(Database.Message message, Database.User user);
+    Result Add(Database.Message message, Database.User user);
 }

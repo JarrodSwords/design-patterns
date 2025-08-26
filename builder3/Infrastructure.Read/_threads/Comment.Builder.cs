@@ -17,7 +17,7 @@ public partial class Comment
     private Comment Add(Comment child)
     {
         _children.Add(child);
-        return child;
+        return this;
     }
 
     private static Result<Comment> From(Database.Message message, Database.User user) =>
@@ -32,7 +32,7 @@ public partial class Comment
     {
         private readonly Dictionary<uint, Comment> _comments = new();
 
-        public object Add(Database.Message message, Database.User user) =>
+        public Result Add(Database.Message message, Database.User user) =>
             From(message, user)
                 .Then(
                     x =>

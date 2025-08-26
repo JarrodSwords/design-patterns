@@ -24,7 +24,7 @@ public class FindDiscussionHandler(IConnectionProvider connectionProvider)
     {
         var (args, builder) = query;
 
-        connection.Query<Database.Message, Database.User, object>(
+        connection.Query<Database.Message, Database.User, Result>(
             Query,
             builder.Add,
             args,
