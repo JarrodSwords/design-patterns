@@ -46,9 +46,9 @@ public class FindDiscussion : IQuery
 
     public void Deconstruct(out object args, out IMessageBuilder builder, out Specification<Message> spec)
     {
-        args = new { ContextId };
         builder = Builder;
         spec = _spec;
+        args = spec.GetArgs();
     }
 
     public IMessageBuilder Builder { get; }
@@ -56,6 +56,7 @@ public class FindDiscussion : IQuery
 
 public abstract class Specification<T>
 {
+    public abstract object GetArgs();
     public abstract string GetSql();
 
     public bool IsSatisfiedBy(T value) => ToExpression().Compile()(value);
@@ -63,16 +64,11 @@ public abstract class Specification<T>
     protected abstract Expression<Func<T, bool>> ToExpression();
 }
 
-public class InContext : Specification<Message>
+public class InContext(uint contextId) : Specification<Message>
 {
-    private readonly uint _contextId;
-
-    public InContext(uint contextId)
-    {
-        _contextId = contextId;
-    }
+    public override object GetArgs() => new { ContextId = contextId };
 
     public override string GetSql() => "M.[ContextId] = @ContextId";
 
-    protected override Expression<Func<Message, bool>> ToExpression() => message => message.ChannelId == _contextId;
+    protected override Expression<Func<Message, bool>> ToExpression() => message => message.ChannelId == contextId;
 }

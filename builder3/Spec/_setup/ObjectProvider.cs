@@ -47,7 +47,7 @@ public class ObjectProvider
 
     public static IEnumerable<Message> GetWitchHuntDiscussion()
     {
-        uint id = 1001;
+        uint id = 1000;
 
         yield return From(null, Villager1, "We have found a witch! Might we burn her?");
         yield return From(1001, Bedemir, "How do you know she is a witch?");
