@@ -1,6 +1,6 @@
 ﻿namespace CharacterProgression.Domain5;
 
-public interface IProgressionRate
+public interface ILeveler
 {
     void Add(Xp xp);
 }
@@ -8,19 +8,25 @@ public interface IProgressionRate
 public interface ILevelable
 {
     Xp Xp { get; }
-    IProgressionRate CreateProgressionRate();
 }
 
-public interface ILeveler
+public interface ILevelerFactory<in T> where T : ILevelable
 {
-    void Level(ILevelable levelable, Xp xp);
+    ILeveler Create(T levelable);
 }
 
-public class Leveler : ILeveler
+/// <remarks>Simulated command</remarks>
+public record GainXp(ushort Xp);
+
+/// <remarks>Simulated command handler</remarks>
+public class GainXpHandler
 {
-    public void Level(ILevelable levelable, Xp xp)
+    public void Handle(GainXp command)
     {
-        var rate = levelable.CreateProgressionRate();
-        rate.Add(xp);
+        var character = new Character();
+
+        var leveler = new CharacterLevelerFactory().Create(character);
+
+        leveler.Add(command.Xp);
     }
 }

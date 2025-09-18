@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 
-namespace CharacterProgression.Domain4.AbstractFactory;
+namespace CharacterProgression.Domain4.FactoryMethod;
 
 public abstract class WhenAddingXp
 {

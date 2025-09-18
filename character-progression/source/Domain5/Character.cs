@@ -1,23 +1,8 @@
 ﻿namespace CharacterProgression.Domain5;
 
-public partial class Character(
-    ProgressionType progressionType = ProgressionType.Standard,
-    Xp? xp = null
-)
+public partial class Character(Xp? xp = null)
 {
-    private Accessory _accessory;
-
-    public Accessory Accessory
-    {
-        get => _accessory;
-        private set
-        {
-            _accessory = value;
-
-            if (_accessory.GetType() == typeof(ExpBooster))
-                _progressionType = ProgressionType.Boosted;
-        }
-    }
+    public Accessory Accessory { get; private set; } = new None();
 
     public Character Equip(Accessory accessory)
     {

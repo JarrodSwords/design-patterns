@@ -1,9 +1,10 @@
-﻿namespace CharacterProgression.Domain5;
+﻿using System.Linq.Expressions;
+
+namespace CharacterProgression.Domain5;
 
 public partial class Character : ILevelable
 {
     public static readonly Xp MaxXp = 9999;
-    private ProgressionType _progressionType = progressionType;
     private Xp _xp = xp ?? 0;
 
     public Xp Xp
@@ -12,15 +13,7 @@ public partial class Character : ILevelable
         private set => _xp = Math.Min(value, MaxXp);
     }
 
-    public IProgressionRate CreateProgressionRate() =>
-        _progressionType switch
-        {
-            ProgressionType.Boosted => new BoostedRate(this),
-            ProgressionType.Standard => new StandardRate(this),
-            _ => new StandardRate(this)
-        };
-
-    public class BoostedRate(Character character) : IProgressionRate
+    public class BoostedLeveler(Character character) : ILeveler
     {
         public void Add(Xp xp)
         {
@@ -28,11 +21,25 @@ public partial class Character : ILevelable
         }
     }
 
-    public class StandardRate(Character character) : IProgressionRate
+    public class StandardLeveler(Character character) : ILeveler
     {
         public void Add(Xp xp)
         {
             character.Xp += xp;
         }
     }
+}
+
+public class IsBoosted : Specification<Character>
+{
+    protected override Expression<Func<Character, bool>> ToExpression() =>
+        character => character.Accessory.GetType() == typeof(ExpBooster);
+}
+
+public class CharacterLevelerFactory : ILevelerFactory<Character>
+{
+    public ILeveler Create(Character character) =>
+        new IsBoosted().IsSatisfiedBy(character)
+            ? new Character.BoostedLeveler(character)
+            : new Character.StandardLeveler(character);
 }
