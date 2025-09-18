@@ -6,21 +6,28 @@ public abstract class WhenAddingXp(ILevelable levelable)
 {
     #region Setup
 
-    private readonly XpService _xpService = new();
-
     protected readonly ILevelable Levelable = levelable;
+    protected readonly XpService XpService = new();
 
     #endregion
 
     #region Implementation
 
-    public abstract Xp GetMax();
-    public abstract void GivenMaxXp_ThenXpIsNotAdded();
-    public abstract void ThenXpIsClamped();
+    protected abstract Xp MaxXp { get; }
 
     #endregion
 
     #region Requirements
+
+    [Fact]
+    public void GivenMaxXp_ThenXpIsNotAdded()
+    {
+        Levelable.Set(MaxXp);
+
+        XpService.Add(Levelable, 10, MaxXp);
+
+        Levelable.Xp.Should().Be(MaxXp);
+    }
 
     [Theory]
     [InlineData(1, 5)]
@@ -29,85 +36,51 @@ public abstract class WhenAddingXp(ILevelable levelable)
     {
         Levelable.Set(initial);
 
-        _xpService.Add(Levelable, gained, GetMax());
+        XpService.Add(Levelable, gained, MaxXp);
 
         Levelable.Xp.Should().Be((ushort) (initial + gained));
     }
 
+    [Fact]
+    public void ThenXpIsClamped()
+    {
+        Levelable.Set((Xp) (MaxXp - 10));
+
+        XpService.Add(Levelable, 20, MaxXp);
+
+        Levelable.Xp.Should().Be(MaxXp);
+    }
+
+    #endregion
+}
+
+public class WhenAddingXpToAttribute() : WhenAddingXp(new Attribute())
+{
+    protected override Xp MaxXp => Attribute.MaxXp;
+}
+
+public class WhenAddingXpToCharacter() : WhenAddingXp(new Character())
+{
+    #region Implementation
+
+    protected override Xp MaxXp => Character.MaxXp;
+
     #endregion
 
-    public class WhenAddingXpToAttribute() : WhenAddingXp(new Attribute())
+    #region Requirements
+
+    [Theory]
+    [InlineData(1, 5)]
+    [InlineData(100, 20)]
+    public void GivenBoostedRate_ThenXpIsClamped(ushort initial, ushort gained)
     {
-        #region Implementation
+        Levelable.Set(initial);
+        (Levelable as Character).Equip(new ExpBooster());
 
-        public override Xp GetMax() => Attribute.MaxXp;
+        XpService.Add(Levelable, gained, MaxXp);
 
-        #endregion
-
-        #region Requirements
-
-        [Fact]
-        public override void GivenMaxXp_ThenXpIsNotAdded()
-        {
-            Levelable.Set(Attribute.MaxXp);
-
-            _xpService.Add(Levelable, 20, Attribute.MaxXp);
-
-            Levelable.Xp.Should().Be(Attribute.MaxXp);
-        }
-
-        [Fact]
-        public override void ThenXpIsClamped()
-        {
-            _xpService.Add(Levelable, 300, Attribute.MaxXp);
-
-            Levelable.Xp.Should().Be(Attribute.MaxXp);
-        }
-
-        #endregion
+        Levelable.Xp.Should().Be((ushort) (initial + gained * 2));
     }
 
-    public class WhenAddingXpToCharacter() : WhenAddingXp(new Character())
-    {
-        #region Implementation
-
-        public override Xp GetMax() => Character.MaxXp;
-
-        #endregion
-
-        #region Requirements
-
-        [Theory]
-        [InlineData(1, 5)]
-        [InlineData(100, 20)]
-        public void GivenBoostedRate_ThenXpIsClamped(ushort initial, ushort gained)
-        {
-            Levelable.Set(initial);
-            (Levelable as Character).Equip(new ExpBooster());
-
-            _xpService.Add(Levelable, gained, Character.MaxXp);
-
-            Levelable.Xp.Should().Be((ushort) (initial + gained * 2));
-        }
-
-        [Fact]
-        public override void GivenMaxXp_ThenXpIsNotAdded()
-        {
-            Levelable.Set(Character.MaxXp);
-
-            _xpService.Add(Levelable, 20, Character.MaxXp);
-
-            Levelable.Xp.Should().Be(Character.MaxXp);
-        }
-
-        [Fact]
-        public override void ThenXpIsClamped()
-        {
-            _xpService.Add(Levelable, 10000, Character.MaxXp);
-
-            Levelable.Xp.Should().Be(Character.MaxXp);
-        }
-
-        #endregion
-    }
+    #endregion
 }
