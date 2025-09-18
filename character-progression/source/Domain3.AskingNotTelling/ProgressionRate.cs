@@ -1,4 +1,4 @@
-﻿namespace CharacterProgression.Domain3.Service;
+﻿namespace CharacterProgression.Domain3.AskingNotTelling;
 
 public enum ProgressionType
 {
