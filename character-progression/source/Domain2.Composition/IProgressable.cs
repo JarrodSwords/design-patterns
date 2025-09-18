@@ -42,14 +42,6 @@ public class BoostedRate(Xp maxXp, Xp xp) : Progressable(maxXp, xp)
     }
 }
 
-public abstract class Accessory
-{
-}
-
-public class ExpBooster : Accessory
-{
-}
-
 public class Character(Xp? xp = null) : IProgressable
 {
     public static readonly Xp MaxXp = 9999;
