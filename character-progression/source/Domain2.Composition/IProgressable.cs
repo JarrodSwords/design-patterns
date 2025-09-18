@@ -13,10 +13,7 @@ public class Progressable(Xp maxXp, Xp xp) : IProgressable
 
     public void Add(Xp xp)
     {
-        if (Xp == maxXp)
-            return;
-
-        Xp += xp;
+        Xp = (Xp) Math.Min(Xp + xp, maxXp);
     }
 
     public void Set(Xp xp)

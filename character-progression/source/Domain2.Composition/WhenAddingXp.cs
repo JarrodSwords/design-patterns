@@ -13,6 +13,7 @@ public abstract class WhenAddingXp(IProgressable progressable)
     #region Implementation
 
     public abstract void GivenMaxXp_ThenXpIsNotAdded();
+    public abstract void ThenXpIsClamped();
 
     #endregion
 
@@ -46,11 +47,22 @@ public abstract class WhenAddingXp(IProgressable progressable)
             Progressable.Xp.Should().Be(Attribute.MaxXp);
         }
 
+        [Fact]
+        public override void ThenXpIsClamped()
+        {
+            Progressable.Add(300);
+
+            Progressable.Xp.Should().Be(Attribute.MaxXp);
+        }
+
         #endregion
     }
 
     public class GivenCharacter() : WhenAddingXp(new Character())
     {
+        #region Requirements
+
+        [Fact]
         public override void GivenMaxXp_ThenXpIsNotAdded()
         {
             Progressable.Set(Character.MaxXp);
@@ -59,5 +71,15 @@ public abstract class WhenAddingXp(IProgressable progressable)
 
             Progressable.Xp.Should().Be(Character.MaxXp);
         }
+
+        [Fact]
+        public override void ThenXpIsClamped()
+        {
+            Progressable.Add(10000);
+
+            Progressable.Xp.Should().Be(Character.MaxXp);
+        }
+
+        #endregion
     }
 }

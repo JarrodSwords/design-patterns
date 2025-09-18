@@ -15,10 +15,7 @@ public class Character(Xp? xp = null) : IProgressable
 
     public void Add(Xp xp)
     {
-        if (Xp == MaxXp)
-            return;
-
-        Xp += xp;
+        Xp = (Xp) Math.Min(Xp + xp, MaxXp);
     }
 
     public void Set(Xp xp)
@@ -35,10 +32,7 @@ public class Attribute(Xp? xp = null) : IProgressable
 
     public void Add(Xp xp)
     {
-        if (Xp == MaxXp)
-            return;
-
-        Xp += xp;
+        Xp = (Xp) Math.Min(Xp + xp, MaxXp);
     }
 
     public void Set(Xp xp)
