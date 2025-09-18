@@ -1,4 +1,4 @@
-﻿namespace CharacterProgression.Domain4;
+﻿namespace CharacterProgression.Domain4.AbstractFactory;
 
 public partial class Character(
     ProgressionType progressionType = ProgressionType.Standard,

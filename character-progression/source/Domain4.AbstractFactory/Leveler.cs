@@ -1,4 +1,4 @@
-﻿namespace CharacterProgression.Domain4;
+﻿namespace CharacterProgression.Domain4.AbstractFactory;
 
 public interface IProgressionRate
 {
