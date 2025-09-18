@@ -36,7 +36,7 @@ public abstract class WhenAddingXp(ILevelable levelable)
 
     #endregion
 
-    public class GivenAttribute() : WhenAddingXp(new Attribute())
+    public class WhenAddingXpToAttribute() : WhenAddingXp(new Attribute())
     {
         #region Implementation
 
@@ -67,7 +67,7 @@ public abstract class WhenAddingXp(ILevelable levelable)
         #endregion
     }
 
-    public class GivenCharacter() : WhenAddingXp(new Character())
+    public class WhenAddingXpToCharacter() : WhenAddingXp(new Character())
     {
         #region Implementation
 

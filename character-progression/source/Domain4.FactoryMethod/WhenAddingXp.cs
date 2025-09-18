@@ -35,7 +35,7 @@ public abstract class WhenAddingXp
 
     #endregion
 
-    public class GivenAttribute : WhenAddingXp
+    public class WhenAddingXpToAttribute : WhenAddingXp
     {
         #region Implementation
 
@@ -69,7 +69,7 @@ public abstract class WhenAddingXp
         #endregion
     }
 
-    public class GivenCharacter : WhenAddingXp
+    public class WhenAddingXpToCharacter : WhenAddingXp
     {
         #region Implementation
 
