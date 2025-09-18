@@ -1,4 +1,4 @@
-﻿namespace CharacterProgression.Domain;
+﻿namespace CharacterProgression.Domain1.Simple;
 
 public interface IProgressable
 {

@@ -1,8 +1,6 @@
-﻿using CharacterProgression.Domain;
-using FluentAssertions;
-using Attribute = CharacterProgression.Domain.Attribute;
+﻿using FluentAssertions;
 
-namespace CharacterProgression.Spec;
+namespace CharacterProgression.Domain1.Simple;
 
 public abstract class WhenAddingXp(IProgressable progressable)
 {

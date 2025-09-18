@@ -1,6 +1,6 @@
 ﻿using Jgs.ValueObjects;
 
-namespace CharacterProgression.Domain;
+namespace CharacterProgression;
 
 public class Xp(ushort value) : TinyType<ushort>(value)
 {
