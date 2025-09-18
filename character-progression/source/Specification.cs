@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace CharacterProgression.Domain5.AbstractFactory;
+namespace CharacterProgression;
 
 public abstract class Specification<T>
 {
