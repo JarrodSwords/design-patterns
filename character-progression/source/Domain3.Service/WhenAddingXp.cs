@@ -1,18 +1,12 @@
 ﻿using FluentAssertions;
 
-namespace CharacterProgression.Domain1.Simple;
+namespace CharacterProgression.Domain3.Service;
 
 public abstract class WhenAddingXp(IProgressable progressable)
 {
     #region Setup
 
     protected readonly IProgressable Progressable = progressable;
-
-    #endregion
-
-    #region Implementation
-
-    public abstract void GivenMaxXp_ThenXpIsNotAdded();
 
     #endregion
 
@@ -34,30 +28,9 @@ public abstract class WhenAddingXp(IProgressable progressable)
 
     public class GivenAttribute() : WhenAddingXp(new Attribute())
     {
-        #region Requirements
-
-        [Fact]
-        public override void GivenMaxXp_ThenXpIsNotAdded()
-        {
-            Progressable.Set(Attribute.MaxXp);
-
-            Progressable.Add(20);
-
-            Progressable.Xp.Should().Be(Attribute.MaxXp);
-        }
-
-        #endregion
     }
 
     public class GivenCharacter() : WhenAddingXp(new Character())
     {
-        public override void GivenMaxXp_ThenXpIsNotAdded()
-        {
-            Progressable.Set(Character.MaxXp);
-
-            Progressable.Add(20);
-
-            Progressable.Xp.Should().Be(Character.MaxXp);
-        }
     }
 }

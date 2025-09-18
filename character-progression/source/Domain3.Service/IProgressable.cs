@@ -1,4 +1,4 @@
-﻿namespace CharacterProgression.Domain2.Composition;
+﻿namespace CharacterProgression.Domain3.Service;
 
 public interface IProgressable
 {
@@ -7,15 +7,12 @@ public interface IProgressable
     void Set(Xp xp);
 }
 
-public class Progressable(Xp maxXp, Xp xp) : IProgressable
+public class Progressable(Xp xp) : IProgressable
 {
     public Xp Xp { get; private set; } = xp;
 
     public void Add(Xp xp)
     {
-        if (Xp == maxXp)
-            return;
-
         Xp += xp;
     }
 
@@ -27,8 +24,7 @@ public class Progressable(Xp maxXp, Xp xp) : IProgressable
 
 public class Character(Xp? xp = null) : IProgressable
 {
-    public static readonly Xp MaxXp = 9999;
-    private readonly Progressable _progressable = new(MaxXp, xp ?? 0);
+    private readonly Progressable _progressable = new(xp ?? 0);
 
     public Xp Xp => _progressable.Xp;
 
@@ -38,11 +34,14 @@ public class Character(Xp? xp = null) : IProgressable
 
 public class Attribute(Xp? xp = null) : IProgressable
 {
-    public static readonly Xp MaxXp = 255;
-    private readonly Progressable _progressable = new(MaxXp, xp ?? 0);
+    private readonly Progressable _progressable = new(xp ?? 0);
 
     public Xp Xp => _progressable.Xp;
 
     public void Add(Xp xp) => _progressable.Add(xp);
     public void Set(Xp xp) => _progressable.Set(xp);
+}
+
+public class ProgressService
+{
 }

@@ -9,10 +9,15 @@ public interface IProgressable
 
 public class Character(Xp? xp = null) : IProgressable
 {
+    public static readonly Xp MaxXp = 9999;
+
     public Xp Xp { get; private set; } = xp ?? 0;
 
     public void Add(Xp xp)
     {
+        if (Xp == MaxXp)
+            return;
+
         Xp += xp;
     }
 
@@ -24,10 +29,15 @@ public class Character(Xp? xp = null) : IProgressable
 
 public class Attribute(Xp? xp = null) : IProgressable
 {
+    public static readonly Xp MaxXp = 255;
+
     public Xp Xp { get; private set; } = xp ?? 0;
 
     public void Add(Xp xp)
     {
+        if (Xp == MaxXp)
+            return;
+
         Xp += xp;
     }
 
