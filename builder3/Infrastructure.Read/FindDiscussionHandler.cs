@@ -1,4 +1,5 @@
 ﻿using System.Data.Common;
+using System.Linq.Expressions;
 using Dapper;
 using Examples.SocialMedia.Domain;
 using Jgs.Errors.Results;
@@ -9,23 +10,21 @@ namespace Examples.SocialMedia.Infrastructure.Read;
 public class FindDiscussionHandler(IConnectionProvider connectionProvider)
     : QueryHandler<FindDiscussion>(connectionProvider)
 {
-    private const string Query =
-        """
-        SELECT M.*
-             , U.*
-          FROM Message M
-          JOIN User U
-            ON U.Id = M.UserId
-         WHERE ContextId = @ContextId
-         ORDER BY Timestamp
-        """;
-
     protected override Result ExecuteQuery(DbConnection connection, FindDiscussion query)
     {
-        var (args, builder) = query;
+        var (args, builder, spec) = query;
+        var sql = $"""
+                   SELECT M.*
+                        , U.*
+                     FROM Message M
+                     JOIN User U
+                       ON U.Id = M.UserId
+                    WHERE {spec.GetSql()}
+                    ORDER BY Timestamp
+                   """;
 
         connection.Query<Database.Message, Database.User, Result>(
-            Query,
+            sql,
             builder.Add,
             args,
             splitOn: "Id"
@@ -35,14 +34,41 @@ public class FindDiscussionHandler(IConnectionProvider connectionProvider)
     }
 }
 
-public class FindDiscussion(uint contextId, IMessageBuilder builder) : IQuery
+public class FindDiscussion : IQuery
 {
-    public void Deconstruct(out object args, out IMessageBuilder builder)
+    private readonly Specification<Message> _spec;
+
+    public FindDiscussion(IMessageBuilder builder, Specification<Message> spec)
     {
-        args = new { ContextId };
-        builder = Builder;
+        _spec = spec;
+        Builder = builder;
     }
 
-    public uint ContextId { get; } = contextId;
-    public IMessageBuilder Builder { get; } = builder;
+    public void Deconstruct(out object args, out IMessageBuilder builder, out Specification<Message> spec)
+    {
+        builder = Builder;
+        spec = _spec;
+        args = spec.GetArgs();
+    }
+
+    public IMessageBuilder Builder { get; }
+}
+
+public abstract class Specification<T>
+{
+    public abstract object GetArgs();
+    public abstract string GetSql();
+
+    public bool IsSatisfiedBy(T value) => ToExpression().Compile()(value);
+
+    protected abstract Expression<Func<T, bool>> ToExpression();
+}
+
+public class InContext(uint contextId) : Specification<Message>
+{
+    public override object GetArgs() => new { ContextId = contextId };
+
+    public override string GetSql() => "M.[ContextId] = @ContextId";
+
+    protected override Expression<Func<Message, bool>> ToExpression() => message => message.ChannelId == contextId;
 }

@@ -9,13 +9,11 @@ public class WhenFindingAChannel
 {
     #region Setup
 
-    private const uint ContextId = 1234;
-
     private readonly Channel _channel = new();
 
     public WhenFindingAChannel(SqliteContext sqliteContext)
     {
-        var findDiscussion = new FindDiscussion(_channel, new InContext(ContextId));
+        var findDiscussion = new FindDiscussion(2000, _channel);
         var handler = new FindDiscussionHandler(sqliteContext);
 
         handler.Execute(findDiscussion);
@@ -32,15 +30,6 @@ public class WhenFindingAChannel
 
         _channel.Should().NotBeEmpty();
         _channel.Should().HaveCount(58);
-    }
-
-    [Fact]
-    public void ThenMessagesAreFilteredByContextId()
-    {
-        using var scope = new AssertionScope();
-
-        _channel.Should().AllSatisfy(message => message.ChannelId.Should().Be(ContextId));
-        _channel.Should().AllSatisfy(message => new InContext(ContextId).IsSatisfiedBy(message).Should().BeTrue());
     }
 
     [Fact]

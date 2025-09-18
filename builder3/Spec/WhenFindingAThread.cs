@@ -14,7 +14,7 @@ public class WhenFindingAThread
     public WhenFindingAThread(SqliteContext sqliteContext)
     {
         var builder = new Comment.Builder(_thread);
-        var findDiscussion = new FindDiscussion(2000, builder);
+        var findDiscussion = new FindDiscussion(builder, new InContext(1234));
         var handler = new FindDiscussionHandler(sqliteContext);
 
         handler.Execute(findDiscussion);

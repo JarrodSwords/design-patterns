@@ -11,41 +11,9 @@ public class ObjectProvider
         Villager1 = 111,
         Villager2 = 222,
         Villager3 = 333,
-        Witch = 400,
-        Squidward = 500,
-        Plankton = 501,
-        Patrick = 502;
+        Witch = 400;
 
-    public static IEnumerable<Message> GetBandDiscussion()
-    {
-        uint id = 2000;
-
-        yield return From(null, Squidward, "Okay now, how many of you have played musical instruments before?");
-        yield return From(2001, Plankton, "Do instruments of torture count?");
-        yield return From(2002, Squidward, "No.");
-        yield return From(2001, Patrick, "Is mayonnaise an instrument?");
-        yield return From(2004, Squidward, "No, Patrick. Mayonnaise is not an instrument");
-        yield return From(2004, Squidward, "Horseradish is not an instrument either.");
-        yield break;
-
-        Message From(MessageId? parentId, UserId userId, string text) =>
-            new(++id, 2345, userId, text, DateTime.Now, parentId);
-    }
-
-    public static IEnumerable<User> GetUsers()
-    {
-        yield return new(Arthur, "Arthur");
-        yield return new(Bedemir, "Bedemir");
-        yield return new(Villager1, "Villager1");
-        yield return new(Villager2, "Villager2");
-        yield return new(Villager3, "Villager3");
-        yield return new(Witch, "Witch");
-        yield return new(Squidward, "Squidward");
-        yield return new(Plankton, "Plankton");
-        yield return new(Patrick, "Patrick");
-    }
-
-    public static IEnumerable<Message> GetWitchHuntDiscussion()
+    public static IEnumerable<Message> GetMessages()
     {
         uint id = 1000;
 
@@ -110,6 +78,16 @@ public class ObjectProvider
         yield break;
 
         Message From(MessageId? parentId, UserId userId, string text) =>
-            new(++id, 1234, userId, text, DateTime.Now, parentId);
+            new(++id, 2000, userId, text, DateTime.Now, parentId);
+    }
+
+    public static IEnumerable<User> GetUsers()
+    {
+        yield return new(Arthur, "Arthur");
+        yield return new(Bedemir, "Bedemir");
+        yield return new(Villager1, "Villager1");
+        yield return new(Villager2, "Villager2");
+        yield return new(Villager3, "Villager3");
+        yield return new(Witch, "Witch");
     }
 }

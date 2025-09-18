@@ -21,8 +21,7 @@ public class SqliteContext : IConnectionProvider, IDisposable
         _context = DbContextFactory.CreateContext(_connection);
 
         Seed(ObjectProvider.GetUsers());
-        Seed(ObjectProvider.GetWitchHuntDiscussion());
-        Seed(ObjectProvider.GetBandDiscussion());
+        Seed(ObjectProvider.GetMessages());
     }
 
     public void Seed(IEnumerable<Message> messages)
