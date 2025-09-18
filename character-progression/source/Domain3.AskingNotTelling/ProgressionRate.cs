@@ -8,21 +8,21 @@ public enum ProgressionType
 
 public abstract class ProgressionRate
 {
-    public abstract void Add(IProgressable progressable, Xp xp, Xp maxXp);
+    public abstract void Add(ILevelable levelable, Xp xp, Xp maxXp);
 }
 
 public class StandardRate : ProgressionRate
 {
-    public override void Add(IProgressable progressable, Xp xp, Xp maxXp)
+    public override void Add(ILevelable levelable, Xp xp, Xp maxXp)
     {
-        progressable.Set((Xp) Math.Min(progressable.Xp + xp, maxXp));
+        levelable.Set((Xp) Math.Min(levelable.Xp + xp, maxXp));
     }
 }
 
 public class BoostedRate : ProgressionRate
 {
-    public override void Add(IProgressable progressable, Xp xp, Xp maxXp)
+    public override void Add(ILevelable levelable, Xp xp, Xp maxXp)
     {
-        progressable.Set((Xp) Math.Min(progressable.Xp + xp * 2, maxXp));
+        levelable.Set((Xp) Math.Min(levelable.Xp + xp * 2, maxXp));
     }
 }

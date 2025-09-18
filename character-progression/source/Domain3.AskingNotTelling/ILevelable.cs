@@ -1,13 +1,13 @@
 ﻿namespace CharacterProgression.Domain3.AskingNotTelling;
 
-public interface IProgressable
+public interface ILevelable
 {
     public ProgressionType ProgressionType { get; }
     Xp Xp { get; }
     void Set(Xp xp);
 }
 
-public class Character(ProgressionType progressionType = ProgressionType.Standard, Xp? xp = null) : IProgressable
+public class Character(ProgressionType progressionType = ProgressionType.Standard, Xp? xp = null) : ILevelable
 {
     public static readonly Xp MaxXp = 9999;
     private Accessory _accessory;
@@ -36,7 +36,7 @@ public class Character(ProgressionType progressionType = ProgressionType.Standar
     public void Set(Xp xp) => Xp = xp;
 }
 
-public class Attribute(ProgressionType progressionType = ProgressionType.Standard, Xp? xp = null) : IProgressable
+public class Attribute(ProgressionType progressionType = ProgressionType.Standard, Xp? xp = null) : ILevelable
 {
     public static readonly Xp MaxXp = 255;
     public ProgressionType ProgressionType { get; } = progressionType;

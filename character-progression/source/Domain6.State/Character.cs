@@ -3,7 +3,7 @@
 public partial class Character(Xp? xp = null)
 {
     private Accessory _accessory = new None();
-    public event EventHandler AccessoryEquipped;
+    public event EventHandler? AccessoryEquipped;
 
     public Accessory Accessory
     {

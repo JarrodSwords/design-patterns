@@ -2,13 +2,13 @@
 
 namespace CharacterProgression.Domain3.AskingNotTelling;
 
-public abstract class WhenAddingXp(IProgressable progressable)
+public abstract class WhenAddingXp(ILevelable levelable)
 {
     #region Setup
 
     private readonly XpService _xpService = new();
 
-    protected readonly IProgressable Progressable = progressable;
+    protected readonly ILevelable Levelable = levelable;
 
     #endregion
 
@@ -27,11 +27,11 @@ public abstract class WhenAddingXp(IProgressable progressable)
     [InlineData(100, 20)]
     public void ThenXpIsAdded(ushort initial, ushort gained)
     {
-        Progressable.Set(initial);
+        Levelable.Set(initial);
 
-        _xpService.Add(Progressable, gained, GetMax());
+        _xpService.Add(Levelable, gained, GetMax());
 
-        Progressable.Xp.Should().Be((ushort) (initial + gained));
+        Levelable.Xp.Should().Be((ushort) (initial + gained));
     }
 
     #endregion
@@ -49,19 +49,19 @@ public abstract class WhenAddingXp(IProgressable progressable)
         [Fact]
         public override void GivenMaxXp_ThenXpIsNotAdded()
         {
-            Progressable.Set(Attribute.MaxXp);
+            Levelable.Set(Attribute.MaxXp);
 
-            _xpService.Add(Progressable, 20, Attribute.MaxXp);
+            _xpService.Add(Levelable, 20, Attribute.MaxXp);
 
-            Progressable.Xp.Should().Be(Attribute.MaxXp);
+            Levelable.Xp.Should().Be(Attribute.MaxXp);
         }
 
         [Fact]
         public override void ThenXpIsClamped()
         {
-            _xpService.Add(Progressable, 300, Attribute.MaxXp);
+            _xpService.Add(Levelable, 300, Attribute.MaxXp);
 
-            Progressable.Xp.Should().Be(Attribute.MaxXp);
+            Levelable.Xp.Should().Be(Attribute.MaxXp);
         }
 
         #endregion
@@ -82,30 +82,30 @@ public abstract class WhenAddingXp(IProgressable progressable)
         [InlineData(100, 20)]
         public void GivenBoostedRate_ThenXpIsClamped(ushort initial, ushort gained)
         {
-            Progressable.Set(initial);
-            (Progressable as Character).Equip(new ExpBooster());
+            Levelable.Set(initial);
+            (Levelable as Character).Equip(new ExpBooster());
 
-            _xpService.Add(Progressable, gained, Character.MaxXp);
+            _xpService.Add(Levelable, gained, Character.MaxXp);
 
-            Progressable.Xp.Should().Be((ushort) (initial + gained * 2));
+            Levelable.Xp.Should().Be((ushort) (initial + gained * 2));
         }
 
         [Fact]
         public override void GivenMaxXp_ThenXpIsNotAdded()
         {
-            Progressable.Set(Character.MaxXp);
+            Levelable.Set(Character.MaxXp);
 
-            _xpService.Add(Progressable, 20, Character.MaxXp);
+            _xpService.Add(Levelable, 20, Character.MaxXp);
 
-            Progressable.Xp.Should().Be(Character.MaxXp);
+            Levelable.Xp.Should().Be(Character.MaxXp);
         }
 
         [Fact]
         public override void ThenXpIsClamped()
         {
-            _xpService.Add(Progressable, 10000, Character.MaxXp);
+            _xpService.Add(Levelable, 10000, Character.MaxXp);
 
-            Progressable.Xp.Should().Be(Character.MaxXp);
+            Levelable.Xp.Should().Be(Character.MaxXp);
         }
 
         #endregion

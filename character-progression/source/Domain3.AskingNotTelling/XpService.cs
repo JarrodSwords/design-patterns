@@ -8,8 +8,8 @@ public class XpService
         { ProgressionType.Boosted, () => new BoostedRate() }
     };
 
-    public void Add(IProgressable progressable, Xp xp, Xp maxXp)
+    public void Add(ILevelable levelable, Xp xp, Xp maxXp)
     {
-        _createProgressionRate[progressable.ProgressionType]().Add(progressable, xp, maxXp);
+        _createProgressionRate[levelable.ProgressionType]().Add(levelable, xp, maxXp);
     }
 }

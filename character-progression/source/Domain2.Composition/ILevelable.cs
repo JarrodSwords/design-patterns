@@ -1,13 +1,13 @@
 ﻿namespace CharacterProgression.Domain2.Composition;
 
-public interface IProgressable
+public interface ILevelable
 {
     Xp Xp { get; }
     void Add(Xp xp);
     void Set(Xp xp);
 }
 
-public abstract class Progressable(Xp maxXp, Xp xp) : IProgressable
+public abstract class Levelable(Xp maxXp, Xp xp) : ILevelable
 {
     public Xp MaxXp { get; protected set; } = maxXp;
     public Xp Xp { get; protected set; } = xp;
@@ -16,7 +16,7 @@ public abstract class Progressable(Xp maxXp, Xp xp) : IProgressable
     public abstract void Set(Xp xp);
 }
 
-public class StandardRate(Xp maxXp, Xp xp) : Progressable(maxXp, xp)
+public class StandardRate(Xp maxXp, Xp xp) : Levelable(maxXp, xp)
 {
     public override void Add(Xp xp)
     {
@@ -29,7 +29,7 @@ public class StandardRate(Xp maxXp, Xp xp) : Progressable(maxXp, xp)
     }
 }
 
-public class BoostedRate(Xp maxXp, Xp xp) : Progressable(maxXp, xp)
+public class BoostedRate(Xp maxXp, Xp xp) : Levelable(maxXp, xp)
 {
     public override void Add(Xp xp)
     {
@@ -42,11 +42,11 @@ public class BoostedRate(Xp maxXp, Xp xp) : Progressable(maxXp, xp)
     }
 }
 
-public class Character(Xp? xp = null) : IProgressable
+public class Character(Xp? xp = null) : ILevelable
 {
     public static readonly Xp MaxXp = 9999;
     private Accessory _accessory;
-    private Progressable _progressable = new StandardRate(MaxXp, xp ?? 0);
+    private Levelable _levelable = new StandardRate(MaxXp, xp ?? 0);
 
     public Accessory Accessory
     {
@@ -56,7 +56,7 @@ public class Character(Xp? xp = null) : IProgressable
             _accessory = value;
 
             if (_accessory.GetType() == typeof(ExpBooster))
-                _progressable = CreateBoostedRate();
+                _levelable = CreateBoostedRate();
         }
     }
 
@@ -66,21 +66,21 @@ public class Character(Xp? xp = null) : IProgressable
         return this;
     }
 
-    private Progressable CreateBoostedRate() => new BoostedRate(MaxXp, Xp);
+    private Levelable CreateBoostedRate() => new BoostedRate(MaxXp, Xp);
 
-    public Xp Xp => _progressable.Xp;
+    public Xp Xp => _levelable.Xp;
 
-    public void Add(Xp xp) => _progressable.Add(xp);
-    public void Set(Xp xp) => _progressable.Set(xp);
+    public void Add(Xp xp) => _levelable.Add(xp);
+    public void Set(Xp xp) => _levelable.Set(xp);
 }
 
-public class Attribute(Xp? xp = null) : IProgressable
+public class Attribute(Xp? xp = null) : ILevelable
 {
     public static readonly Xp MaxXp = 255;
-    private readonly Progressable _progressable = new StandardRate(MaxXp, xp ?? 0);
+    private readonly Levelable _levelable = new StandardRate(MaxXp, xp ?? 0);
 
-    public Xp Xp => _progressable.Xp;
+    public Xp Xp => _levelable.Xp;
 
-    public void Add(Xp xp) => _progressable.Add(xp);
-    public void Set(Xp xp) => _progressable.Set(xp);
+    public void Add(Xp xp) => _levelable.Add(xp);
+    public void Set(Xp xp) => _levelable.Set(xp);
 }

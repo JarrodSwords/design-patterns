@@ -1,13 +1,13 @@
 ﻿namespace CharacterProgression.Domain1.Simple;
 
-public interface IProgressable
+public interface ILevelable
 {
     Xp Xp { get; }
     void Add(Xp xp);
     void Set(Xp xp);
 }
 
-public class Character(Xp? xp = null) : IProgressable
+public class Character(Xp? xp = null) : ILevelable
 {
     public static readonly Xp MaxXp = 9999;
 
@@ -24,7 +24,7 @@ public class Character(Xp? xp = null) : IProgressable
     }
 }
 
-public class Attribute(Xp? xp = null) : IProgressable
+public class Attribute(Xp? xp = null) : ILevelable
 {
     public static readonly Xp MaxXp = 255;
 
