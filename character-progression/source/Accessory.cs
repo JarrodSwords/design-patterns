@@ -1,4 +1,4 @@
-﻿namespace CharacterProgression.Domain2.Composition;
+﻿namespace CharacterProgression;
 
 public abstract class Accessory
 {
