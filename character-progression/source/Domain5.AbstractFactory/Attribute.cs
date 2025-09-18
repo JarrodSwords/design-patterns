@@ -1,4 +1,4 @@
-﻿namespace CharacterProgression.Domain5;
+﻿namespace CharacterProgression.Domain5.AbstractFactory;
 
 public class Attribute(Xp? xp = null) : ILevelable
 {

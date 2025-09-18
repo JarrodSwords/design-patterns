@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 
-namespace CharacterProgression.Domain5;
+namespace CharacterProgression.Domain5.AbstractFactory;
 
 public abstract class WhenAddingXp<T> where T : ILevelable
 {

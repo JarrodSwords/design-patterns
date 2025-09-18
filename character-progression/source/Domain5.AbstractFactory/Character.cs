@@ -1,4 +1,4 @@
-﻿namespace CharacterProgression.Domain5;
+﻿namespace CharacterProgression.Domain5.AbstractFactory;
 
 public partial class Character(Xp? xp = null)
 {

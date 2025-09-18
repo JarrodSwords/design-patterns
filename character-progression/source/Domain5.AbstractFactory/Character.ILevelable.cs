@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace CharacterProgression.Domain5;
+namespace CharacterProgression.Domain5.AbstractFactory;
 
 public partial class Character : ILevelable
 {
