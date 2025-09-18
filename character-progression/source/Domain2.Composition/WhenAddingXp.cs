@@ -62,6 +62,19 @@ public abstract class WhenAddingXp(IProgressable progressable)
     {
         #region Requirements
 
+        [Theory]
+        [InlineData(1, 5)]
+        [InlineData(100, 20)]
+        public void GivenBoostedRate_ThenXpIsClamped(ushort initial, ushort gained)
+        {
+            Progressable.Set(initial);
+            (Progressable as Character).Equip(new ExpBooster());
+
+            Progressable.Add(gained);
+
+            Progressable.Xp.Should().Be((ushort) (initial + gained * 2));
+        }
+
         [Fact]
         public override void GivenMaxXp_ThenXpIsNotAdded()
         {

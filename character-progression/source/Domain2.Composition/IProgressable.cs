@@ -7,25 +7,74 @@ public interface IProgressable
     void Set(Xp xp);
 }
 
-public class Progressable(Xp maxXp, Xp xp) : IProgressable
+public abstract class Progressable(Xp maxXp, Xp xp) : IProgressable
 {
-    public Xp Xp { get; private set; } = xp;
+    public Xp MaxXp { get; protected set; } = maxXp;
+    public Xp Xp { get; protected set; } = xp;
 
-    public void Add(Xp xp)
+    public abstract void Add(Xp xp);
+    public abstract void Set(Xp xp);
+}
+
+public class StandardRate(Xp maxXp, Xp xp) : Progressable(maxXp, xp)
+{
+    public override void Add(Xp xp)
     {
-        Xp = (Xp) Math.Min(Xp + xp, maxXp);
+        Xp = (Xp) Math.Min(Xp + xp, MaxXp);
     }
 
-    public void Set(Xp xp)
+    public override void Set(Xp xp)
     {
         Xp = xp;
     }
 }
 
+public class BoostedRate(Xp maxXp, Xp xp) : Progressable(maxXp, xp)
+{
+    public override void Add(Xp xp)
+    {
+        Xp = (Xp) Math.Min(Xp + xp * 2, MaxXp);
+    }
+
+    public override void Set(Xp xp)
+    {
+        Xp = xp;
+    }
+}
+
+public abstract class Accessory
+{
+}
+
+public class ExpBooster : Accessory
+{
+}
+
 public class Character(Xp? xp = null) : IProgressable
 {
     public static readonly Xp MaxXp = 9999;
-    private readonly Progressable _progressable = new(MaxXp, xp ?? 0);
+    private Accessory _accessory;
+    private Progressable _progressable = new StandardRate(MaxXp, xp ?? 0);
+
+    public Accessory Accessory
+    {
+        get => _accessory;
+        private set
+        {
+            _accessory = value;
+
+            if (_accessory.GetType() == typeof(ExpBooster))
+                _progressable = CreateBoostedRate();
+        }
+    }
+
+    public Character Equip(Accessory accessory)
+    {
+        Accessory = accessory;
+        return this;
+    }
+
+    private Progressable CreateBoostedRate() => new BoostedRate(MaxXp, Xp);
 
     public Xp Xp => _progressable.Xp;
 
@@ -36,7 +85,7 @@ public class Character(Xp? xp = null) : IProgressable
 public class Attribute(Xp? xp = null) : IProgressable
 {
     public static readonly Xp MaxXp = 255;
-    private readonly Progressable _progressable = new(MaxXp, xp ?? 0);
+    private readonly Progressable _progressable = new StandardRate(MaxXp, xp ?? 0);
 
     public Xp Xp => _progressable.Xp;
 
