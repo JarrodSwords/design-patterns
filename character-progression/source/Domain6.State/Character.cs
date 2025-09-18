@@ -2,7 +2,18 @@
 
 public partial class Character(Xp? xp = null)
 {
-    public Accessory Accessory { get; private set; } = new None();
+    private Accessory _accessory = new None();
+    public event EventHandler AccessoryEquipped;
+
+    public Accessory Accessory
+    {
+        get => _accessory;
+        private set
+        {
+            _accessory = value;
+            AccessoryEquipped?.Invoke(this, null);
+        }
+    }
 
     public Character Equip(Accessory accessory)
     {

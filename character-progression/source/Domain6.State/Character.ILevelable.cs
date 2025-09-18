@@ -30,16 +30,48 @@ public partial class Character : ILevelable
     }
 }
 
+public class CharacterLeveler : ILeveler
+{
+    private Character _character;
+    private ILeveler _state;
+
+    public Character Character
+    {
+        get => _character;
+        set
+        {
+            _character = value;
+            _character.AccessoryEquipped += AccessoryEquipped;
+            UpdateState();
+        }
+    }
+
+    public CharacterLeveler For(Character character)
+    {
+        Character = character;
+        return this;
+    }
+
+    private void AccessoryEquipped(object? sender, EventArgs args)
+    {
+        UpdateState();
+    }
+
+    private void UpdateState()
+    {
+        _state = new IsBoosted().IsSatisfiedBy(Character)
+            ? new Character.BoostedLeveler(Character)
+            : new Character.StandardLeveler(Character);
+    }
+
+    public void Add(Xp xp)
+    {
+        _state.Add(xp);
+    }
+}
+
 public class IsBoosted : Specification<Character>
 {
     protected override Expression<Func<Character, bool>> ToExpression() =>
         character => character.Accessory.GetType() == typeof(ExpBooster);
-}
-
-public class CharacterLevelerFactory : ILevelerFactory<Character>
-{
-    public ILeveler Create(Character character) =>
-        new IsBoosted().IsSatisfiedBy(character)
-            ? new Character.BoostedLeveler(character)
-            : new Character.StandardLeveler(character);
 }

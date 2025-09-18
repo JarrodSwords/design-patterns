@@ -61,17 +61,11 @@ public class WhenAddingXpToAttribute : WhenAddingXp<Attribute>
 
 public class WhenAddingXpToCharacter : WhenAddingXp<Character>
 {
-    #region Setup
-
-    private readonly CharacterLevelerFactory _factory = new();
-
-    #endregion
-
     #region Implementation
 
     public override Xp MaxXp => Character.MaxXp;
     public override Character CreateLevelable(Xp xp) => new(xp);
-    public override ILeveler CreateLeveler(Character character) => _factory.Create(character);
+    public override ILeveler CreateLeveler(Character character) => new CharacterLeveler().For(character);
 
     #endregion
 
@@ -89,6 +83,59 @@ public class WhenAddingXpToCharacter : WhenAddingXp<Character>
         leveler.Add(gained);
 
         character.Xp.Should().Be((ushort) (initial + gained * 2));
+    }
+
+    [Fact]
+    public void GivenChangingCharacters_ThenXpIsAppliedToCorrectCharacters()
+    {
+        var character = CreateLevelable(1);
+        var character2 = CreateLevelable(1);
+
+        var leveler = new CharacterLeveler().For(character);
+
+        leveler.Add(5); //6, 1
+
+        leveler.For(character2);
+
+        leveler.Add(10); //6, 11
+
+        character.Equip(new ExpBooster());
+
+        leveler.Add(7); //6, 18
+
+        character2.Equip(new ExpBooster());
+
+        leveler.Add(8); //6, 34
+
+        leveler.For(character);
+
+        leveler.Add(3); //12, 34
+
+        character.Xp.Should().Be((ushort) 12);
+        character2.Xp.Should().Be((ushort) 34);
+    }
+
+    [Theory]
+    [InlineData(1, 49)]
+    [InlineData(100, 148)]
+    public void GivenChangingEquipment_ThenXpGainIsDependentOnEquipment(ushort initial, ushort expected)
+    {
+        var character = CreateLevelable(initial);
+        var leveler = CreateLeveler(character);
+
+        leveler.Add(5); //5
+        leveler.Add(10); //15
+
+        character.Equip(new ExpBooster());
+
+        leveler.Add(7); //29
+        leveler.Add(8); //45
+
+        character.Equip(new None());
+
+        leveler.Add(3); //48
+
+        character.Xp.Should().Be(expected);
     }
 
     #endregion

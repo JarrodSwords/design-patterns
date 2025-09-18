@@ -10,11 +10,6 @@ public interface ILevelable
     Xp Xp { get; }
 }
 
-public interface ILevelerFactory<in T> where T : ILevelable
-{
-    ILeveler Create(T levelable);
-}
-
 /// <remarks>Simulated command</remarks>
 public record GainXp(ushort Xp);
 
@@ -25,7 +20,7 @@ public class GainXpHandler
     {
         var character = new Character();
 
-        var leveler = new CharacterLevelerFactory().Create(character);
+        var leveler = new CharacterLeveler().For(character);
 
         leveler.Add(command.Xp);
     }
