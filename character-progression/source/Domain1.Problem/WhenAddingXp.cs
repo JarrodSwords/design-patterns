@@ -1,13 +1,12 @@
 ﻿using FluentAssertions;
 
-namespace CharacterProgression.Domain3.AskingNotTelling;
+namespace CharacterProgression.Domain1.Problem;
 
 public abstract class WhenAddingXp(ILevelable levelable)
 {
     #region Setup
 
     protected readonly ILevelable Levelable = levelable;
-    protected readonly XpService XpService = new();
 
     #endregion
 
@@ -24,7 +23,7 @@ public abstract class WhenAddingXp(ILevelable levelable)
     {
         Levelable.Set(MaxXp);
 
-        XpService.Add(Levelable, 10, MaxXp);
+        Levelable.Add(10);
 
         Levelable.Xp.Should().Be(MaxXp);
     }
@@ -36,7 +35,7 @@ public abstract class WhenAddingXp(ILevelable levelable)
     {
         Levelable.Set(initial);
 
-        XpService.Add(Levelable, gained, MaxXp);
+        Levelable.Add(gained);
 
         Levelable.Xp.Should().Be(initial + gained);
     }
@@ -46,7 +45,7 @@ public abstract class WhenAddingXp(ILevelable levelable)
     {
         Levelable.Set(MaxXp - 10);
 
-        XpService.Add(Levelable, 20, MaxXp);
+        Levelable.Add(20);
 
         Levelable.Xp.Should().Be(MaxXp);
     }
@@ -61,26 +60,5 @@ public class WhenAddingXpToAttribute() : WhenAddingXp(new Attribute())
 
 public class WhenAddingXpToCharacter() : WhenAddingXp(new Character())
 {
-    #region Implementation
-
     protected override Xp MaxXp => Character.MaxXp;
-
-    #endregion
-
-    #region Requirements
-
-    [Theory]
-    [InlineData(1, 5)]
-    [InlineData(100, 20)]
-    public void GivenBoostedRate_ThenXpIsClamped(uint initial, uint gained)
-    {
-        Levelable.Set(initial);
-        (Levelable as Character).Equip(new ExpBooster());
-
-        XpService.Add(Levelable, gained, MaxXp);
-
-        Levelable.Xp.Should().Be(initial + gained * 2);
-    }
-
-    #endregion
 }

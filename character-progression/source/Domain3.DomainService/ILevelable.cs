@@ -1,4 +1,4 @@
-﻿namespace CharacterProgression.Domain3.AskingNotTelling;
+﻿namespace CharacterProgression.Domain3.DomainService;
 
 public interface ILevelable
 {

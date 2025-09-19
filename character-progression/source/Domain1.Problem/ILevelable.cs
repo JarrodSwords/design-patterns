@@ -1,4 +1,4 @@
-﻿namespace CharacterProgression.Domain1.Simple;
+﻿namespace CharacterProgression.Domain1.Problem;
 
 public interface ILevelable
 {
