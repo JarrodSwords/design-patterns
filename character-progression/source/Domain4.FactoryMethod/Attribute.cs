@@ -10,7 +10,7 @@ public class Attribute(Xp? xp = null) : ILevelable
     {
         public void Add(Xp xp)
         {
-            attribute.Xp = (Xp) Math.Min(attribute.Xp + xp, MaxXp);
+            attribute.Xp = Math.Min(attribute.Xp + xp, MaxXp);
         }
     }
 }

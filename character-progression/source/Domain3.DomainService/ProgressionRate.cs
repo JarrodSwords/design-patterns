@@ -15,7 +15,7 @@ public class StandardRate : ProgressionRate
 {
     public override void Add(ILevelable levelable, Xp xp, Xp maxXp)
     {
-        levelable.Set((Xp) Math.Min(levelable.Xp + xp, maxXp));
+        levelable.Set(Math.Min(levelable.Xp + xp, maxXp));
     }
 }
 
@@ -23,6 +23,6 @@ public class BoostedRate : ProgressionRate
 {
     public override void Add(ILevelable levelable, Xp xp, Xp maxXp)
     {
-        levelable.Set((Xp) Math.Min(levelable.Xp + xp * 2, maxXp));
+        levelable.Set(Math.Min(levelable.Xp + xp * 2, maxXp));
     }
 }

@@ -71,7 +71,7 @@ public class WhenAddingXpToCharacter() : WhenAddingXp(new Character())
     [Theory]
     [InlineData(1, 5)]
     [InlineData(100, 20)]
-    public void GivenBoostedRate_ThenXpIsClamped(uint initial, uint gained)
+    public void GivenBoostedRate_ThenXpIsAdded(uint initial, uint gained)
     {
         Levelable.Set(initial);
         (Levelable as Character).Equip(new ExpBooster());
