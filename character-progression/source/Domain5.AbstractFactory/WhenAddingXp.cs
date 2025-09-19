@@ -28,20 +28,20 @@ public abstract class WhenAddingXp<T> where T : ILevelable
     [Theory]
     [InlineData(1, 5)]
     [InlineData(100, 20)]
-    public void ThenXpIsAdded(ushort initial, ushort gained)
+    public void ThenXpIsAdded(uint initial, uint gained)
     {
         var levelable = CreateLevelable(initial);
         var leveler = CreateLeveler(levelable);
 
         leveler.Add(gained);
 
-        levelable.Xp.Should().Be((ushort) (initial + gained));
+        levelable.Xp.Should().Be(initial + gained);
     }
 
     [Fact]
     public void ThenXpIsClamped()
     {
-        var levelable = CreateLevelable((Xp) (MaxXp - 10));
+        var levelable = CreateLevelable(MaxXp - 10);
         var leveler = CreateLeveler(levelable);
 
         leveler.Add(20);
@@ -80,7 +80,7 @@ public class WhenAddingXpToCharacter : WhenAddingXp<Character>
     [Theory]
     [InlineData(1, 5)]
     [InlineData(100, 20)]
-    public void GivenBoostedRate_ThenXpGainedIsDoubled(ushort initial, ushort gained)
+    public void GivenBoostedRate_ThenXpGainedIsDoubled(uint initial, uint gained)
     {
         var character = CreateLevelable(initial);
         character.Equip(new ExpBooster());
@@ -88,7 +88,7 @@ public class WhenAddingXpToCharacter : WhenAddingXp<Character>
         var leveler = CreateLeveler(character);
         leveler.Add(gained);
 
-        character.Xp.Should().Be((ushort) (initial + gained * 2));
+        character.Xp.Should().Be(initial + gained * 2);
     }
 
     #endregion

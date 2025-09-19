@@ -31,19 +31,19 @@ public abstract class WhenAddingXp(ILevelable levelable)
     [Theory]
     [InlineData(1, 5)]
     [InlineData(100, 20)]
-    public void ThenXpIsAdded(ushort initial, ushort gained)
+    public void ThenXpIsAdded(uint initial, uint gained)
     {
         Levelable.Set(initial);
 
         Levelable.Add(gained);
 
-        Levelable.Xp.Should().Be((ushort) (initial + gained));
+        Levelable.Xp.Should().Be(initial + gained);
     }
 
     [Fact]
     public void ThenXpIsClamped()
     {
-        Levelable.Set((Xp) (MaxXp - 10));
+        Levelable.Set(MaxXp - 10);
 
         Levelable.Add(20);
 

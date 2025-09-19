@@ -2,7 +2,7 @@
 
 namespace CharacterProgression;
 
-public class Xp(ushort value) : TinyType<ushort>(value)
+public class Xp(uint value) : TinyType<uint>(value)
 {
-    public static implicit operator Xp(ushort source) => new(source);
+    public static implicit operator Xp(uint source) => new(source);
 }
