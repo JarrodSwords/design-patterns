@@ -25,7 +25,7 @@ public abstract class WhenAddingXp
     {
         CreateLevelable(MaxXp);
 
-        Leveler.Level(Levelable, 10);
+        Leveler.Add(Levelable, 10);
 
         Levelable.Xp.Should().Be(MaxXp);
     }
@@ -37,7 +37,7 @@ public abstract class WhenAddingXp
     {
         CreateLevelable(initial);
 
-        Leveler.Level(Levelable, gained);
+        Leveler.Add(Levelable, gained);
 
         Levelable.Xp.Should().Be(initial + gained);
     }
@@ -47,7 +47,7 @@ public abstract class WhenAddingXp
     {
         CreateLevelable(MaxXp - 10);
 
-        Leveler.Level(Levelable, 20);
+        Leveler.Add(Levelable, 20);
 
         Levelable.Xp.Should().Be(MaxXp);
     }
@@ -80,7 +80,7 @@ public class WhenAddingXpToCharacter : WhenAddingXp
         CreateLevelable(initial);
         (Levelable as Character).Equip(new ExpBooster());
 
-        Leveler.Level(Levelable, gained);
+        Leveler.Add(Levelable, gained);
 
         Levelable.Xp.Should().Be(initial + gained * 2);
     }
