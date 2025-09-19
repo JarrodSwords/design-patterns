@@ -1,5 +1,8 @@
 ﻿namespace CharacterProgression.Domain3.DomainService;
 
+/// <summary>
+///     Represents an object that can be leveled with <see cref="CharacterProgression.Xp" />
+/// </summary>
 public interface ILevelable
 {
     public ProgressionType ProgressionType { get; }

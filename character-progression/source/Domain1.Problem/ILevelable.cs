@@ -1,5 +1,8 @@
 ﻿namespace CharacterProgression.Domain1.Problem;
 
+/// <summary>
+///     Represents an object that can be leveled with <see cref="CharacterProgression.Xp" />
+/// </summary>
 public interface ILevelable
 {
     Xp Xp { get; }
@@ -15,7 +18,7 @@ public class Character(Xp? xp = null) : ILevelable
 
     public void Add(Xp xp)
     {
-        Xp = (Xp) Math.Min(Xp + xp, MaxXp);
+        Xp = Math.Min(Xp + xp, MaxXp);
     }
 
     public void Set(Xp xp)
@@ -32,7 +35,7 @@ public class Attribute(Xp? xp = null) : ILevelable
 
     public void Add(Xp xp)
     {
-        Xp = (Xp) Math.Min(Xp + xp, MaxXp);
+        Xp = Math.Min(Xp + xp, MaxXp);
     }
 
     public void Set(Xp xp)

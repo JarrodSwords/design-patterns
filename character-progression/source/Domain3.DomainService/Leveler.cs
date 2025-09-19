@@ -1,6 +1,6 @@
 ﻿namespace CharacterProgression.Domain3.DomainService;
 
-public class XpService
+public class Leveler
 {
     private readonly Dictionary<ProgressionType, Func<ProgressionRate>> _createProgressionRate = new()
     {

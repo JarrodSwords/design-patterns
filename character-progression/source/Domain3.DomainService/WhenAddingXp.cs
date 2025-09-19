@@ -7,7 +7,7 @@ public abstract class WhenAddingXp(ILevelable levelable)
     #region Setup
 
     protected readonly ILevelable Levelable = levelable;
-    protected readonly XpService XpService = new();
+    protected readonly Leveler Leveler = new();
 
     #endregion
 
@@ -24,7 +24,7 @@ public abstract class WhenAddingXp(ILevelable levelable)
     {
         Levelable.Set(MaxXp);
 
-        XpService.Add(Levelable, 10, MaxXp);
+        Leveler.Add(Levelable, 10, MaxXp);
 
         Levelable.Xp.Should().Be(MaxXp);
     }
@@ -36,7 +36,7 @@ public abstract class WhenAddingXp(ILevelable levelable)
     {
         Levelable.Set(initial);
 
-        XpService.Add(Levelable, gained, MaxXp);
+        Leveler.Add(Levelable, gained, MaxXp);
 
         Levelable.Xp.Should().Be(initial + gained);
     }
@@ -46,7 +46,7 @@ public abstract class WhenAddingXp(ILevelable levelable)
     {
         Levelable.Set(MaxXp - 10);
 
-        XpService.Add(Levelable, 20, MaxXp);
+        Leveler.Add(Levelable, 20, MaxXp);
 
         Levelable.Xp.Should().Be(MaxXp);
     }
@@ -77,7 +77,7 @@ public class WhenAddingXpToCharacter() : WhenAddingXp(new Character())
         Levelable.Set(initial);
         (Levelable as Character).Equip(new ExpBooster());
 
-        XpService.Add(Levelable, gained, MaxXp);
+        Leveler.Add(Levelable, gained, MaxXp);
 
         Levelable.Xp.Should().Be(initial + gained * 2);
     }

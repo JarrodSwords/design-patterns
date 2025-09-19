@@ -1,5 +1,8 @@
 ﻿namespace CharacterProgression.Domain2.Composition;
 
+/// <summary>
+///     Represents an object that can be leveled with <see cref="CharacterProgression.Xp" />
+/// </summary>
 public interface ILevelable
 {
     Xp Xp { get; }
@@ -20,7 +23,7 @@ public class StandardRate(Xp maxXp, Xp xp) : Levelable(maxXp, xp)
 {
     public override void Add(Xp xp)
     {
-        Xp = (Xp) Math.Min(Xp + xp, MaxXp);
+        Xp = Math.Min(Xp + xp, MaxXp);
     }
 
     public override void Set(Xp xp)
@@ -33,7 +36,7 @@ public class BoostedRate(Xp maxXp, Xp xp) : Levelable(maxXp, xp)
 {
     public override void Add(Xp xp)
     {
-        Xp = (Xp) Math.Min(Xp + xp * 2, MaxXp);
+        Xp = Math.Min(Xp + xp * 2, MaxXp);
     }
 
     public override void Set(Xp xp)
