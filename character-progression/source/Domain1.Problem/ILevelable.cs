@@ -13,33 +13,29 @@ public interface ILevelable
 public class Character(Xp? xp = null) : ILevelable
 {
     public static readonly Xp MaxXp = 9999;
+    private Xp _xp = xp ?? 0;
 
-    public Xp Xp { get; private set; } = xp ?? 0;
-
-    public void Add(Xp xp)
+    public Xp Xp
     {
-        Xp = Math.Min(Xp + xp, MaxXp);
+        get => _xp;
+        private set => _xp = Math.Min(value, MaxXp);
     }
 
-    public void Set(Xp xp)
-    {
-        Xp = xp;
-    }
+    public void Add(Xp xp) => Xp += xp;
+    public void Set(Xp xp) => Xp = xp;
 }
 
 public class Attribute(Xp? xp = null) : ILevelable
 {
     public static readonly Xp MaxXp = 255;
+    private Xp _xp = xp ?? 0;
 
-    public Xp Xp { get; private set; } = xp ?? 0;
-
-    public void Add(Xp xp)
+    public Xp Xp
     {
-        Xp = Math.Min(Xp + xp, MaxXp);
+        get => _xp;
+        private set => _xp = Math.Min(value, MaxXp);
     }
 
-    public void Set(Xp xp)
-    {
-        Xp = xp;
-    }
+    public void Add(Xp xp) => Xp += xp;
+    public void Set(Xp xp) => Xp = xp;
 }
