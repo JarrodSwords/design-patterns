@@ -1,15 +1,5 @@
 ﻿namespace CharacterProgression.Domain7.Encapsulation;
 
-public interface ILeveler
-{
-    void Add(Xp xp);
-}
-
-public interface ILevelable
-{
-    Xp Xp { get; }
-}
-
 /// <remarks>Simulated command</remarks>
 public record GainXp(ushort Xp);
 

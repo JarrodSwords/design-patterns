@@ -3,13 +3,8 @@
 public class Attribute(Xp? xp = null) : ILevelable
 {
     public static readonly Xp MaxXp = 255;
-    public Xp Xp { get; private set; } = xp ?? 0;
+    private readonly Levelable _levelable = new(xp ?? 0, MaxXp);
 
-    public class StandardLeveler(Attribute attribute) : ILeveler
-    {
-        public void Add(Xp xp)
-        {
-            attribute.Xp = (Xp) Math.Min(attribute.Xp + xp, MaxXp);
-        }
-    }
+    public Xp Xp => _levelable.Xp;
+    public void Add(Xp xp) => _levelable.Add(xp);
 }

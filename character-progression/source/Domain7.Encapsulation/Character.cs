@@ -1,6 +1,6 @@
 ﻿namespace CharacterProgression.Domain7.Encapsulation;
 
-public partial class Character(Xp? xp = null)
+public partial class Character
 {
     private Accessory _accessory = new None();
     public event EventHandler? AccessoryEquipped;

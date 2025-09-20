@@ -56,7 +56,7 @@ public class WhenAddingXpToAttribute : WhenAddingXp<Attribute>
 {
     public override Xp MaxXp => Attribute.MaxXp;
     public override Attribute CreateLevelable(Xp xp) => new(xp);
-    public override ILeveler CreateLeveler(Attribute attribute) => new Attribute.StandardLeveler(attribute);
+    public override ILeveler CreateLeveler(Attribute attribute) => new StandardLeveler(attribute);
 }
 
 public class WhenAddingXpToCharacter : WhenAddingXp<Character>
