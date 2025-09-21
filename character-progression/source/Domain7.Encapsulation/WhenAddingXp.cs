@@ -10,6 +10,16 @@ public abstract class WhenAddingXp<T> where T : ILevelable
     public abstract T CreateLevelable(Xp xp);
     public abstract ILeveler CreateLeveler(T leveler);
 
+    public virtual void ThenLevelIsExpected(uint initial, uint gained, byte level)
+    {
+        var levelable = CreateLevelable(initial);
+        var leveler = CreateLeveler(levelable);
+
+        leveler.Add(gained);
+
+        levelable.Level.Should().Be(level);
+    }
+
     #endregion
 
     #region Requirements
@@ -23,21 +33,6 @@ public abstract class WhenAddingXp<T> where T : ILevelable
         leveler.Add(10);
 
         levelable.Xp.Should().Be(MaxXp);
-    }
-
-    [Theory]
-    [InlineData(0, 5, 1)]
-    [InlineData(0, 83, 2)]
-    [InlineData(80, 5, 2)]
-    [InlineData(0, 500, 5)]
-    public void ThenLevelIsExpected(uint initial, uint gained, byte level)
-    {
-        var levelable = CreateLevelable(initial);
-        var leveler = CreateLeveler(levelable);
-
-        leveler.Add(gained);
-
-        levelable.Level.Should().Be(level);
     }
 
     [Theory]
@@ -69,9 +64,24 @@ public abstract class WhenAddingXp<T> where T : ILevelable
 
 public class WhenAddingXpToAttribute : WhenAddingXp<Attribute>
 {
+    #region Implementation
+
     public override Xp MaxXp => Attribute.MaxXp;
     public override Attribute CreateLevelable(Xp xp) => new(xp);
     public override ILeveler CreateLeveler(Attribute attribute) => new StandardLeveler(attribute);
+
+    #endregion
+
+    #region Requirements
+
+    [Theory]
+    [InlineData(0, 5, 1)]
+    [InlineData(0, 83, 2)]
+    [InlineData(80, 5, 2)]
+    public override void ThenLevelIsExpected(uint initial, uint gained, byte level) =>
+        base.ThenLevelIsExpected(initial, gained, level);
+
+    #endregion
 }
 
 public class WhenAddingXpToCharacter : WhenAddingXp<Character>
@@ -152,6 +162,14 @@ public class WhenAddingXpToCharacter : WhenAddingXp<Character>
 
         character.Xp.Should().Be(expected);
     }
+
+    [Theory]
+    [InlineData(0, 5, 1)]
+    [InlineData(0, 83, 2)]
+    [InlineData(80, 5, 2)]
+    [InlineData(0, 500, 5)]
+    public override void ThenLevelIsExpected(uint initial, uint gained, byte level) =>
+        base.ThenLevelIsExpected(initial, gained, level);
 
     #endregion
 }

@@ -13,7 +13,7 @@ public class WhenCalculatingLevelTable
     [InlineData(173u, 2)]
     [InlineData(174u, 3)]
     [InlineData(13034431u, 99)]
-    public void Then(uint xp, byte expected)
+    public void ThenLevelIsExpected(uint xp, byte expected)
     {
         var level = Calculator.GetLevel(xp);
 
