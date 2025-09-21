@@ -26,6 +26,21 @@ public abstract class WhenAddingXp<T> where T : ILevelable
     }
 
     [Theory]
+    [InlineData(0, 5, 1)]
+    [InlineData(0, 83, 2)]
+    [InlineData(80, 5, 2)]
+    [InlineData(0, 500, 5)]
+    public void ThenLevelIsExpected(uint initial, uint gained, byte level)
+    {
+        var levelable = CreateLevelable(initial);
+        var leveler = CreateLeveler(levelable);
+
+        leveler.Add(gained);
+
+        levelable.Level.Should().Be(level);
+    }
+
+    [Theory]
     [InlineData(1, 5)]
     [InlineData(100, 20)]
     public void ThenXpIsAdded(uint initial, uint gained)
