@@ -11,7 +11,7 @@ public class Levelable(Xp xp, Xp maxXp) : ILevelable
 {
     private Xp _xp = xp;
 
-    public Level Level { get; }
+    public Level Level { get; set; }
 
     public Xp Xp
     {
