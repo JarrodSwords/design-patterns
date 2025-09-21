@@ -2,6 +2,7 @@
 
 public interface ILevelable
 {
+    Level Level { get; }
     Xp Xp { get; }
     void Add(Xp xp);
 }
@@ -9,6 +10,8 @@ public interface ILevelable
 public class Levelable(Xp xp, Xp maxXp) : ILevelable
 {
     private Xp _xp = xp;
+
+    public Level Level { get; }
 
     public Xp Xp
     {
