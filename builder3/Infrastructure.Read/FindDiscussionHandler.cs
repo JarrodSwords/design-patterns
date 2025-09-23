@@ -2,8 +2,8 @@
 using System.Linq.Expressions;
 using Dapper;
 using Examples.SocialMedia.Domain;
-using Jgs.Errors.Results;
-using static Jgs.Errors.Results.Result;
+using Jgs.Errors;
+using static Jgs.Errors.Result;
 
 namespace Examples.SocialMedia.Infrastructure.Read;
 

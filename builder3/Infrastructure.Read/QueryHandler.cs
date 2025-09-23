@@ -2,7 +2,6 @@
 using System.Data.Common;
 using Examples.SocialMedia.Domain;
 using Jgs.Errors;
-using Jgs.Errors.Results;
 
 namespace Examples.SocialMedia.Infrastructure.Read;
 

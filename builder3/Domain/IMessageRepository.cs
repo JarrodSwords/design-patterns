@@ -1,4 +1,4 @@
-﻿using Jgs.Errors.Results;
+﻿using Jgs.Errors;
 
 namespace Examples.SocialMedia.Domain;
 

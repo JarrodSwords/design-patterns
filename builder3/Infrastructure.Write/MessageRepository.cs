@@ -1,7 +1,6 @@
 ﻿using Examples.SocialMedia.Domain;
 using Jgs.Errors;
-using Jgs.Errors.Results;
-using static Jgs.Errors.Results.Result;
+using static Jgs.Errors.Result;
 
 namespace Examples.SocialMedia.Infrastructure.Write;
 

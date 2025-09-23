@@ -13,8 +13,8 @@
     <PackageReference Include="coverlet.collector" Version="6.0.2" />
     <PackageReference Include="dapper" Version="2.1.66" />
     <PackageReference Include="entityframework" Version="6.5.1" />
-    <PackageReference Include="fluentassertions" Version="8.2.0" />
-    <PackageReference Include="Jgs.Errors" Version="0.6.0" />
+    <PackageReference Include="fluentassertions" Version="8.6.0" />
+    <PackageReference Include="Jgs.Errors" Version="0.9.1" />
     <PackageReference Include="microsoft.data.sqlclient" Version="6.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.5" />
